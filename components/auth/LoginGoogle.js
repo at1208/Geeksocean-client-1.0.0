@@ -39,6 +39,8 @@ const LoginGoogle = () => {
             <style global jsx>{`
            .google-btn{
                margin-top: 10px!important;
+               border: 0px solid white!important;
+               box-shadow: none!important;
            }
               `}</style>
         </>

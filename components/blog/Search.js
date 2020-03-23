@@ -94,7 +94,7 @@ const Search = ({ router }) => {
     return (
         <div className="container">
             <div className="">{searchForm()}</div>
-            {searched && <div style={{ marginTop: '20px', marginBottom: '-100px' }}>{searchedBlogs(results)}</div>}
+            {searched && <div style={{ marginTop: '0px', marginBottom: '-100px' }}>{searchedBlogs(results)}</div>}
         </div>
     );
 };

@@ -15,11 +15,8 @@ const Layout = ({ children }) => {
           <div className='geek-container'>
             {children}
           </div>
-          <Footer />
           <style jsx>{`
-            .geek-container{
-            min-height:100vh;
-            }
+
             `}</style>
         </>
     );

@@ -167,7 +167,14 @@ class Sidebar extends React.Component {
 
         </List>
         </Drawer>
-        <style jsx>{`
+        <style global jsx>{`
+  .ant-drawer-body{
+    padding: 10px!important;
+  }
+  .MuiListItem-root{
+    padding-bottom: 15px!important;
+
+  }
 
           `}</style>
       </div>

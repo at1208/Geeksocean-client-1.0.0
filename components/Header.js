@@ -110,14 +110,8 @@ const MiniDrawer = () => {
 
   return (
      <>
-    <div className={classes.root}>
+    <div>
 
-      <AppBar
-
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -129,10 +123,9 @@ const MiniDrawer = () => {
             <Drawer />
           </IconButton>
           <Typography variant="h6" noWrap>
-           <Link href="/"><a>Geeks Ocean</a></Link>
+           <a>Geeks Ocean</a>
           </Typography>
         </Toolbar>
-      </AppBar>
 
     </div>
     <style global jsx>{`
@@ -140,10 +133,15 @@ const MiniDrawer = () => {
  font-size: 23px;
 }
 .MuiToolbar-root{
-
-
-
+ height: 5px!important;
 }
+.MuiSvgIcon-root {
+  font-size: 2.5rem!important;
+}
+.MuiTypography-h6{
+    font-size: 1.5rem!important;
+}
+ 
       `}</style>
       </>
   );

@@ -29,18 +29,17 @@ const LoginFacebook = () => {
             <FacebookLogin
                 cssClass='btn-block fb-btn btn'
                 appId={`${FB_APP_ID}`}
-                autoLoad={true}
                 fields="name,email,picture"
                 callback={responseFacebook}
                 icon="fa-facebook"
             />
             <style global jsx>{`
               .fb-btn{
-                color:white!important;
-                background-color:#3b5998!important;
+                color:151414!important;
+                background-color:#c8daff!important;
                 margin-top: 11px!important;
                 border-radius: 2px!important;
-                box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px!important;
+
               }
               `}</style>
         </div>

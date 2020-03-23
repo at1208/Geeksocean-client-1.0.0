@@ -126,7 +126,7 @@ const SigninComponent = () => {
      }
      .signin-box{
        border: 0px solid white!important;
-       margin-top: 110px!important;
+    margin: 10px!important;
      }
      `
    }</style>
