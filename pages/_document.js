@@ -7,17 +7,17 @@ class MyDocument extends Document {
     if (publicRuntimeConfig.PRODUCTION) {
       return {
         __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-          gtag('config', 'UA-147955896-1');
+        gtag('config', 'UA-161776444-1');
         `
       };
     }
   }
 
-  render() {
+render() {
     return (
       <Html lang="en">
         <Head>
@@ -29,7 +29,7 @@ class MyDocument extends Document {
           />
           {/*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-quill/0.4.1/quill.snow.css"/>*/}
           <link rel="stylesheet" href="/static/css/styles.css" />
-          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147955896-1"></script>
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161776444-1"></script>
           <script dangerouslySetInnerHTML={this.setGoogleTags()} />
         </Head>
         <body>
