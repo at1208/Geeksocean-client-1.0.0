@@ -14,16 +14,21 @@ const Signin = ({ router }) => {
     return (
       <>
         <Layout>
-           <div className='container col-md-5 shadow signin-box'>
+           <div className='row justify-content-center'>
+             <div className='signin-box boxing shadow col-md-5  '>
               <div>{showRedirectMessage()}</div>
               <SigninComponent />
            </div>
+        </div>
         </Layout>
     <style jsx>{`
       .signin-box{
-        padding: 30px;
-        margin-top: 35px;
-        border-bottom: 2px solid red;
+
+      }
+      .boxing{
+        margin-top:80px;
+        margin-left:20px;
+        margin-right:20px;
       }
       `}</style>
      </>

@@ -117,17 +117,19 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             </Layout>
             <style global jsx>{`
             .show-blogs{
-              margin-top: 120px;
+              margin-top: 15px;
+              margin-bottom:20px;
 
             }
 
             .showall{
               padding-left: 30px;
               padding-right: 30px;
+              margin-bottom:20px;
             }
             @media(max-width: 767px){
               .show-blogs{
-                margin-top: 80px;
+                margin-top: 30px;
               }
               .search-field{
                 margin:2px!important;

@@ -95,8 +95,8 @@ const useStyles = makeStyles(theme => ({
 
 
 const MiniDrawer = () => {
-  const classes = useStyles();
-  const theme = useTheme();
+
+
 
   const [open, setOpen] = useState(false);
 
@@ -112,36 +112,44 @@ const MiniDrawer = () => {
      <>
     <div>
 
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-
-
-          >
-            <Drawer />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-           <a>Geeks Ocean</a>
-          </Typography>
-        </Toolbar>
+  <Toolbar>
+    <IconButton
+        color="inherit"
+        aria-label="open drawer"
+        edge="start"
+      >
+    <Drawer />
+   </IconButton>
+  <Typography variant="h6" noWrap>
+   <Link href='/'>
+   <a >Geeksocean.com</a>
+   </Link>
+  </Typography>
+</Toolbar>
 
     </div>
     <style global jsx>{`
 .drawer-icons{
  font-size: 23px;
 }
+a{
+  color:white!important;
+}
 .MuiToolbar-root{
  height: 5px!important;
+ background-color: #6442E0!important;
 }
 .MuiSvgIcon-root {
-  font-size: 2.5rem!important;
+  font-size: 2.2rem!important;
+
 }
 .MuiTypography-h6{
-    font-size: 1.5rem!important;
+    font-size: 1.3rem!important;
 }
- 
+.MuiIconButton-edgeStart {
+    margin-left: -9px!important;
+}
+
       `}</style>
       </>
   );

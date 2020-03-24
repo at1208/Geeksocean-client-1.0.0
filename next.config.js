@@ -7,7 +7,7 @@ module.exports = withCSS({
     API_DEVELOPMENT: 'http://localhost:8000/api',
     API_PRODUCTION: '',
     PRODUCTION: false,
-    GOOGLE_CLIENT_ID: '384115946551-cohmqe9rrp9pnl5uf4jihvfpo99q7jbn.apps.googleusercontent.com',
+    GOOGLE_CLIENT_ID: '766585938947-piri5lubu7fukkbgjsi2a3bo8n1b7li6.apps.googleusercontent.com',
     FB_APP_ID:154959638896320,
     DOMAIN_PRODUCTION: 'GeeksOcean.com',
     DOMAIN_DEVELOPMENT: 'GeeksOcean.com'

@@ -4,6 +4,7 @@ import Router from 'next/router';
 import Link from 'next/link';
 import LoginGoogle from './LoginGoogle';
 import LoginFacebook from './LoginFacebook';
+import { Button, Input } from 'antd'
 
 const SignupComponent = () => {
     const [values, setValues] = useState({
@@ -57,56 +58,81 @@ const SignupComponent = () => {
     const signupForm = () => {
         return (
             <form onSubmit={handleSubmit}>
+              <h4>Create Account</h4>
                 <div className="form-group">
-                    <input
+                    <Input
                         value={name}
                         onChange={handleChange('name')}
                         type="text"
-                        className="form-control"
-                        placeholder="Type your name"
+
+                        addonBefore='Name'
                     />
                 </div>
 
                 <div className="form-group">
-                    <input
+                    <Input
                         value={email}
                         onChange={handleChange('email')}
                         type="email"
-                        className="form-control"
-                        placeholder="Type your email"
+
+                        addonBefore='Email'
                     />
                 </div>
 
                 <div className="form-group">
-                    <input
+                    <Input
                         value={password}
                         onChange={handleChange('password')}
                         type="password"
-                        className="form-control"
-                        placeholder="Type your password"
+
+                        addonBefore='Password'
                     />
                 </div>
 
-                <div>
-                    <button className="btn btn-primary">Signup</button>
+                <div className='text-center'>
+                    <button className="btn" style={{ width:"100px", backgroundColor: "#6442E0", color:"white"}}>Signup</button>
                 </div>
+                <Link href="/auth/password/forgot">
+                    <a className=" "><Button danger type="link">Forgot password</Button></a>
+                </Link>
+              <style global jsx>{`
+                .ant-input-group-addon{
+                  background-color: #6442E0!important;
+                  color:white!important;
+                }`}</style>
             </form>
         );
     };
 
     return (
-        <React.Fragment>
+        <>
             {showError()}
             {showLoading()}
             {showMessage()}
-            <LoginGoogle />
-            <LoginFacebook />
-            {showForm && signupForm()}
+            <div className='row col justify-content-center'>
+               <div className='col-sm-6'>
+               <LoginGoogle />
+               </div>
+               <div className='col-sm-6'>
+               <LoginFacebook />
+               </div>
+            </div>
+              <br />
+
+            <div className='showform'>
+
+              {showForm && signupForm()}
+            </div>
+
             <br />
-            <Link href="/auth/password/forgot">
-                <a className="btn btn-outline-danger btn-sm">Forgot password</a>
-            </Link>
-        </React.Fragment>
+
+            <style jsx>{`
+           .showform{
+
+             padding:20px;
+           }
+              `}</style>
+        </>
     );
 };
 

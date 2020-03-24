@@ -58,34 +58,33 @@ const SigninComponent = () => {
         return (
           <div >
             <form onSubmit={handleSubmit}  className='signin-form text-center'>
-                   <div style={{ margin: '10px'}}>
+                   <div  className='signin-input'>
                    <Input
                        value={email}
                        addonBefore='Email'
                        onChange={handleChange('email')}
                        type="email"
                        placeholder="Type your email"
-                       className='signin-input'
+
                    />
                    </div>
 
-                   <div style={{ margin: '10px'}}>
+                   <div  className='signin-input'>
                    <Input
                        value={password}
                        addonBefore='Password'
                        onChange={handleChange('password')}
                        type="password"
-                       className='signin-input'
+
                        placeholder="Type your password"
                    />
                    </div>
-                    <button className='btn btn-info btn-block'>Signin</button>
+                    <Button className='signin-btn'>Signin</Button>
 
             </form>
             <style global jsx>{`
               .signin-form{
-                padding: 10px;
-                margin-bottom:10px;
+                padding:10px;
 
             }
             .ant-input {
@@ -93,6 +92,18 @@ const SigninComponent = () => {
             }
             .btn{
               border-radius: 0px!important;
+            }
+            .signin-input{
+              margin-top: 10px!important;
+              margin-bottom: 10px!important;
+            }
+            .signin-btn{
+              width:120px!important;
+
+            }
+            .ant-input-group-addon{
+              background-color: #6442E0!important;
+              color:white!important;
             }
             `}</style>
           </div>
@@ -104,29 +115,36 @@ const SigninComponent = () => {
             {showError()}
             {showLoading()}
             {showMessage()}
-           <div className='container row col justify-content-center social-login-btn'>
-             <div className='col-sm-6'>
+           <div className='container row col justify-content-center social-login-btn text-center'>
+             <div className='col-sm-6 text-center'>
                <LoginGoogle />
              </div>
               <div className='col-sm-6'>
-                <LoginFacebook />
+                <LoginFacebook/>
               </div>
           </div>
 
             {showForm && signinForm()}
             <Link href="/auth/password/forgot">
-            <a className=""><Button>Forgot password</Button></a>
+            <a style={{ marginLeft: '10px'}}><Button primary type="link">Forgot password</Button></a>
             </Link>
 
    <style global jsx>{
      `.social-login-btn{
-       margin: 20px;
-       padding:30px;
+
+     }
+     .col-sm-6{
+
+ padding: 0px 0px 0px 0px!important;
+
+       width:auto!important;
+     }
+     .sign{
 
      }
      .signin-box{
        border: 0px solid white!important;
-    margin: 10px!important;
+
      }
      `
    }</style>

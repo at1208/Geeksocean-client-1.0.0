@@ -38,6 +38,8 @@
     "react-render-html": "^0.6.0",
     "react-social-login-buttons": "^3.0.0",
     "react-super-responsive-table": "^5.1.1",
-    "reactstrap": "^8.0.1"
+    "reactstrap": "^8.0.1",
+    "styled-components": "^5.0.1",
+    "use-dark-mode": "^2.3.1"
   }
 }

@@ -121,7 +121,7 @@ console.log(comments)
         <>
             {head()}
             <Layout>
-            <div className='blog-detail'>
+            <div className='blog-detail '>
                 <main>
                     <article>
                         <div className="container">
@@ -199,8 +199,11 @@ console.log(comments)
                 </main>
                 <style jsx>{`
                  .blog-detail{
-                   margin-top: 90px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+
                  }
+
                  .blog-title{
                    margin-bottom: 20px!important;
                    font-size: 40px!important;
@@ -225,11 +228,15 @@ console.log(comments)
                    .blog-container{
                      padding: 1px;
                      margin:0px;
-
                      margin-bottom: 20px;
                      margin-top: 20px;
                    }
+                   .blog-detail{
+                      margin-left: 20px;
+                      margin-right: 20px;
+                      box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 
+                   }
                  }
 
                  .card{

@@ -40,50 +40,46 @@ class Sidebar extends React.Component {
     });
   };
 
+
+
   render() {
+    const DrawerTitle = () => {
+    if(isAuth() && isAuth().role === 0){
+      return `${isAuth().name}`
+    }
+    if(isAuth() && isAuth().role === 1){
+      return `${isAuth().name}`
+    }
+    else{
+      return 'Geek menu'
+    }
+     }
+
     return (
       <div>
         <MenuIcon  type="primary" onClick={this.showDrawer} />
         <Drawer
-          title="Basic Drawer"
+          title={<DrawerTitle />}
           placement="left"
           closable={false}
           onClose={this.onClose}
           visible={this.state.visible}
         >
         <List>
-   {isAuth() && isAuth().role === 0 &&
-         <Link href="/user">
-           <ListItem button>
-          <ListItemIcon><FaUser className='drawer-icons'/></ListItemIcon>
-          <ListItemText>{`${isAuth().name}`}</ListItemText>
-        </ListItem>
-        </Link>
-      }
 
 
-        {isAuth() && isAuth().role === 1 &&
-        <Link href="/admin">
-          <ListItem button>
-          <ListItemIcon><FaUserCheck className='drawer-icons'/></ListItemIcon>
-          <ListItemText>{`${isAuth().name}`}</ListItemText>
-        </ListItem>
-        </Link>
-      }
-
-
-     {!isAuth() && <Link href="/signin">
+     {!isAuth() &&<Link href="/signin">
             <ListItem button>
-              <ListItemIcon><GoSignIn className='drawer-icons'/></ListItemIcon>
-              <ListItemText>Signin</ListItemText>
+              <ListItemIcon><GoSignIn className='drawer-icons' style={{ color:"white"}}/></ListItemIcon>
+              <ListItemText style={{ color:"white"}}>Signin</ListItemText>
             </ListItem>
             </Link>}
 
 
           {!isAuth() &&  <Link href="/signup">
              <ListItem button>
-              <ListItemIcon><FaUserCircle className='drawer-icons'/></ListItemIcon>
-              <ListItemText>Signup</ListItemText>
+              <ListItemIcon><FaUserCircle className='drawer-icons' style={{ color:"white"}}/></ListItemIcon>
+              <ListItemText style={{ color:"white"}}>Signup</ListItemText>
             </ListItem>
             </Link>
            }
@@ -91,24 +87,24 @@ class Sidebar extends React.Component {
     { isAuth() && isAuth().role===1 &&
       <Link  href="/admin/crud/blog">
       <ListItem button>
-              <ListItemIcon><IoIosCreate className='drawer-icons'/></ListItemIcon>
-              <ListItemText>Write a blog</ListItemText>
+              <ListItemIcon><IoIosCreate className='drawer-icons' style={{ color:"white"}}/></ListItemIcon>
+              <ListItemText style={{ color:"white"}}>Write a blog</ListItemText>
             </ListItem>
       </Link>}
 
       { isAuth() && isAuth().role===1 &&
         <Link  href="/admin/crud/blogs">
         <ListItem button>
-                <ListItemIcon><MdDeleteSweep className='drawer-icons'/></ListItemIcon>
-                <ListItemText>Edit Blog</ListItemText>
+                <ListItemIcon><MdDeleteSweep className='drawer-icons' style={{ color:"white"}}/></ListItemIcon>
+                <ListItemText style={{ color:"white"}}>Edit Blog</ListItemText>
               </ListItem>
         </Link>}
 
       { isAuth() && isAuth().role===1 &&
         <Link  href="/admin/crud/category-tag">
         <ListItem button>
-                <ListItemIcon><IoIosCreate className='drawer-icons'/></ListItemIcon>
-                <ListItemText>Add Tag /Category</ListItemText>
+                <ListItemIcon><IoIosCreate className='drawer-icons' style={{ color:"white"}}/></ListItemIcon>
+                <ListItemText style={{ color:"white"}}>Add Tag /Category</ListItemText>
               </ListItem>
         </Link>}
 
@@ -117,8 +113,8 @@ class Sidebar extends React.Component {
           { isAuth() && isAuth().role===1 &&
             <Link  href="/admin/crud/offerletter">
             <ListItem button>
-                    <ListItemIcon><AiFillGift className='drawer-icons'/></ListItemIcon>
-                    <ListItemText>Offer Letter</ListItemText>
+                    <ListItemIcon><AiFillGift className='drawer-icons' style={{ color:"white"}}/></ListItemIcon>
+                    <ListItemText style={{ color:"white"}}>Offer Letter</ListItemText>
                   </ListItem>
             </Link>}
 
@@ -127,24 +123,24 @@ class Sidebar extends React.Component {
               { isAuth() && isAuth().role===1 &&
                 <Link  href="/admin/crud/users">
                 <ListItem button>
-                        <ListItemIcon><FaUsers className='drawer-icons'/></ListItemIcon>
-                        <ListItemText>Users</ListItemText>
+                        <ListItemIcon><FaUsers className='drawer-icons' style={{ color:"white"}}/></ListItemIcon>
+                        <ListItemText style={{ color:"white"}}>Users</ListItemText>
                       </ListItem>
                 </Link>}
 
 
          <Link href="/Help">
             <ListItem button>
-              <ListItemIcon><MdHelp className='drawer-icons'/></ListItemIcon>
-              <ListItemText>Help</ListItemText>
+              <ListItemIcon><MdHelp className='drawer-icons' style={{ color:"white"}}/></ListItemIcon>
+              <ListItemText style={{ color:"white"}}>Help</ListItemText>
             </ListItem>
         </Link>
 
         { isAuth() &&
           <Link  href="/user/setting">
           <ListItem button>
-                  <ListItemIcon><IoMdSettings className='drawer-icons'/></ListItemIcon>
-                  <ListItemText>Setting</ListItemText>
+                  <ListItemIcon><IoMdSettings className='drawer-icons' style={{ color:"white"}}/></ListItemIcon>
+                  <ListItemText style={{ color:"white"}}>Setting</ListItemText>
                 </ListItem>
           </Link>}
 
@@ -152,16 +148,16 @@ class Sidebar extends React.Component {
               <ListItem button
                 style={{ cursor: "pointer" }}
                 onClick={() => signout(() => Router.replace(`/`))}>
-              <ListItemIcon><GoSignOut className='drawer-icons'/></ListItemIcon>
-              <ListItemText>Logout</ListItemText>
+              <ListItemIcon><GoSignOut className='drawer-icons' style={{ color:"white"}}/></ListItemIcon>
+              <ListItemText style={{ color:"white"}}>Logout</ListItemText>
             </ListItem>
           }
 
           {!isAuth() &&
               <>
               <GoogleLogin />
-              <br />
-              <FacebookLogin />
+ 
+
               </>
         }
 

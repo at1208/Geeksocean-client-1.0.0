@@ -3,6 +3,8 @@ import Router from 'next/router';
 import FacebookLogin from 'react-facebook-login';
 import { loginWithFacebook, authenticate, isAuth } from '../../actions/auth';
 import { FB_APP_ID } from '../../config';
+import { FaFacebookSquare } from "react-icons/fa";
+
 
 const LoginFacebook = () => {
     const responseFacebook = response => {
@@ -27,19 +29,28 @@ const LoginFacebook = () => {
     return (
         <div className="">
             <FacebookLogin
-                cssClass='btn-block fb-btn btn'
+                cssClass='fb-btn btn'
                 appId={`${FB_APP_ID}`}
                 fields="name,email,picture"
                 callback={responseFacebook}
-                icon="fa-facebook"
+                icon=<FaFacebookSquare style={{ fontSize: "25px!important", color:"#3b5998", width: "50px", textAlign:"left!important"}}/>
+                textButton="Sign in with facebook"
             />
             <style global jsx>{`
               .fb-btn{
-                color:151414!important;
-                background-color:#c8daff!important;
-                margin-top: 11px!important;
-                border-radius: 2px!important;
 
+              }
+            .metro{
+               background-color: white!important;
+               margin:16px 0px 0px 0px!important;
+               padding:0px 0px 0px 0px!important;
+              }
+              button{
+               margin:"50px!important"
+              }
+              .col{
+                padding-left:0px!important;
+                padding-right:0px!important;
               }
               `}</style>
         </div>
