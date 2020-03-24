@@ -79,7 +79,7 @@ const SigninComponent = () => {
                        placeholder="Type your password"
                    />
                    </div>
-                    <Button className='signin-btn'>Signin</Button>
+                    <button className='signin-btn'>Signin</button>
 
             </form>
             <style global jsx>{`
