@@ -3,7 +3,7 @@ import '../../../node_modules/react-super-responsive-table/dist/SuperResponsiveT
 import { userslist } from "../../../actions/user";
 import Layout from '../../../components/Layout';
 import Admin from '../../../components/auth/Admin';
-
+import moment from 'moment'
 
 const Users = ({ users }) => {
 
@@ -12,6 +12,7 @@ const getAllUsers = () => {
 
   return users.users.map(item => {
     const date = new Date(item.createdAt)
+    console.log()
     return <>
     <Tr>
       <Td>{item.name}</Td>
@@ -20,7 +21,7 @@ const getAllUsers = () => {
       <Td>{item.username}</Td>
       <Td>{item.profile}</Td>
 
-      <Td>{date.toUTCString()}</Td>
+      <Td>{moment(date).format('LLLL')}</Td>
     </Tr>
            </>
   })
