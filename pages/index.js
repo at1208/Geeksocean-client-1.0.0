@@ -15,13 +15,13 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             <title>{APP_NAME}</title>
             <meta
                 name="description"
-                content="Programming blogs and tutorials on react node next vue php laravel and web developoment"
+                content="Tech articles on mobiles, laptops, cybersecurity, games and much more."
             />
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
             <meta property="og:title" content={`Latest web developoment tutorials | ${APP_NAME}`} />
             <meta
                 property="og:description"
-                content="Programming blogs and tutorials on react node next vue php laravel and web developoment"
+                content="Tech articles on mobiles, laptops, cybersecurity, games and much more."
             />
             <meta property="og:type" content="website" />
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
