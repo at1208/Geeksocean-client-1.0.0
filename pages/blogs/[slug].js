@@ -91,20 +91,32 @@ const SingleBlog = ({ blog, query }) => {
     const showBlogCategories = blog =>
         blog.categories.map((c, i) => (
             <Link key={i} href={`/categories/${c.slug}`}>
-                <a className="btn btn-primary mr-1 ml-1 mt-3">{c.name}</a>
+                <a className="mr-1 ml-1 mt-3"><Button className='show-blogs-category'>{c.name}</Button>
+                <style global jsx>{`
+                 .show-blogs-category{
+
+                 }
+                  `}</style>
+                  </a>
             </Link>
         ));
 
     const showBlogTags = blog =>
         blog.tags.map((t, i) => (
             <Link key={i} href={`/tags/${t.slug}`}>
-                <a className="btn btn-outline-primary mr-1 ml-1 mt-3">{t.name}</a>
+                <a className="mr-1 ml-1 mt-3"><Button className='show-blogs-tags'>{t.name}</Button>
+                <style global jsx>{`
+                 .show-blogs-tags{
+
+                 }
+                  `}</style>
+                </a>
             </Link>
         ));
 
     const showRelatedBlog = () => {
         return related.map((blog, i) => (
-            <div className="col-md-4" key={i}>
+            <div className="col-md-3" key={i} style={{ margin:"2px"}}>
                 <article>
                     <SmallCard blog={blog} />
                 </article>
@@ -116,7 +128,7 @@ const SingleBlog = ({ blog, query }) => {
         <>
             {head()}
             <Layout>
-            <div className='blog-detail'>
+            <div className='blog-detail container'>
                 <main>
                     <article>
                         <div className="container ">
@@ -185,8 +197,10 @@ const SingleBlog = ({ blog, query }) => {
                 </div>
 
                  <div className="container">
-                     <h4 className="text-center pt-5 pb-5 h2">more from Geeksocean.com</h4>
-                     <div className="row">{showRelatedBlog()}</div>
+                     <h4 className="text-center pt-3 pb-3 more-from-geeksocean">More from Geeksocean.com</h4>
+                     <div className="row" >
+                     {showRelatedBlog()}
+                     </div>
                  </div>
 
                  <div className="pb-3">
@@ -196,6 +210,11 @@ const SingleBlog = ({ blog, query }) => {
                 <style jsx>{`
                   .blog-comment{
              padding-top:40px;
+                  }
+                  .more-from-geeksocean{
+                    font-family: 'Marmelad', sans-serif;
+
+
                   }
                  .blog-detail{
                   padding-left: 20px;

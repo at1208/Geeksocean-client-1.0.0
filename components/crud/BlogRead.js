@@ -4,6 +4,7 @@ import Router from 'next/router';
 import { getCookie, isAuth } from '../../actions/auth';
 import { list, removeBlog } from '../../actions/blog';
 import moment from 'moment';
+import { Button } from 'antd';
 
 const BlogRead = ({ username }) => {
     const [blogs, setBlogs] = useState([]);
@@ -51,9 +52,19 @@ const BlogRead = ({ username }) => {
             );
         } else if (isAuth() && isAuth().role === 1) {
             return (
+
                 <Link href={`/admin/crud/${blog.slug}`}>
-                    <a className="ml-2 btn btn-sm btn-warning">Update</a>
+                    <a className="ml-2" ><Button className='update-btn'>Update</Button>
+                    <style global jsx>{`
+                     .update-btn{
+                       color:white!important;
+                       background-color:#5cdbd3!important;
+                     }
+                      `}</style>
+                    </a>
                 </Link>
+
+
             );
         }
     };
@@ -63,17 +74,22 @@ const BlogRead = ({ username }) => {
             return (
                 <div key={i} className="shadow article-container">
                     <h4  className='text-center'>{blog.title}</h4>
-                    <p className="mark">
-                        Written by {blog.postedBy.name} | Published on {moment(blog.updatedAt).fromNow()}
+                    <p className='manage-by'>
+                        Written by <b>{blog.postedBy.name}</b> | Updated on {moment(blog.updatedAt).fromNow()}
                     </p>
-                    <button className="btn btn-sm btn-danger" onClick={() => deleteConfirm(blog.slug)}>
+                    <Button className="ml-2" onClick={() => deleteConfirm(blog.slug)} type="primary" danger>
                         Delete
-                    </button>
+                    </Button>
                     {showUpdateButton(blog)}
                     <style jsx>{`
+                      .manage-by{
+                        background-color:#efdbff;
+                        padding-left:4px;
+                      }
                      .article-container{
                        margin-bottom:30px;
                        padding: 10px;
+
                      }
                       `}</style>
                 </div>
@@ -92,6 +108,14 @@ const BlogRead = ({ username }) => {
             <style jsx>{`
                .blog-read-container{
                  padding: 10px;
+
+               }
+               @media(max-width: 767px){
+                 .blog-read-container{
+                   padding: 10px;
+                   text-align:center!important;
+
+                 }
                }
               `}</style>
         </>

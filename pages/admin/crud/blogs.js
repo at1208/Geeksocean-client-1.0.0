@@ -14,7 +14,7 @@ const Blog = () => {
             </Admin>
             <style>{`
                .manage-blogs{
-                  padding-top: 90px;
+ 
                }
                .manage-blogs-title{
                  font-size: 40px;

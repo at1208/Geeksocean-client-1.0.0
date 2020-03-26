@@ -28,7 +28,7 @@ render() {
             href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
           />
           <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet" />
-
+            <link href="https://fonts.googleapis.com/css?family=Gotu|Marmelad&display=swap" rel="stylesheet" />
           {/*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-quill/0.4.1/quill.snow.css"/>*/}
           <link rel="stylesheet" href="/static/css/styles.css" />
           <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161776444-1"></script>
