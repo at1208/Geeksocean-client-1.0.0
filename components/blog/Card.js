@@ -164,10 +164,11 @@ const Card = ({ blog }) => {
               padding-right:0px!important;
             }
             .blog-title{
-              font-size: 20px!important;
+              font-size: 30px!important;
               padding-top:10px;
               letter-spacing: 1px;
               word-spacing: 2px;
+              font-family: 'EB Garamond', serif!important;
             }
             .img-container{
              padding-left:30px;

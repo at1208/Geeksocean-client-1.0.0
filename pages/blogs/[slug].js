@@ -81,7 +81,6 @@ const SingleBlog = ({ blog, query }) => {
             <meta property="og:type" content="website" />
             <meta property="og:url" content={`${DOMAIN}/blogs/${query.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
-
             <meta property="og:image" content={`${API}/blog/photo/${blog.slug}`} />
             <meta property="og:image:secure_url" ccontent={`${API}/blog/photo/${blog.slug}`} />
             <meta property="og:image:type" content="image/jpg" />
@@ -113,20 +112,16 @@ const SingleBlog = ({ blog, query }) => {
         ));
     };
 
-
-console.log(comments)
-
-
     return (
         <>
             {head()}
             <Layout>
-            <div className='blog-detail '>
+            <div className='blog-detail'>
                 <main>
                     <article>
-                        <div className="container">
+                        <div className="container ">
                             <section>
-                                <div className=" ">
+                                <div className="container">
                                     <h2 className="blog-title text-center font-weight-bold">{blog.title}</h2>
 
                                     <section>
@@ -155,10 +150,6 @@ console.log(comments)
                                         </div>
                                         </p>
                                     </section>
-
-
-
-
                                     <section>
                                         <div className="row justify-content-center" style={{ marginTop: '20px!important' }}>
                                             <img
@@ -175,33 +166,44 @@ console.log(comments)
                             </section>
                         </div>
 
-                        <div className="container">
+                        <div className="container col-md-8">
                             <section>
                                 <div className="col-md-12 lead">{renderHTML(blog.body)}</div>
                             </section>
                         </div>
 
-                        <BlogComment id={blog} />
-                        <CommentList comments={comments} />
-                        <div className="container">
-                            <h4 className="text-center pt-5 pb-5 h2">RELATED BLOGS</h4>
-                            <div className="row">{showRelatedBlog()}</div>
-                        </div>
-
-                        <div className="pb-3">
-                            {showBlogCategories(blog)}
-                            {showBlogTags(blog)}
-
-
-                        </div>
 
                     </article>
+
+
                 </main>
+                <hr />
+
+                <div className='blog-comment '>
+                <BlogComment id={blog} />
+                <CommentList comments={comments} />
+                </div>
+
+                 <div className="container">
+                     <h4 className="text-center pt-5 pb-5 h2">more from Geeksocean.com</h4>
+                     <div className="row">{showRelatedBlog()}</div>
+                 </div>
+
+                 <div className="pb-3">
+                     {showBlogCategories(blog)}
+                     {showBlogTags(blog)}
+                 </div>
                 <style jsx>{`
+                  .blog-comment{
+             padding-top:40px;
+                  }
                  .blog-detail{
                   padding-left: 20px;
                   padding-right: 20px;
 
+                 }
+                 .img-fluid{
+                   margin-bottom: 20px;
                  }
 
                  .blog-title{
@@ -210,14 +212,15 @@ console.log(comments)
                    padding-top:10px;
                    letter-spacing: 1px;
                    word-spacing: 2px;
+                   font-family: 'EB Garamond', serif!important;
+
                  }
                  .container{
                    padding-left: 0px!important;
                    padding-right: 0px!important;
                  }
                  .blog-container{
-                   padding: 10px;
-                   margin:10px;
+
                  }
                  .excerpt{
                  }
@@ -232,9 +235,7 @@ console.log(comments)
                      margin-top: 20px;
                    }
                    .blog-detail{
-                      margin-left: 20px;
-                      margin-right: 20px;
-                      box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+
 
                    }
                  }
