@@ -17,9 +17,9 @@ const LoginFacebook = () => {
                 // console.log('repsonse on fb login', data);
                 authenticate(data, () => {
                     if (isAuth() && isAuth().role === 1) {
-                        Router.push(`/admin`);
+                        Router.push(`/`);
                     } else {
-                        Router.push(`/user`);
+                        Router.push(`/`);
                     }
                 });
             }

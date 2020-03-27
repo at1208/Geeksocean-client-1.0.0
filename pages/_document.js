@@ -29,7 +29,7 @@ render() {
           />
           <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet" />
             <link href="https://fonts.googleapis.com/css?family=Gotu|Marmelad&display=swap" rel="stylesheet" />
-          {/*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-quill/0.4.1/quill.snow.css"/>*/}
+            <link href="https://fonts.googleapis.com/css?family=Halant:700|Lateef|Lato|Philosopher|Prata|Source+Sans+Pro&display=swap" rel="stylesheet" />
           <link rel="stylesheet" href="/static/css/styles.css" />
           <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161776444-1"></script>
           <script dangerouslySetInnerHTML={this.setGoogleTags()} />

@@ -11,20 +11,26 @@ import {ListItemIcon,
         IconButton,
         CssBaseline,
         Typography } from '@material-ui/core';
-import { AiFillRead } from "react-icons/ai";
+
+
+import { AiFillRead, AiFillGift } from "react-icons/ai";
 import { TiContacts } from "react-icons/ti";
 import { GoSignIn, GoSignOut } from "react-icons/go";
-import { IoIosCreate } from "react-icons/io";
-import { FaUserCircle,FaUserCheck } from "react-icons/fa";
+import { IoIosCreate,IoMdSettings } from "react-icons/io";
+import { FaUserCircle,FaUserCheck,FaUsers,FaUser,FaTags  } from "react-icons/fa";
+import { MdDeleteSweep,MdHelp } from "react-icons/md";
+import {Button} from 'antd'
+import { useMediaQuery } from 'react-responsive'
+
+import Router from "next/router";
 
 
 import Link from "next/link";
 
-import { APP_NAME } from "../config";
+import { APP_NAME, DOMAIN } from "../config";
 import { signout, isAuth } from "../actions/auth";
 import Drawer from './Drawer'
 import './Header.css'
-
 
 
 
@@ -96,7 +102,7 @@ const useStyles = makeStyles(theme => ({
 
 const MiniDrawer = () => {
 
-
+  const isDesktopOrLaptop = useMediaQuery({  query: '(min-device-width: 767px)' })
 
   const [open, setOpen] = useState(false);
 
@@ -112,35 +118,122 @@ const MiniDrawer = () => {
      <>
     <div>
 
-  <Toolbar>
-    <IconButton
-        color="inherit"
-        aria-label="open drawer"
-        edge="start"
-      >
-    <Drawer />
-   </IconButton>
+   <Toolbar className='container heading-container'>
+
+{!isDesktopOrLaptop &&  <>
+   <IconButton
+       color="inherit"
+       aria-label="open drawer"
+       edge="start"
+     >
+   <Drawer />
+  </IconButton>
   <Typography variant="h6" noWrap>
-   <Link href='/'>
-   <a >Geeksocean.com</a>
-   </Link>
-  </Typography>
-</Toolbar>
+    <Link href='/'>
+       <a>{DOMAIN}</a>
+    </Link>
+</Typography>
+</>}
+
+   <div className='row col '>
+     <div className='col-6 row'>
+         {isDesktopOrLaptop && <>
+        <Typography variant="h6" noWrap>
+          <Link href='/'>
+             <a>{DOMAIN}</a>
+          </Link>
+      </Typography> </>}
+    </div>
+    {!isAuth() && isDesktopOrLaptop && <div className='col-6'>
+
+     <Link href='/signup'>
+      <a><Button className='float-right get-started'>Get started</Button></a>
+      </Link>
+       <Link href='/signin'>
+        <a><Button className='float-right sign-in'>Sign in</Button></a>
+       </Link>
+     </div>}
+
+
+
+ {isAuth() && isDesktopOrLaptop && <div className='col-6'>
+    <Button className='float-right sign-out'  type='primary' onClick={() => signout(() => Router.replace(`/`))} danger>
+           Sign out
+     </Button>
+     </div>}
+
+   </div>
+  </Toolbar>
+
+
+{isAuth() && isAuth().role===1 && isDesktopOrLaptop &&
+  <div className='row justify-content-center'>
+    <Link  href="/admin/crud/blog">
+      <a><Button className='heading-button'><IoIosCreate className='heading-icons' style={{ color: "#9254de"}}/>Write</Button></a>
+    </Link>
+    <Link  href="/admin/crud/blogs">
+      <a><Button className='heading-button'><MdDeleteSweep className='heading-icons' style={{ color: "#faad14"}}/>Edit</Button></a>
+    </Link>
+    <Link  href="/admin/crud/category-tag">
+      <a><Button className='heading-button'><FaTags  className='heading-icons' style={{ color: "#a0d911"}}/>Tags/Category</Button></a>
+    </Link>
+      <Link  href="/admin/crud/offerletter">
+      <a><Button className='heading-button'><AiFillGift className='heading-icons' style={{ color: "#cf1322"}}/>Offer letter</Button></a>
+     </Link>
+      <Link  href="/admin/crud/users">
+      <a><Button className='heading-button'><FaUsers className='heading-icons' style={{ color: "#13c2c2"}}/>Users</Button></a>
+      </Link>
+       <Link  href="/user/setting">
+      <a><Button className='heading-button'><IoMdSettings className='heading-icons' style={{ color: "#434343"}}/>Setting</Button></a>
+      </Link>
+  </div>}
+  {isDesktopOrLaptop && <div className='container'>
+    <hr />
+  </div>}
 
     </div>
     <style global jsx>{`
+
 .drawer-icons{
  font-size: 23px;
 }
+.heading-icons{
+font-size:25px;
+margin-right:1px;
+
+}
+.heading-button{
+  color:black!important;
+  font-weight:bold!important;
+  margin:5px;
+  border:0px solid white!important;
+}
 a{
- 
+  color: black!important;
+}
+.heading-container{
+      padding-top: 20px;
+}
+.MuiTypography-noWrap{
+
+}
+.get-started{
+  border: 0px solid white!important;
+  background: #8E2DE2!important;
+  background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2)!important;
+  background: linear-gradient(to right, #4A00E0, #8E2DE2)!important;
+  color:white!important;
+  margin:5px;
+  height:35px!important;
 }
 .MuiToolbar-root{
- height: 5px!important;
- background-color: #6442E0!important;
+
+
+
 }
 .MuiSvgIcon-root {
   font-size: 2.2rem!important;
+
 
 }
 .MuiTypography-h6{
@@ -149,7 +242,14 @@ a{
 .MuiIconButton-edgeStart {
     margin-left: -9px!important;
 }
+.sign-in{
+  margin:5px!important;
+    height:35px!important;
+    border:0px solid white!important;
+}
+.sign-out{
 
+}
       `}</style>
       </>
   );

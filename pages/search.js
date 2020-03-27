@@ -17,7 +17,7 @@ const Search = ({ router }) => {
         });
     }, [router.query.searchQuery]);
     return (
-        <React.Fragment>
+
             <Layout>
                 <main>
                     <div className="container-fluid">
@@ -35,7 +35,7 @@ const Search = ({ router }) => {
                     </div>
                 </main>
             </Layout>
-        </React.Fragment>
+ 
     );
 };
 

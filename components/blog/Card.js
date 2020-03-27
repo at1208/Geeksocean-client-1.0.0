@@ -12,16 +12,16 @@ const Card = ({ blog }) => {
 
     const showBlogCategories = blog =>
         blog.categories.map((c, i) => (
-            <Link key={i} href={`/categories/${c.slug}`}>
-                <a><Button style={{ margin: "5px" }} type="link" info>{c.name}</Button></a>
-            </Link>
+
+                <a key={i}  href={`/categories/${c.slug}`}><Button style={{ margin: "5px" }} type="link" info>{c.name}</Button></a>
+
         ));
 
     const showBlogTags = blog =>
         blog.tags.map((t, i) => (
-            <Link key={i} href={`/tags/${t.slug}`}>
-                <a><Button style={{ margin: "5px" }} type="link" info>{t.name}</Button></a>
-            </Link>
+
+                <a href={`/tags/${t.slug}`}  key={i}><Button style={{ margin: "5px" }} type="link" info>{t.name}</Button></a>
+
         ));
 
     const init = (blog) => {
@@ -37,15 +37,15 @@ const Card = ({ blog }) => {
 
     return (
 
-        <div className="blog-container card shadow">
+        <div className="blog-container card shadow ">
             <header>
-                <Link href={`/blogs/${blog.slug}`}>
+                <a href={`/blogs/${blog.slug}`}>
                     <h6 className="blog-title text-center">
                        {blog.title}
                     </h6>
-                </Link>
+                </a>
             </header>
-            <section>
+{/*          <section>
                 <p className="mark">
                 <div className='row col'>
                    <div className='img-container'>
@@ -70,10 +70,10 @@ const Card = ({ blog }) => {
                    </div>
                 </div>
                 </p>
-            </section>
+            </section>*/}
 
 
-            <div className="row col justify-content-center">
+            <div className="row ">
                 <div className="col-md-2">
                     <section>
                         <img
@@ -86,9 +86,9 @@ const Card = ({ blog }) => {
                 </div>
                 <div className="col-md-10 excerpt">
                     <section>
-                        <div>{renderHTML(blog.excerpt)}</div>
+                        <div className='excerpt-content'>{renderHTML(blog.excerpt)}</div>
                         <div className='readbtn'>
-                        <Link href={`/blogs/${blog.slug}`}><button className='readmore'>Read more</button></Link>
+                        <a href={`/blogs/${blog.slug}`}><button className='readmore'>Read more</button></a>
                         </div>
                     </section>
                     <section>
@@ -97,7 +97,17 @@ const Card = ({ blog }) => {
                     </section>
                 </div>
             </div>
-            <style jsx>{`
+            <style global jsx>{`
+              .excerpt-content{
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size:17px;
+                color:black!important
+
+              }
+              p{
+                margin-top: 20px!important;
+              }
+
             .blog-container{
               padding: 10px;
               margin:10px;
@@ -115,6 +125,7 @@ const Card = ({ blog }) => {
                 margin-bottom: 20px;
                 margin-top: 20px;
               }
+
               .col{
                 padding-left: 5px!important;
                 padding-right: 5px!important;

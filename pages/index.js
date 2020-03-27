@@ -18,7 +18,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
                 content="Tech articles on mobiles, laptops, cybersecurity, games and much more."
             />
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
-            <meta property="og:title" content={`Latest web developoment tutorials | ${APP_NAME}`} />
+            <meta property="og:title" content={`Latest tech articles | ${APP_NAME}`} />
             <meta
                 property="og:description"
                 content="Tech articles on mobiles, laptops, cybersecurity, games and much more."

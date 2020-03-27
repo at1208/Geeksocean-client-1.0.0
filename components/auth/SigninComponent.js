@@ -37,7 +37,7 @@ const SigninComponent = () => {
                 // authenticate user
                 authenticate(data, () => {
                     if (isAuth() && isAuth().role === 1) {
-                        Router.push(`/admin`);
+                        Router.push(`/`);
                     } else {
                         Router.push(`/`);
                     }

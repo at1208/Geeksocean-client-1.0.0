@@ -10,14 +10,19 @@ Router.onRouteChangeError = url => NProgress.done();
 
 const Layout = ({ children }) => {
     return (
-        <>
+        <div className='page-container'>
           <Header />
-          <div className='geek-container'>
+          <div className='content'>
             {children}
           </div>
-          <style jsx>{`
+            <Footer />
+          <style global jsx>{`
+           .page-container{
+
+           }
+ 
             `}</style>
-        </>
+        </div>
     );
 };
 

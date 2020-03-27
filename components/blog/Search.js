@@ -67,7 +67,7 @@ const Search = ({ router }) => {
         <form onSubmit={searchSubmit}>
             <div className="row col justify-content-center">
 
-                    <Input type="search"  placeholder="Search geek article" onChange={handleChange}className='search-input col-8' />
+                    <Input type="search"  placeholder="Search geek article" onChange={handleChange}className='search-input col-9' />
                     <IoMdSearch  className='search-icon col-2' type="submit" onClick={searchSubmit} />
 
 
@@ -80,11 +80,19 @@ const Search = ({ router }) => {
             <style global jsx>{`
               .search-icon{
                 font-size: 43px!important;
+                margin-top:10px;
+                margin-bottom:40px;
 
               }
               .search-input{
-                height: 44px!important;
-                font-size:15px!important;
+                height: 50px!important;
+                margin-top:10px;
+                font-size:20px!important;
+                border-radius: 40px!important;
+              }
+              .col-2{
+                padding-right: 0px;
+                padding-left: 0px;
               }
 
               `}</style>

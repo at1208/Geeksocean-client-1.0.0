@@ -8,13 +8,13 @@ const Blog = () => {
         <Layout>
             <Admin>
             <div className='container create-blog'>
-              <div className='create-blog-title text-center'>Write a blog</div>
+              <div className='create-blog-title text-center'>Write an article</div>
               <BlogCreate />
             </div>
             </Admin>
             <style global jsx>{`
             .create-blog{
-              padding-top:100px;
+
             }
             .create-blog-title{
               font-size: 33px;
