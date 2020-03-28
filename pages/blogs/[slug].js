@@ -83,7 +83,7 @@ const SingleBlog = ({ blog, query }) => {
             <meta property="og:site_name" content={`${APP_NAME}`} />
             <meta property="og:image" content={`${API}/blog/photo/${blog.slug}`} />
             <meta property="og:image:secure_url" ccontent={`${API}/blog/photo/${blog.slug}`} />
-            <meta property="og:image:type" content="image/jpg" />
+            <meta property="og:image:type" content="image/jpg"  alt='author'/>
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
     );
@@ -146,6 +146,7 @@ const SingleBlog = ({ blog, query }) => {
                                                width={60}
                                                style={{ borderRadius: "60px" }}
                                                src={pic}
+                                               alt='author'
 
                                            />
                                            </div>
@@ -178,10 +179,10 @@ const SingleBlog = ({ blog, query }) => {
                             </section>
                         </div>
 
-                        <div className="container col-md-8">
-                            <section>
+                        <div className="col-md-8">
+
                                 <div className="col-md-12 lead">{renderHTML(blog.body)}</div>
-                            </section>
+
                         </div>
 
 

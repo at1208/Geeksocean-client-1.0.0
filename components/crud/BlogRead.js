@@ -3,19 +3,29 @@ import { useState, useEffect } from 'react';
 import Router from 'next/router';
 import { getCookie, isAuth } from '../../actions/auth';
 import { list, removeBlog } from '../../actions/blog';
+import { getProfile } from '../../actions/user';
 import moment from 'moment';
 import { Button } from 'antd';
 
-const BlogRead = ({ username }) => {
+const BlogRead = () => {
     const [blogs, setBlogs] = useState([]);
     const [message, setMessage] = useState('');
     const token = getCookie('token');
 
     useEffect(() => {
-        loadBlogs();
+          const token = getCookie('token');
+            getUsername(token)
+
     }, []);
 
-    const loadBlogs = () => {
+
+    const getUsername = (token) => {
+        return  getProfile(token).then(data => {
+          loadBlogs(data.username);
+         }).catch(err => console.log(err))
+    }
+
+    const loadBlogs = (username) => {
         list(username).then(data => {
             if (data.error) {
                 console.log(data.error);
