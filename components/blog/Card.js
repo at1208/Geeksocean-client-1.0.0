@@ -40,9 +40,9 @@ const Card = ({ blog }) => {
         <div className="blog-container card shadow ">
             <header>
                 <a href={`/blogs/${blog.slug}`}>
-                    <h6 className="blog-title text-center">
+                    <h1 className="blog-title text-center">
                        {blog.title}
-                    </h6>
+                    </h1>
                 </a>
             </header>
 {/*          <section>

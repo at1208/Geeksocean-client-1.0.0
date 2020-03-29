@@ -23,11 +23,12 @@ render() {
         <Head>
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link rel="alternate" href="https://geeksocean.com" hreflang="en-us" />
           <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
           />
-          <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet" />
             <link href="https://fonts.googleapis.com/css?family=Gotu|Marmelad&display=swap" rel="stylesheet" />
             <link href="https://fonts.googleapis.com/css?family=Halant:700|Lateef|Lato|Philosopher|Prata|Source+Sans+Pro&display=swap" rel="stylesheet" />
           <link rel="stylesheet" href="/static/css/styles.css" />
