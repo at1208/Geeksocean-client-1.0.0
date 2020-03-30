@@ -24,7 +24,7 @@ const Footer = () => {
               <a href='https://geeksocean.com' className='domain-name'>{DOMAIN}</a>
             </div>
             <div className='col-md-4 ft-block-4'>
-            <a style={{ marginLeft:"10px", marginRight:"10px", color:"rgba(255, 255, 255, 0.7)!important;"}}>About</a>
+            <a style={{ marginLeft:"10px", marginRight:"10px", color:"rgba(255, 255, 255, 0.7)!important"}}>About</a>
             <a style={{ marginLeft:"10px", marginRight:"10px",color:"rgba(255, 255, 255, 0.7)!important;"}}>Help</a>
             <a href="/privacy-policy" style={{ marginLeft:"10px", marginRight:"10px", color: "rgba(255, 255, 255, 0.7)!important;"}}>Privacy policy</a>
             </div>

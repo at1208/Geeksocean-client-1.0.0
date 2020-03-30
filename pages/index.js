@@ -10,6 +10,7 @@ import Search from '../components/blog/Search'
 import { Button } from 'antd'
 
 const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router }) => {
+  console.log(router)
     const head = () => (
         <Head>
             <title>{APP_NAME}</title>

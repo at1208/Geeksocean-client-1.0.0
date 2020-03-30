@@ -91,6 +91,18 @@ export const list = username => {
         .catch(err => console.log(err));
 };
 
+export const listOfAllBlogs = () => {
+    let listBlogsEndpoint;
+        listBlogsEndpoint = `${API}/blogs`;
+    return fetch(`${listBlogsEndpoint}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
 export const removeBlog = (slug, token) => {
     let deleteBlogEndpoint;
 
