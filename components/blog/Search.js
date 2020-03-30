@@ -70,12 +70,6 @@ const Search = ({ router }) => {
                     <Input type="search"  placeholder="Search geek article" onChange={handleChange}className='search-input col-9' />
                     <IoMdSearch  className='search-icon col-2' type="submit" onClick={searchSubmit} />
 
-
-
-
-
-
-
             </div>
             <style global jsx>{`
               .search-icon{

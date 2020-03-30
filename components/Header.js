@@ -17,8 +17,8 @@ import { AiFillRead, AiFillGift } from "react-icons/ai";
 import { TiContacts } from "react-icons/ti";
 import { GoSignIn, GoSignOut } from "react-icons/go";
 import { IoIosCreate,IoMdSettings } from "react-icons/io";
-import { FaUserCircle,FaUserCheck,FaUsers,FaUser,FaTags  } from "react-icons/fa";
-import { MdDeleteSweep,MdHelp } from "react-icons/md";
+import { FaUserCircle,FaUserCheck,FaUsers,FaUser,FaTags,FaThLarge  } from "react-icons/fa";
+import { MdDeleteSweep,MdHelp,MdPublic } from "react-icons/md";
 import {Button} from 'antd'
 import { useMediaQuery } from 'react-responsive'
 
@@ -180,6 +180,9 @@ const MiniDrawer = () => {
       <Link  href="/admin/crud/offerletter">
       <a><Button className='heading-button'><AiFillGift className='heading-icons' style={{ color: "#cf1322"}}/>Offer letter</Button></a>
      </Link>
+     <Link  href="/admin/crud/marketing">
+     <a><Button className='heading-button'><MdPublic className='heading-icons' style={{ color: "#40a9ff"}}/>Marketing</Button></a>
+    </Link>
       <Link  href="/admin/crud/users">
       <a><Button className='heading-button'><FaUsers className='heading-icons' style={{ color: "#13c2c2"}}/>Users</Button></a>
       </Link>

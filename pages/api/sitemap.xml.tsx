@@ -1,6 +1,6 @@
 // Import built-in types for API routes
 import { NextApiRequest, NextApiResponse } from 'next';
-import { SitemapStream, streamToPromise, EnumChangefreq } from 'sitemap';
+import { SitemapStream, streamToPromise, EnumChangefreq } from '../../node_modules/sitemap';
 import { createGzip } from 'zlib';
 import { list, listOfAllBlogs } from '../../actions/blog'
 
