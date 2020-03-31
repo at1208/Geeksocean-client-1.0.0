@@ -5,7 +5,9 @@
 1.clone this repository
 <br />
 2.run command
-    npm install
+<br />
+     npm install
+<br />
  inside root directory of this cloned repository.
 <br />
 3.create next.config.js file inside root directory ...
@@ -24,3 +26,14 @@
     DOMAIN_DEVELOPMENT: 'Geeksocean.com'
   },
 })
+
+    Steps to run in production
+
+run command
+<br />
+      npm run build
+<br />
+      npm start
+<br />
+
+listen to port 3000
