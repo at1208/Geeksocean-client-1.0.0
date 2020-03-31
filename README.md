@@ -6,7 +6,9 @@
 <br />
  <b>2.run command</b>
 <br />
-     npm install
+
+      npm install
+
 <br />
  <b>inside root directory of this cloned repository.</b>
 <br />
@@ -38,7 +40,7 @@
 
     Steps to run in production
 
-run these commands inside root directory
+<b>run these commands inside root directory</b>
 <br />
 
         npm run build
@@ -49,4 +51,4 @@ run these commands inside root directory
 
 <br />
 
-listen to port 3000
+<b>listen to port 3000</b>
