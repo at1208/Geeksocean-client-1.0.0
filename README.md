@@ -38,9 +38,8 @@
 
 
 
-    Steps to run in production
+    Commands to run in production 
 
-<b>run these commands inside root directory</b>
 <br />
 
         npm run build
