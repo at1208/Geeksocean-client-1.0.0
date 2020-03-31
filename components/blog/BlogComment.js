@@ -83,7 +83,7 @@ setSubmitting(false)
             ...comments,
           ])
  },1000)
- 
+
 
 
   commentBlog(id._id, {author: user.name,avatar: user.picture, content: value, datetime: moment(new Date()).format('LLLL') })
@@ -95,7 +95,7 @@ console.log(comments)
     return (
       <div className='container'>
          <div className='row justify-content-center'>
-           <img src='https://img.icons8.com/officel/40/000000/user.png' width={40} height={40} style={{ borderRadius: "30px", margin: "5px"}}/>
+           <img src='https://img.icons8.com/officel/40/000000/user.png' width={40} height={40} style={{ borderRadius: "30px", margin: "5px"}} alt="user"/>
            <TextArea rows={4} onChange={onChangeComment} style={{ width: "90%"}} className='col'/>
          </div>
          <div className='text-center' style={{ marginTop: "10px"}}>

@@ -138,7 +138,8 @@ const MiniDrawer = () => {
    <div className='row col '>
      <div className='col-6 row'>
          {isDesktopOrLaptop && <div className='container row'>
-         <img src='/static/images/Logo.svg' alt='' height={70} />
+
+          <div className='stage'><img src='/static/images/Logo.svg' alt='' height={70} className='box bounce-2'/></div>
         <Typography variant="h6" noWrap>
           <Link href='/'>
              <a className='logo-style'>Geeks Ocean</a>
@@ -252,6 +253,24 @@ font-size:30px;
     height:35px!important;
     border:0px solid white!important;
 }
+.stage {
+      display: flex;
+  }
+  .box {
+      align-self: flex-end;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      transform-origin: bottom;
+  }
+  .bounce-2 {
+      animation-name: bounce-2;
+      animation-timing-function: ease;
+  }
+  @keyframes bounce-2 {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+  }
 .sign-out{
 
 }
