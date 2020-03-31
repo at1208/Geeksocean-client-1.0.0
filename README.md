@@ -34,7 +34,9 @@ run these commands inside root directory
 <br />
 
         npm run build
+
 <br />
+
         npm start
 
 <br />
