@@ -27,6 +27,12 @@
   },
 })
 
+4. run command
+<br />
+
+     npm run dev
+
+5. Listen to port 3000
 
     Steps to run in production
 
