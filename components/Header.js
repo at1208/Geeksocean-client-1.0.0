@@ -103,7 +103,6 @@ const useStyles = makeStyles(theme => ({
 const MiniDrawer = () => {
 
   const isDesktopOrLaptop = useMediaQuery({  query: '(min-device-width: 767px)' })
-
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -126,23 +125,25 @@ const MiniDrawer = () => {
        aria-label="open drawer"
        edge="start"
      >
+
    <Drawer />
   </IconButton>
   <Typography variant="h6" noWrap>
     <Link href='/'>
-       <a>{DOMAIN}</a>
+       <a className='logo-style'>Geeks Ocean</a>
     </Link>
 </Typography>
 </>}
 
    <div className='row col '>
      <div className='col-6 row'>
-         {isDesktopOrLaptop && <>
+         {isDesktopOrLaptop && <div className='container row'>
+         <img src='/static/images/Logo.svg' alt='' height={70} />
         <Typography variant="h6" noWrap>
           <Link href='/'>
-             <a>{DOMAIN}</a>
+             <a className='logo-style'>Geeks Ocean</a>
           </Link>
-      </Typography> </>}
+      </Typography> </div>}
     </div>
     {!isAuth() && isDesktopOrLaptop && <div className='col-6'>
 
@@ -218,6 +219,12 @@ a{
       padding-top: 20px;
 }
 .MuiTypography-noWrap{
+  padding-left:5px;
+  padding-top:10px;
+}
+.logo-style{
+font-family: 'Philosopher', sans-serif;
+font-size:30px;
 
 }
 .get-started{
@@ -230,14 +237,9 @@ a{
   height:35px!important;
 }
 .MuiToolbar-root{
-
-
-
 }
 .MuiSvgIcon-root {
   font-size: 2.2rem!important;
-
-
 }
 .MuiTypography-h6{
     font-size: 1.3rem!important;

@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch';
 import { API } from '../config';
 import { handleResponse } from './auth';
 
+//GET USER PUBLIC PROFILE
 export const userPublicProfile = username => {
     return fetch(`${API}/user/${username}`, {
         method: 'GET',
@@ -15,6 +16,7 @@ export const userPublicProfile = username => {
         .catch(err => console.log(err));
 };
 
+//GET PROFILE
 export const getProfile = token => {
     return fetch(`${API}/user/profile`, {
         method: 'GET',
@@ -29,6 +31,7 @@ export const getProfile = token => {
         .catch(err => console.log(err));
 };
 
+// UPDATE PROFILE
 export const update = (token, user) => {
     return fetch(`${API}/user/update`, {
         method: 'PUT',
@@ -45,7 +48,7 @@ export const update = (token, user) => {
         .catch(err => console.log(err));
 };
 
-
+//LIST OF ALL USERS
 export const userslist = () => {
   console.log(API)
     let listUsersEndpoint;
@@ -61,6 +64,7 @@ export const userslist = () => {
         .catch(err => console.log(err));
 };
 
+//USER BY ID
 export const userById = (id) => {
     let userDataEndpoint;
         userDataEndpoint = `${API}/user/userdata/${id}`;

@@ -2,6 +2,8 @@ import fetch from 'isomorphic-fetch';
 import { API } from '../config';
 import { handleResponse } from './auth';
 
+
+//CREATE TAG
 export const create = (tag, token) => {
     return fetch(`${API}/tag`, {
         method: 'POST',
@@ -19,6 +21,7 @@ export const create = (tag, token) => {
         .catch(err => console.log(err));
 };
 
+//GET ALL TAGS
 export const getTags = () => {
     return fetch(`${API}/tags`, {
         method: 'GET'
@@ -29,6 +32,8 @@ export const getTags = () => {
         .catch(err => console.log(err));
 };
 
+
+//SINGLE TAG
 export const singleTag = slug => {
     return fetch(`${API}/tag/${slug}`, {
         method: 'GET'
@@ -39,6 +44,8 @@ export const singleTag = slug => {
         .catch(err => console.log(err));
 };
 
+
+//REMOVE TAG
 export const removeTag = (slug, token) => {
     return fetch(`${API}/tag/${slug}`, {
         method: 'DELETE',

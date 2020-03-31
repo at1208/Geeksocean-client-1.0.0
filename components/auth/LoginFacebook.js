@@ -9,7 +9,6 @@ import { FaFacebookSquare } from "react-icons/fa";
 const LoginFacebook = () => {
     const responseFacebook = response => {
         // console.log(response); // {access_token, email, id, userID, name, signed_request}
-
         loginWithFacebook(response).then(data => {
             if (data.error) {
                 console.log(data.error);

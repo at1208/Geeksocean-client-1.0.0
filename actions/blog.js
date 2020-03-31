@@ -4,6 +4,8 @@ import queryString from 'query-string';
 import { isAuth, handleResponse } from './auth';
 import axios from 'axios'
 
+
+//CREATE BLOG
 export const createBlog = (blog, token) => {
     let createBlogEndpoint;
 
@@ -28,6 +30,8 @@ export const createBlog = (blog, token) => {
         .catch(err => console.log(err));
 };
 
+
+//LIST BLOGS WITH CATEGORY AND TAGS
 export const listBlogsWithCategoriesAndTags = (skip, limit) => {
     const data = {
         limit,
@@ -47,6 +51,8 @@ export const listBlogsWithCategoriesAndTags = (skip, limit) => {
         .catch(err => console.log(err));
 };
 
+
+//SINGLE BLOG
 export const singleBlog = (slug = undefined) => {
     return fetch(`${API}/blog/${slug}`, {
         method: 'GET'
@@ -57,6 +63,8 @@ export const singleBlog = (slug = undefined) => {
         .catch(err => console.log(err));
 };
 
+
+// LIST OF RELATED BLOGS
 export const listRelated = blog => {
     return fetch(`${API}/blogs/related`, {
         method: 'POST',
@@ -73,6 +81,7 @@ export const listRelated = blog => {
 };
 
 
+// LIST OF ALL BLOGS OF USERNAME
 export const list = username => {
     let listBlogsEndpoint;
 
@@ -91,6 +100,8 @@ export const list = username => {
         .catch(err => console.log(err));
 };
 
+
+//LIST OF ALL BLOGS
 export const listOfAllBlogs = () => {
     let listBlogsEndpoint;
         listBlogsEndpoint = `${API}/blogs`;
@@ -103,6 +114,8 @@ export const listOfAllBlogs = () => {
         .catch(err => console.log(err));
 };
 
+
+//REMOVE BLOG
 export const removeBlog = (slug, token) => {
     let deleteBlogEndpoint;
 
@@ -127,6 +140,8 @@ export const removeBlog = (slug, token) => {
         .catch(err => console.log(err));
 };
 
+
+//UPLOAD BLOG
 export const updateBlog = (blog, token, slug) => {
     let updateBlogEndpoint;
 
@@ -151,6 +166,8 @@ export const updateBlog = (blog, token, slug) => {
         .catch(err => console.log(err));
 };
 
+
+//SEARCH BLOG
 export const listSearch = params => {
     console.log('search params', params);
     let query = queryString.stringify(params);
@@ -164,6 +181,8 @@ export const listSearch = params => {
         .catch(err => console.log(err));
 };
 
+
+//COMMENT BLOG
 export const commentBlog = (id, comments) => {
   console.log(id)
   console.log(comments)
@@ -179,9 +198,6 @@ export const commentBlog = (id, comments) => {
            return response.json();
        })
        .catch(err => console.log(err));
-
-
-
     // return fetch(`${commentBlogEndpoint}`, {
     //     method: 'PATCH',
     //     body: comments
@@ -192,6 +208,8 @@ export const commentBlog = (id, comments) => {
     //     .catch(err => console.log(err));
 }
 
+
+//LIST OF ALL BLOGS
 export const allcommentBlog = (id) => {
 return  fetch(`${API}/blog/all-blog-comment/${id}`, {
   method: 'GET'

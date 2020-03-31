@@ -250,7 +250,7 @@ const GetMonth = (month) => {
 
       }
       .offer-letter-container{
-       
+
       }
       `}</style>
 

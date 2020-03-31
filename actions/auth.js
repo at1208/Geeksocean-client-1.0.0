@@ -3,6 +3,7 @@ import cookie from 'js-cookie';
 import { API } from '../config';
 import Router from 'next/router';
 
+//SEESION IS EXPIRE
 export const handleResponse = response => {
     if (response.status === 401) {
         signout(() => {
@@ -16,6 +17,8 @@ export const handleResponse = response => {
     }
 };
 
+
+//PRE SIGNUP
 export const preSignup = user => {
     return fetch(`${API}/pre-signup`, {
         method: 'POST',
@@ -31,6 +34,8 @@ export const preSignup = user => {
         .catch(err => console.log(err));
 };
 
+
+//SIGN UP
 export const signup = user => {
     return fetch(`${API}/signup`, {
         method: 'POST',
@@ -46,6 +51,8 @@ export const signup = user => {
         .catch(err => console.log(err));
 };
 
+
+//SIGN IN
 export const signin = user => {
     return fetch(`${API}/signin`, {
         method: 'POST',
@@ -61,6 +68,8 @@ export const signin = user => {
         .catch(err => console.log(err));
 };
 
+
+//SIGN OUT
 export const signout = next => {
     removeCookie('token');
     removeLocalStorage('user');
@@ -75,7 +84,8 @@ export const signout = next => {
         .catch(err => console.log(err));
 };
 
-// set cookie
+
+//SET COOKIE
 export const setCookie = (key, value) => {
     if (process.browser) {
         cookie.set(key, value, {
@@ -84,6 +94,8 @@ export const setCookie = (key, value) => {
     }
 };
 
+
+//REMOVE COOKIE
 export const removeCookie = key => {
     if (process.browser) {
         cookie.remove(key, {
@@ -91,31 +103,41 @@ export const removeCookie = key => {
         });
     }
 };
-// get cookie
+
+
+//GET COOKIE
 export const getCookie = key => {
     if (process.browser) {
         return cookie.get(key);
     }
 };
-// localstorage
+
+
+//SET IN LOCALSTORAGE
 export const setLocalStorage = (key, value) => {
     if (process.browser) {
         localStorage.setItem(key, JSON.stringify(value));
     }
 };
 
+
+//REMOVE FROM LOCALSTORAGE
 export const removeLocalStorage = key => {
     if (process.browser) {
         localStorage.removeItem(key);
     }
 };
-// autheticate user by pass data to cookie and localstorage
+
+
+//AUTHENTICATE USER BY PASS DATA TO COOKIE AND LOCALSTORAGE
 export const authenticate = (data, next) => {
     setCookie('token', data.token);
     setLocalStorage('user', data.user);
     next();
 };
 
+
+//CHECK USER IS AUTHENTICATE OR NOT
 export const isAuth = () => {
     if (process.browser) {
         const cookieChecked = getCookie('token');
@@ -129,6 +151,8 @@ export const isAuth = () => {
     }
 };
 
+
+//UPDATE USER
 export const updateUser = (user, next) => {
     if (process.browser) {
         if (localStorage.getItem('user')) {
@@ -140,6 +164,8 @@ export const updateUser = (user, next) => {
     }
 };
 
+
+//FORGOT PASSWORD
 export const forgotPassword = email => {
     return fetch(`${API}/forgot-password`, {
         method: 'PUT',
@@ -155,6 +181,8 @@ export const forgotPassword = email => {
         .catch(err => console.log(err));
 };
 
+
+//RESET PASSWORD
 export const resetPassword = resetInfo => {
     return fetch(`${API}/reset-password`, {
         method: 'PUT',
@@ -170,6 +198,8 @@ export const resetPassword = resetInfo => {
         .catch(err => console.log(err));
 };
 
+
+//LOGIN WITH GOOGLE
 export const loginWithGoogle = user => {
     return fetch(`${API}/google-login`, {
         method: 'POST',
@@ -185,6 +215,8 @@ export const loginWithGoogle = user => {
         .catch(err => console.log(err));
 };
 
+
+//LOGIN WITH FACEBOOK
 export const loginWithFacebook = user => {
     return fetch(`${API}/facebook-login`, {
         method: 'POST',
