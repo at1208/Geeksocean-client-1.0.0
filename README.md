@@ -2,16 +2,16 @@
 
     Steps to setup locally
 
-1.clone this repository
+ <b>1.clone this repository</b>
 <br />
-2.run command
+ <b>2.run command</b>
 <br />
      npm install
 <br />
- inside root directory of this cloned repository.
+ <b>inside root directory of this cloned repository.</b>
 <br />
-3.create next.config.js file inside root directory ...
-   and write all these things inside nex.config.js
+ <b>3.create next.config.js file inside root directory ...
+   and write all these things inside nex.config.js</b>
 
     const withCSS = require('@zeit/next-css');
     module.exports = withCSS({
@@ -27,12 +27,14 @@
   },
 })
 
-4. run command
+<b>4. run command</b>
 <br />
 
      npm run dev
 
-5. Listen to port 3000
+<b>5. Listen to port 3000</b>
+
+
 
     Steps to run in production
 
