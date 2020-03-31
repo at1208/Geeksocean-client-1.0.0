@@ -4,7 +4,9 @@
 
 1.clone this repository
 <br />
-2.run command "npm install" inside root directory of this cloned repository.
+2.run command
+    npm install
+ inside root directory of this cloned repository.
 <br />
 3.create next.config.js file inside root directory ...
    and write all these things inside nex.config.js
