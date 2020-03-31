@@ -27,8 +27,8 @@ import Router from "next/router";
 
 import Link from "next/link";
 
-import { APP_NAME, DOMAIN } from "../config";
-import { signout, isAuth } from "../actions/auth";
+import { APP_NAME, DOMAIN } from "../../config";
+import { signout, isAuth } from "../../actions/auth";
 import Drawer from './Drawer'
 import './Header.css'
 

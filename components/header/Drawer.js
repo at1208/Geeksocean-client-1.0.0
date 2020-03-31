@@ -1,5 +1,5 @@
 import { Drawer, Button } from 'antd';
-import '../node_modules/antd/dist/antd.css';
+import '../../node_modules/antd/dist/antd.css';
 import MenuIcon from '@material-ui/icons/Menu';
 import {ListItemIcon,
         ListItemText,
@@ -10,7 +10,7 @@ import {ListItemIcon,
         IconButton,
         CssBaseline,
         Typography } from '@material-ui/core';
-import { signout, isAuth } from "../actions/auth";
+import { signout, isAuth } from "../../actions/auth";
 import Link from "next/link";
 import { AiFillRead, AiFillGift } from "react-icons/ai";
 import { TiContacts } from "react-icons/ti";
@@ -18,8 +18,8 @@ import { GoSignIn, GoSignOut } from "react-icons/go";
 import { IoIosCreate,IoMdSettings } from "react-icons/io";
 import { FaUserCircle,FaUserCheck,FaUsers,FaUser,FaTags  } from "react-icons/fa";
 import { MdDeleteSweep,MdHelp,MdPublic } from "react-icons/md";
-import GoogleLogin from './auth/LoginGoogle';
-import FacebookLogin from './auth/LoginFacebook';
+import GoogleLogin from './../auth/LoginGoogle';
+import FacebookLogin from './../auth/LoginFacebook';
 
 import Router from "next/router";
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { DOMAIN } from '../config'
+import { DOMAIN } from '../../config'
 import { AiOutlineCopyright} from "react-icons/ai";
 
 

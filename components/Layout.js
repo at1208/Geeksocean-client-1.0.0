@@ -1,8 +1,8 @@
-import Header from './Header';
-import Footer from './Footer'
+import Header from './header/Header';
+import Footer from './footer/Footer'
 import Router from "next/router";
 import NProgress from "nprogress";
-import './Header.css'
+import './header/Header.css'
 
 Router.onRouteChangeStart = url => NProgress.start();
 Router.onRouteChangeComplete = url => NProgress.done();
@@ -20,7 +20,7 @@ const Layout = ({ children }) => {
            .page-container{
 
            }
- 
+
             `}</style>
         </div>
     );
