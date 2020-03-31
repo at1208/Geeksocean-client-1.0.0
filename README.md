@@ -23,21 +23,20 @@
     GOOGLE_CLIENT_ID: '',
     FB_APP_ID:'',
     DOMAIN_PRODUCTION: 'Geeksocean.com',
-    DOMAIN_DEVELOPMENT: 'Geeksocean.com'
+    DOMAIN_DEVELOPMENT: 'http://localhost:3000'
   },
 })
 
+
     Steps to run in production
 
-run command
+run these commands inside root directory
 <br />
 
-            npm run build
-
+        npm run build
 <br />
+        npm start
 
-            npm start
-            
 <br />
 
 listen to port 3000
