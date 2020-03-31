@@ -31,9 +31,13 @@
 
 run command
 <br />
+
             npm run build
+
 <br />
+
             npm start
+            
 <br />
 
 listen to port 3000
