@@ -67,7 +67,7 @@ const Search = ({ router }) => {
         <form onSubmit={searchSubmit}>
             <div className="row col justify-content-center">
 
-                    <Input type="search"  placeholder="Search geek article" onChange={handleChange}className='search-input col-9' />
+                    <Input type="search"  placeholder="Search geek article" onChange={handleChange} className='search-input col-9' />
                     <IoMdSearch  className='search-icon col-2' type="submit" onClick={searchSubmit} />
 
             </div>

@@ -92,8 +92,8 @@ const Card = ({ blog }) => {
                         </div>
                     </section>
                     <section>
-                        {showBlogCategories(blog)}
-                        {showBlogTags(blog)}
+                        {/*showBlogCategories(blog)*/}
+                        {/*showBlogTags(blog)*/}
                     </section>
                 </div>
             </div>

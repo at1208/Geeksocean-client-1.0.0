@@ -10,7 +10,6 @@ import Search from '../components/blog/Search'
 import { Button } from 'antd'
 
 const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router }) => {
-  console.log(router)
     const head = () => (
         <Head>
             <title>{APP_NAME}</title>
@@ -104,7 +103,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
                     <div className="show-blogs">
                             <Search />
                     </div>
-
+                  
                     <div className="showall container">{showAllBlogs()}</div>
                     <div className="container">{showLoadedBlogs()}</div>
                     <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>

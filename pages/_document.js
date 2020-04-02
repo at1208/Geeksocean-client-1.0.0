@@ -23,12 +23,18 @@ render() {
         <Head>
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <link rel="alternate" href="https://geeksocean.com" hrefLang="en-us" />
+          <meta name="apple-mobile-web-app-capable" content="yes"/>
+          <meta name="apple-mobile-web-app-status-bar-style" content="yes"/>
+          <meta name="apple-mobile-web-app-title" content="Geeks Ocean"/>
+          <link rel="alternate" href="https://geeksocean.com" hrefLang="en-us" />
           <link
             rel="stylesheet"
             defer
             href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
           />
+          <link rel="dns-prefetch" href="https://geeksocean.com" />
+          <link rel="preconnect" href="https://geeksocean.com" crossorigin />
+
           <link href="https://fonts.googleapis.com/css?family=Gruppo|Philosopher|Playfair+Display+SC|Spectral+SC|Trirong&display=swap" rel="stylesheet" />
           <link defer href="https://fonts.googleapis.com/css?family=Halant:700|Lateef|Lato|Philosopher|Prata|Source+Sans+ProGotu|Marmelad|EB+Garamond&display=swap" rel="stylesheet" />
           <link rel="stylesheet" href="/static/css/styles.css" />
