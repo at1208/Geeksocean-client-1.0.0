@@ -37,7 +37,6 @@ render() {
 
           <link href="https://fonts.googleapis.com/css?family=Gruppo|Philosopher|Playfair+Display+SC|Spectral+SC|Trirong&display=swap" rel="stylesheet" />
           <link defer href="https://fonts.googleapis.com/css?family=Halant:700|Lateef|Lato|Philosopher|Prata|Source+Sans+ProGotu|Marmelad|EB+Garamond&display=swap" rel="stylesheet" />
-          <link rel="stylesheet" href="/static/css/styles.css" />
           <link rel="icon" href="/static/images/Logo.svg" />
           <script defer async src="https://www.googletagmanager.com/gtag/js?id=UA-161776444-1"></script>
           <script  defer dangerouslySetInnerHTML={this.setGoogleTags()} />
