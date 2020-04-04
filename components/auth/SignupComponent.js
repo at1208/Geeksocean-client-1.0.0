@@ -109,14 +109,14 @@ const SignupComponent = () => {
             {showError()}
             {showLoading()}
             {showMessage()}
-            <div className='row col justify-content-center'>
+            {/*<div className='row col justify-content-center'>
                <div className='col-sm-6'>
                <LoginGoogle />
                </div>
                <div className='col-sm-6'>
                <LoginFacebook />
                </div>
-            </div>
+            </div>*/}
               <br />
 
             <div className='showform'>
