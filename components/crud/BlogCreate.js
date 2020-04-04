@@ -8,7 +8,7 @@ import { getCategories } from "../../actions/category";
 import { getTags } from "../../actions/tag";
 import { createBlog } from "../../actions/blog";
 import ReactQuill, { Quill, Mixin, Toolbar } from 'react-quill';
-// const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "../../node_modules/react-quill/dist/quill.snow.css";
 import { QuillModules, QuillFormats } from "../../helpers/quill";
 import {Button, Input,Checkbox} from 'antd';
@@ -232,10 +232,6 @@ const CreateBlog = ({ router }) => {
             placeholder="Write something amazing..."
             onChange={handleBody}
           />
-        </div>
-
-        <div className="form-group">
-
         </div>
 
 
