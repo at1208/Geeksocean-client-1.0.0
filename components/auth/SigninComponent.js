@@ -116,12 +116,12 @@ const SigninComponent = () => {
             {showLoading()}
             {showMessage()}
            <div className='container row col justify-content-center social-login-btn text-center'>
-             <div className='col-sm-6 text-center'>
+             {/*<div className='col-sm-6 text-center'>
                <LoginGoogle />
              </div>
               <div className='col-sm-6'>
                 <LoginFacebook/>
-              </div>
+              </div>*/}
           </div>
 
             {showForm && signinForm()}
