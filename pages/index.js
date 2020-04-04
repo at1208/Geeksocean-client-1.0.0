@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
@@ -8,6 +9,8 @@ import Card from '../components/blog/Card';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 import Search from '../components/blog/Search'
 import { Button } from 'antd'
+
+
 
 const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router }) => {
     const head = () => (
@@ -98,12 +101,14 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
     return (
         <>
             {head()}
+
             <Layout>
+
 
                     <div className="show-blogs">
                             <Search />
                     </div>
-                  
+
                     <div className="showall container">{showAllBlogs()}</div>
                     <div className="container">{showLoadedBlogs()}</div>
                     <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
@@ -115,6 +120,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
                     </section>
 
             </Layout>
+
             <style global jsx>{`
             .show-blogs{
               margin-top: 15px;

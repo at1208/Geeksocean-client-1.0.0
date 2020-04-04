@@ -4,7 +4,7 @@ import ProfileUpdate from '../../components/auth/ProfileUpdate';
 import Link from 'next/link';
 
 const Setting = () => {
- 
+
     return (
         <Layout>
             <Private>

@@ -1,6 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import getConfig from 'next/config';
 const { publicRuntimeConfig } = getConfig();
+import styled from 'styled-components'
+
 
 class MyDocument extends Document {
   setGoogleTags() {
@@ -35,15 +37,15 @@ render() {
           <link rel="dns-prefetch" href="https://geeksocean.com" />
           <link rel="preconnect" href="https://geeksocean.com" crossorigin />
 
-          <link href="https://fonts.googleapis.com/css?family=Gruppo|Philosopher|Playfair+Display+SC|Spectral+SC|Trirong&display=swap" rel="stylesheet" />
-          <link defer href="https://fonts.googleapis.com/css?family=Halant:700|Lateef|Lato|Philosopher|Prata|Source+Sans+ProGotu|Marmelad|EB+Garamond&display=swap" rel="stylesheet" />
-          <link rel="icon" href="/static/images/Logo.svg" />
-          <script defer async src="https://www.googletagmanager.com/gtag/js?id=UA-161776444-1"></script>
+          <link rel="preload" href="https://fonts.googleapis.com/css?family=Gruppo|Philosopher|Playfair+Display+SC|Spectral+SC|Trirong&display=swap" rel="stylesheet" />
+          <link rel="preload" defer href="https://fonts.googleapis.com/css?family=Halant:700|Lateef|Lato|Philosopher|Prata|Source+Sans+ProGotu|Marmelad|EB+Garamond&display=swap" rel="stylesheet" />
+          <link rel="preload" href="/static/images/Logo.svg" />
+          <script  defer async src="https://www.googletagmanager.com/gtag/js?id=UA-161776444-1"></script>
           <script  defer dangerouslySetInnerHTML={this.setGoogleTags()} />
         </Head>
         <body>
-          <Main />
-          <NextScript />
+               <Main />
+               <NextScript />
         </body>
       </Html>
     );
