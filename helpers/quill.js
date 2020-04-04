@@ -4,8 +4,8 @@ export const QuillModules = {
         [{ size: [] }],
         ['bold', 'italic', 'underline', 'strike', 'blockquote'],
         [{ list: 'ordered' }, { list: 'bullet' }],
-        ['link', 'video'],
         // ['link', 'image', 'video'],
+        ['link','video'],
         ['clean'],
         [{ 'color': [] }, { 'background': [] }],
         ['code-block']

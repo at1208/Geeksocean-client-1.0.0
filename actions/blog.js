@@ -169,9 +169,9 @@ export const updateBlog = (blog, token, slug) => {
 
 //SEARCH BLOG
 export const listSearch = params => {
-    console.log('search params', params);
+    // console.log('search params', params);
     let query = queryString.stringify(params);
-    console.log('query params', query);
+    // console.log('query params', query);
     return fetch(`${API}/blogs/search?${query}`, {
         method: 'GET'
     })
@@ -184,8 +184,8 @@ export const listSearch = params => {
 
 //COMMENT BLOG
 export const commentBlog = (id, comments) => {
-  console.log(id)
-  console.log(comments)
+  // console.log(id)
+  // console.log(comments)
     let  commentBlogEndpoint;
     commentBlogEndpoint = `${API}/blog/blog-comment/${id}`
 
@@ -194,7 +194,7 @@ export const commentBlog = (id, comments) => {
      url: commentBlogEndpoint,
      data: comments
    }).then(response => {
-         console.log(response)
+         // console.log(response)
            return response.json();
        })
        .catch(err => console.log(err));

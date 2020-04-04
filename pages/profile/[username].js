@@ -42,7 +42,7 @@ const UserProfile = ({ user, blogs, query }) => {
             );
         });
     };
- 
+
     return (
         <>
             {head()}
@@ -81,7 +81,7 @@ const UserProfile = ({ user, blogs, query }) => {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title bg-info pt-4 pb-4 pl-4 pr-4 text-white">
-                                        Recent blogs by {user.name}
+                                        Recent articles by {user.name}
                                     </h5>
 
                                     {showUserBlogs()}

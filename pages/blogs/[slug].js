@@ -131,7 +131,7 @@ const SingleBlog = ({ blog, query }) => {
             <div className='blog-detail container'>
                 <main>
                     <article>
-                        <div className="container ">
+                        <div className="container">
                             <section>
                                 <div className="container">
                                     <h1 className="blog-title text-center font-weight-bold">{blog.title}</h1>
@@ -178,16 +178,16 @@ const SingleBlog = ({ blog, query }) => {
                             </section>
                         </div>
 
-                        <div className="col-md-8">
-
-                                <div className="col-md-12 lead">{renderHTML(blog.body)}</div>
-
+                        <div className="row col justify-content-center">
+                               <div className='col-md-10'>
+                                <div className="lead" style={{ color: "black"}}>{renderHTML(blog.body)}</div>
+                               </div>
                         </div>
-
-
                     </article>
-
-
+                    <div className="p-1 mt-1 text-center">
+                        {showBlogCategories(blog)}
+                        {showBlogTags(blog)}
+                    </div>
                 </main>
                 <hr />
 
@@ -198,15 +198,12 @@ const SingleBlog = ({ blog, query }) => {
 
                  <div className="container">
                      <h4 className="text-center pt-3 pb-3 more-from-geeksocean">More from Geeksocean.com</h4>
-                     <div className="row" >
+                     <div className="row p-2" >
                      {showRelatedBlog()}
                      </div>
                  </div>
 
-                 <div className="pb-3">
-                     {showBlogCategories(blog)}
-                     {showBlogTags(blog)}
-                 </div>
+
                 <style jsx>{`
                   .blog-comment{
              padding-top:40px;

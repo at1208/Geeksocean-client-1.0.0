@@ -7,11 +7,12 @@ import { getCookie, isAuth } from "../../actions/auth";
 import { getCategories } from "../../actions/category";
 import { getTags } from "../../actions/tag";
 import { createBlog } from "../../actions/blog";
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import ReactQuill, { Quill, Mixin, Toolbar } from 'react-quill';
+// const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "../../node_modules/react-quill/dist/quill.snow.css";
 import { QuillModules, QuillFormats } from "../../helpers/quill";
 import {Button, Input,Checkbox} from 'antd';
- 
+
 
 
 const CreateBlog = ({ router }) => {
@@ -94,7 +95,7 @@ const CreateBlog = ({ router }) => {
           loading: false,
           title: "",
           error: "",
-          success: `A new blog titled "${data.title}" is created`
+          success: `A new article titled "${data.title}" is created`
         });
         setBody("");
         setCategories([]);
@@ -232,6 +233,11 @@ const CreateBlog = ({ router }) => {
             onChange={handleBody}
           />
         </div>
+
+        <div className="form-group">
+
+        </div>
+
 
         <div>
           <button type="submit" className="btn btn-info btn-block">
