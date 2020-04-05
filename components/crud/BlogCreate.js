@@ -11,6 +11,9 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "../../node_modules/react-quill/dist/quill.snow.css";
 import { QuillModules, QuillFormats } from "../../helpers/quill";
 import {Button, Input,Checkbox} from 'antd';
+import htmlToText from 'html-to-text';
+import keyword_extractor from "keyword-extractor";
+import { create } from '../../actions/tag';
 
 
 
@@ -29,6 +32,7 @@ const CreateBlog = ({ router }) => {
 
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
+  const [keyword, setkeyword] = useState([]);
 
   const [checked, setChecked] = useState([]); // categories
   const [checkedTag, setCheckedTag] = useState([]); // tags
@@ -59,6 +63,7 @@ const CreateBlog = ({ router }) => {
     setValues({ ...values, formData: new FormData() });
     initCategories();
     initTags();
+
   }, [router]);
 
   const initCategories = () => {
@@ -82,6 +87,8 @@ const CreateBlog = ({ router }) => {
   };
 
   const publishBlog = e => {
+
+
     setValues({ ...values, loading: true });
     e.preventDefault();
     // console.log('ready to publishBlog');
@@ -99,6 +106,7 @@ const CreateBlog = ({ router }) => {
         setBody("");
         setCategories([]);
         setTags([]);
+
       }
     });
   };
@@ -183,6 +191,8 @@ const CreateBlog = ({ router }) => {
     );
   };
 
+
+
   const showError = () => (
     <div
       className="alert alert-danger"
@@ -210,7 +220,53 @@ const CreateBlog = ({ router }) => {
     </div>
   );
 
+
+  const showKeywords = () => {
+    return (
+      keyword &&
+      keyword.map((t, i) => (
+        <div>
+        <li key={i} className="list-unstyled">
+          <input
+            onChange={handleTagsToggle(t._id)}
+            type="checkbox"
+            className="mr-2"
+            checked
+          />
+          <label className="form-check-label">{t}</label>
+        </li>
+        </div>
+      ))
+    );
+  };
+
+
+ const generateKeywords = () => {
+   const sentence = htmlToText.fromString(body)
+   const keywords = keyword_extractor.extract(sentence,{
+    language:"english",
+    remove_digits: true,
+    return_changed_case:true,
+    return_chained_words:true,
+    remove_duplicates: true
+   });
+   return keywords
+ }
+
+const addKeyword = () => {
+  const token = getCookie('token');
+  const keys = generateKeywords()
+  setkeyword(keys)
+  keys.map(item => {
+    return create({ name: item}, token).then(t => {
+    console.log(t)
+    })
+  })
+}
+
   const createBlogForm = () => {
+    console.log(keyword)
+       generateKeywords()
     return (
       <form onSubmit={publishBlog}>
         <div className="form-group">
@@ -233,6 +289,9 @@ const CreateBlog = ({ router }) => {
           />
         </div>
 
+        <div className="form-group">
+
+        </div>
 
         <div>
           <button type="submit" className="btn btn-info btn-block">
@@ -275,6 +334,13 @@ const CreateBlog = ({ router }) => {
             </div>
           </div>
           <div>
+          <div>
+            <Button onClick={addKeyword}>Add keywords</Button>
+            <hr />
+            <div style={{ maxHeight: "200px", overflowY: "scroll" }}>
+            {showKeywords()}
+           </div>
+          </div>
             <h5>Categories</h5>
             <hr />
 
@@ -289,6 +355,7 @@ const CreateBlog = ({ router }) => {
               {showTags()}
             </ul>
           </div>
+
         </div>
       </div>
       <style jsx>{`
