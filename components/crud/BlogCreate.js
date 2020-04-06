@@ -14,8 +14,13 @@ import {Button, Input,Checkbox} from 'antd';
 import htmlToText from 'html-to-text';
 import keyword_extractor from "keyword-extractor";
 import { create } from '../../actions/tag';
+import { Select, Radio } from 'antd';
+const { Option } = Select;
 
 
+
+
+const token = getCookie('token');
 
 const CreateBlog = ({ router }) => {
   const blogFromLS = () => {
@@ -36,6 +41,8 @@ const CreateBlog = ({ router }) => {
 
   const [checked, setChecked] = useState([]); // categories
   const [checkedTag, setCheckedTag] = useState([]); // tags
+
+  const [size, setSize] = useState();
 
   const [body, setBody] = useState(blogFromLS());
   const [values, setValues] = useState({
@@ -86,8 +93,13 @@ const CreateBlog = ({ router }) => {
     });
   };
 
-  const publishBlog = e => {
 
+  const handleSizeChange = e => {
+     setSize(e.target.value)
+  };
+
+
+  const publishBlog = e => {
 
     setValues({ ...values, loading: true });
     e.preventDefault();
@@ -142,6 +154,7 @@ const CreateBlog = ({ router }) => {
     setChecked(all);
     formData.set("categories", all);
   };
+
 
   const handleTagsToggle = t => () => {
     setValues({ ...values, error: "" });
@@ -220,57 +233,85 @@ const CreateBlog = ({ router }) => {
     </div>
   );
 
-
-  const showKeywords = () => {
-    return (
-      keyword &&
-      keyword.map((t, i) => (
-        <div>
-        <li key={i} className="list-unstyled">
-          <input
-            onChange={handleTagsToggle(t._id)}
-            type="checkbox"
-            className="mr-2"
-            checked
-          />
-          <label className="form-check-label">{t}</label>
-        </li>
-        </div>
-      ))
-    );
-  };
+const generateKeywords = () => {
+ const sentence = htmlToText.fromString(body)
+ const keywords = keyword_extractor.extract(sentence,{
+  language:"english",
+  remove_digits: true,
+  return_changed_case:true,
+  return_chained_words:true,
+  remove_duplicates: true
+ });
+ return keywords
+}
 
 
- const generateKeywords = () => {
-   const sentence = htmlToText.fromString(body)
-   const keywords = keyword_extractor.extract(sentence,{
-    language:"english",
-    remove_digits: true,
-    return_changed_case:true,
-    return_chained_words:true,
-    remove_duplicates: true
-   });
-   return keywords
- }
+const showKeywords = () => {
+  return (
+    keyword &&
+    keyword.map((t, i) => (
+      <div>
+      <li key={i} className="list-unstyled">
+        <input
+          onChange={handleTagsToggle(t._id)}
+          type="checkbox"
+          className="mr-2"
+          checked
+        />
+        <label className="form-check-label">{t}</label>
+      </li>
+      </div>
+    ))
+  );
+};
 
 const addKeyword = () => {
-  const token = getCookie('token');
-  const keys = generateKeywords()
-  setkeyword(keys)
+const keys = generateKeywords()
+setkeyword(keys)
   keys.map(item => {
-    return create({ name: item}, token).then(t => {
-    console.log(t)
+    return create({ name: item }, token).then(tag => {
+   if(tag.error){
+     console.log('error while creating tags')
+   }else{
+     console.log("tag created", tag)
+   }
     })
   })
 }
 
+function SelectedTag(value) {
+  setValues({ ...values, error: "" });
+  setCheckedTag(value);
+  formData.set("tags", value);
+
+  console.log(`Selected: ${value}`);
+}
+
+function SelectedCategory(value) {
+  setValues({ ...values, error: "" });
+   setChecked(value)
+  formData.set("categories", value);
+
+  console.log(`Selected: ${value}`);
+}
+
+const tagsChildren = [];
+tags.map(item => {
+  return tagsChildren.push(<Option  key={item._id}>{item.name}</Option>)
+})
+const categoryChildren = [];
+categories.map(item => {
+  return categoryChildren.push(<Option  key={item._id}>{item.name}</Option>)
+})
+
+
+
   const createBlogForm = () => {
-    console.log(keyword)
        generateKeywords()
     return (
       <form onSubmit={publishBlog}>
         <div className="form-group">
-          <label className="text-muted">Title</label>
+       
           <Input
             addonBefore='Title'
             type="text"
@@ -335,25 +376,42 @@ const addKeyword = () => {
           </div>
           <div>
           <div>
-            <Button onClick={addKeyword}>Add keywords</Button>
+          {/*<Button onClick={addKeyword}>Add keywords</Button>*/}
             <hr />
             <div style={{ maxHeight: "200px", overflowY: "scroll" }}>
             {showKeywords()}
            </div>
           </div>
             <h5>Categories</h5>
-            <hr />
+            <Select
 
-            <ul style={{ maxHeight: "200px", overflowY: "scroll" }}>
-              {showCategories()}
-            </ul>
+            mode="tags"
+            size={size}
+            placeholder="Select Category"
+            defaultValue={[]}
+            showArrow={true}
+            filterOption={true}
+            onChange={SelectedCategory}
+            style={{ width: '100%' }}
+
+            >
+            {categoryChildren}
+            </Select>
           </div>
+          <hr />
           <div>
             <h5>Tags</h5>
-            <hr />
-            <ul style={{ maxHeight: "200px", overflowY: "scroll" }}>
-              {showTags()}
-            </ul>
+            <Select
+            mode="tags"
+            size={size}
+            placeholder="Select Tags"
+            defaultValue={[]}
+            showArrow={true}
+            onChange={SelectedTag}
+            style={{ width: '100%' }}
+            >
+            {tagsChildren}
+            </Select>
           </div>
 
         </div>

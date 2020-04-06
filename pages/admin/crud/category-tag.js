@@ -11,10 +11,10 @@ const CategoryTag = () => {
                <div className='outer'>
                <div className='container cat-manage-container shadow'>
                <div className='row col  justify-content-center'>
-                  <div className='col-md-4 category-input'>
+                  <div className='col-md-4 category-input' style={{ maxHeight: "400px", overflowY: "scroll" }}>
                     <Category />
                   </div>
-                  <div className='col-md-4 tag-input'>
+                  <div className='col-md-4 tag-input' style={{ maxHeight: "400px", overflowY: "scroll" }}>
                     <Tag />
                   </div>
               </div>
