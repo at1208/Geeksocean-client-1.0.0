@@ -34,7 +34,7 @@ const Keyword = ({ keyword }) => {
             <div className='container text-center'>
               <h1>List of keywords</h1>
             {keyword.map(item => {
-              return <a href={`http://localhost:3000/keywords/${item.slug}`} ><Button type="link">{item.name}</Button></a>
+              return <a href={`https://geeksocean.com/keywords/${item.slug}`} ><Button type="link">{item.name}</Button></a>
             })}
             </div>
             </Layout>
