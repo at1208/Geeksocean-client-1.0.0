@@ -310,7 +310,8 @@ console.log(disable())
           <div>
           <div>
             <h5>Keywords</h5>
-          {<Button onClick={generateKeywords} block style={{ marginBottom: '5px!important'}} disabled={disable()}>Generate keywords</Button>}
+           <small>Note: genrate keywords just before publish</small>
+          {<Button onClick={generateKeywords} block disabled={disable()} className="generate">Generate keywords</Button>}
 
             <Select
             mode="tags"
@@ -356,8 +357,10 @@ console.log(disable())
 
         </div>
       </div>
-      <style jsx>{`
-
+      <style global jsx>{`
+         .generate{
+           margin-bottom: 5px!important;
+         }
         `}</style>
     </div>
   );
