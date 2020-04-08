@@ -7,20 +7,22 @@ import { getCookie, isAuth } from "../../actions/auth";
 import { getCategories } from "../../actions/category";
 import { getTags } from "../../actions/tag";
 import { createBlog } from "../../actions/blog";
+import { createKeyword, getKeywords } from '../../actions/keyword';
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "../../node_modules/react-quill/dist/quill.snow.css";
 import { QuillModules, QuillFormats } from "../../helpers/quill";
 import {Button, Input,Checkbox} from 'antd';
 import htmlToText from 'html-to-text';
 import keyword_extractor from "keyword-extractor";
-import { create } from '../../actions/tag';
+// import { create } from '../../actions/tag';
 import { Select, Radio } from 'antd';
 const { Option } = Select;
-
-
-
-
 const token = getCookie('token');
+
+
+
+
+
 
 const CreateBlog = ({ router }) => {
   const blogFromLS = () => {
@@ -37,12 +39,14 @@ const CreateBlog = ({ router }) => {
 
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
-  const [keyword, setkeyword] = useState([]);
+  const [keywords, setKeywords] = useState([]);
+
+
 
   const [checked, setChecked] = useState([]); // categories
   const [checkedTag, setCheckedTag] = useState([]); // tags
+  const [checkedKeywords, setCheckedKeywords] = useState([]); //keywords
 
-  const [size, setSize] = useState();
 
   const [body, setBody] = useState(blogFromLS());
   const [values, setValues] = useState({
@@ -70,6 +74,7 @@ const CreateBlog = ({ router }) => {
     setValues({ ...values, formData: new FormData() });
     initCategories();
     initTags();
+    // initKeywords();
 
   }, [router]);
 
@@ -94,9 +99,7 @@ const CreateBlog = ({ router }) => {
   };
 
 
-  const handleSizeChange = e => {
-     setSize(e.target.value)
-  };
+
 
 
   const publishBlog = e => {
@@ -108,6 +111,7 @@ const CreateBlog = ({ router }) => {
       if (data.error) {
         setValues({ ...values, error: data.error, loading: false });
       } else {
+        console.log(data)
         setValues({
           ...values,
           loading: false,
@@ -118,90 +122,24 @@ const CreateBlog = ({ router }) => {
         setBody("");
         setCategories([]);
         setTags([]);
+        setKeywords([]);
 
       }
     });
   };
 
   const handleChange = name => e => {
-    // console.log(e.target.value);
     const value = name === "photo" ? e.target.files[0] : e.target.value;
     formData.set(name, value);
     setValues({ ...values, [name]: value, formData, error: "" });
   };
 
   const handleBody = e => {
-    // console.log(e);
     setBody(e);
     formData.set("body", e);
     if (typeof window !== "undefined") {
       localStorage.setItem("blog", JSON.stringify(e));
     }
-  };
-
-  const handleToggle = c => () => {
-    setValues({ ...values, error: "" });
-    // return the first index or -1
-    const clickedCategory = checked.indexOf(c);
-    const all = [...checked];
-
-    if (clickedCategory === -1) {
-      all.push(c);
-    } else {
-      all.splice(clickedCategory, 1);
-    }
-    console.log(all);
-    setChecked(all);
-    formData.set("categories", all);
-  };
-
-
-  const handleTagsToggle = t => () => {
-    setValues({ ...values, error: "" });
-    // return the first index or -1
-    const clickedTag = checked.indexOf(t);
-    const all = [...checkedTag];
-
-    if (clickedTag === -1) {
-      all.push(t);
-    } else {
-      all.splice(clickedTag, 1);
-    }
-    console.log(all);
-    setCheckedTag(all);
-    formData.set("tags", all);
-  };
-
-  const showCategories = () => {
-    return (
-      categories &&
-      categories.map((c, i) => (
-        <li key={i} className="list-unstyled">
-          <input
-            onChange={handleToggle(c._id)}
-            type="checkbox"
-            className="mr-2"
-          />
-          <label className="form-check-label">{c.name}</label>
-        </li>
-      ))
-    );
-  };
-
-  const showTags = () => {
-    return (
-      tags &&
-      tags.map((t, i) => (
-        <li key={i} className="list-unstyled">
-          <input
-            onChange={handleTagsToggle(t._id)}
-            type="checkbox"
-            className="mr-2"
-          />
-          <label className="form-check-label">{t.name}</label>
-        </li>
-      ))
-    );
   };
 
 
@@ -235,83 +173,78 @@ const CreateBlog = ({ router }) => {
 
 const generateKeywords = () => {
  const sentence = htmlToText.fromString(body)
- const keywords = keyword_extractor.extract(sentence,{
+ const key_word = keyword_extractor.extract(sentence,{
   language:"english",
   remove_digits: true,
   return_changed_case:true,
   return_chained_words:true,
   remove_duplicates: true
- });
- return keywords
+});
+
+const keywordArray = [];
+ key_word.map(item => {
+   return createKeyword({ name: item }, token).then(key => {
+     keywordArray.push(key)
+       setKeywords(keywordArray)
+   })
+
+ })
+
 }
 
+console.log(checkedKeywords)
 
-const showKeywords = () => {
-  return (
-    keyword &&
-    keyword.map((t, i) => (
-      <div>
-      <li key={i} className="list-unstyled">
-        <input
-          onChange={handleTagsToggle(t._id)}
-          type="checkbox"
-          className="mr-2"
-          checked
-        />
-        <label className="form-check-label">{t}</label>
-      </li>
-      </div>
-    ))
-  );
-};
 
-const addKeyword = () => {
-const keys = generateKeywords()
-setkeyword(keys)
-  keys.map(item => {
-    return create({ name: item }, token).then(tag => {
-   if(tag.error){
-     console.log('error while creating tags')
-   }else{
-     console.log("tag created", tag)
-   }
-    })
-  })
-}
 
 function SelectedTag(value) {
   setValues({ ...values, error: "" });
   setCheckedTag(value);
   formData.set("tags", value);
 
-  console.log(`Selected: ${value}`);
 }
 
 function SelectedCategory(value) {
   setValues({ ...values, error: "" });
    setChecked(value)
-  formData.set("categories", value);
+   formData.set("categories", value);
 
-  console.log(`Selected: ${value}`);
+}
+
+function SelectedKeyword(value) {
+  setValues({ ...values, error: "" });
+   setCheckedKeywords(value)
+   formData.set("keywords", value);
+
 }
 
 const tagsChildren = [];
 tags.map(item => {
   return tagsChildren.push(<Option  key={item._id}>{item.name}</Option>)
 })
+
 const categoryChildren = [];
 categories.map(item => {
   return categoryChildren.push(<Option  key={item._id}>{item.name}</Option>)
 })
 
+const keywordChildren = [];
+keywords && keywords.map(item => {
+  return keywordChildren.push(<Option  key={item._id}>{item.name}</Option>)
+})
 
+const disable = () => {
+  if(keywords.length > 0){
+    return true
+  }
+  return false;
+}
+console.log(disable())
 
   const createBlogForm = () => {
-       generateKeywords()
     return (
       <form onSubmit={publishBlog}>
         <div className="form-group">
-       
+
           <Input
             addonBefore='Title'
             type="text"
@@ -335,7 +268,7 @@ categories.map(item => {
         </div>
 
         <div>
-          <button type="submit" className="btn btn-info btn-block">
+          <button type="submit" className="btn btn-primary btn-block">
             Publish
           </button>
         </div>
@@ -363,7 +296,7 @@ categories.map(item => {
 
               <small className="text-muted">Max size: 1mb</small>
               <br />
-              <label className="btn btn-outline-info">
+              <label className="btn btn-outline-success btn-block">
                 Upload featured image
                 <input
                   onChange={handleChange("photo")}
@@ -376,17 +309,25 @@ categories.map(item => {
           </div>
           <div>
           <div>
-          {/*<Button onClick={addKeyword}>Add keywords</Button>*/}
-            <hr />
-            <div style={{ maxHeight: "200px", overflowY: "scroll" }}>
-            {showKeywords()}
-           </div>
-          </div>
+            <h5>Keywords</h5>
+          {<Button onClick={generateKeywords} block style={{ marginBottom: '5px!important'}} disabled={disable()}>Generate keywords</Button>}
+
+            <Select
+            mode="tags"
+            placeholder="Select Keywords"
+            defaultValue={[]}
+            showArrow={true}
+            filterOption={true}
+            onChange={SelectedKeyword}
+            style={{ width: '100%' }}
+            >
+            {keywordChildren}
+            </Select>
+            </div>
+            <br />
             <h5>Categories</h5>
             <Select
-
             mode="tags"
-            size={size}
             placeholder="Select Category"
             defaultValue={[]}
             showArrow={true}
@@ -403,7 +344,6 @@ categories.map(item => {
             <h5>Tags</h5>
             <Select
             mode="tags"
-            size={size}
             placeholder="Select Tags"
             defaultValue={[]}
             showArrow={true}

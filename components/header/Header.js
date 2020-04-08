@@ -214,7 +214,7 @@ margin-right:1px;
   border:0px solid white!important;
 }
 a{
-  color: black!important;
+
 }
 .heading-container{
       padding-top: 20px;

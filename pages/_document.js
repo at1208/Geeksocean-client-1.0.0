@@ -26,6 +26,7 @@ render() {
           <meta name="apple-mobile-web-app-capable" content="yes"/>
           <meta name="apple-mobile-web-app-status-bar-style" content="yes"/>
           <meta name="apple-mobile-web-app-title" content="Geeks Ocean"/>
+          <meta name="p:domain_verify" content="b2666a47ce2019ef96afa5b4b91da6a2"/>
           <link rel="alternate" href="https://geeksocean.com" hrefLang="en-us" />
           <link
             rel="stylesheet"

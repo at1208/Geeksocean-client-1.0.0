@@ -113,6 +113,7 @@ const SingleBlog = ({ blog, query }) => {
                 </a>
             </Link>
         ));
+ 
 
     const showRelatedBlog = () => {
         return related.map((blog, i) => (
@@ -187,6 +188,7 @@ const SingleBlog = ({ blog, query }) => {
                     <div className="p-1 mt-1 text-center">
                         {showBlogCategories(blog)}
                         {showBlogTags(blog)}
+
                     </div>
                 </main>
                 <hr />

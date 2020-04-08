@@ -5,6 +5,7 @@ import { withRouter } from 'next/router';
 import Layout from '../components/Layout';
 import { useState } from 'react';
 import { listBlogsWithCategoriesAndTags } from '../actions/blog';
+import { getKeywords } from '../actions/keyword';
 import Card from '../components/blog/Card';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 import Search from '../components/blog/Search'
@@ -30,8 +31,8 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
 
-            <meta property="og:image" content={`${DOMAIN}/static/images/seoblog.jpg`} />
-            <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/seoblog.jpg`} />
+            <meta property="og:image" content={`${DOMAIN}/static/images/home-logo.svg`} />
+            <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/home-logo.svg`} />
             <meta property="og:image:type" content="image/jpg" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
@@ -92,6 +93,8 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
         ));
     };
 
+
+
     const showLoadedBlogs = () => {
         return loadedBlogs.map((blog, i) => (
                 <Card blog={blog} key={i}/>
@@ -116,6 +119,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
                         <div className="pb-5 text-center">
                             {showAllCategories()}
                             {showAllTags()}
+
                         </div>
                     </section>
 
