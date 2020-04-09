@@ -165,15 +165,15 @@ const SingleBlog = ({ blog, query }) => {
                                                       </div>
                                                  </div>
                                                  <div className='col-md-4 row justify-content-center social-sharing'>
-                                                   <Facebook className='social-btn' url={`${DOMAIN}/blogs/${blog.slug}`}/>
+                                                   {/*<Facebook className='social-btn' url={`${DOMAIN}/blogs/${blog.slug}`}/>
                                                    <Twitter className='social-btn' />
                                                    <Pinterest className='social-btn' />
-                                                   <Linkedin className='social-btn' />
+                                                   <Linkedin className='social-btn' />*/}
                                                  </div>
 
                                             </div>
                                         </div>
-                   
+
                                     </section>
                                     <section>
                                         <div className="row justify-content-center" style={{ marginTop: '20px!important' }}>
