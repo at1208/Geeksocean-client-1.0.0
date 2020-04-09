@@ -95,10 +95,10 @@ const SingleBlog = ({ blog, query }) => {
     const showBlogCategories = blog =>
         blog.categories.map((c, i) => (
             <Link key={i} href={`/categories/${c.slug}`}>
-                <a className="mr-1 ml-1 mt-3"><Button className='show-blogs-category'>{c.name}</Button>
+                <a className=""><Button className='show-blogs-category'>{c.name}</Button>
                 <style global jsx>{`
                  .show-blogs-category{
-
+                margin:5px!important;
                  }
                   `}</style>
                   </a>
@@ -108,10 +108,10 @@ const SingleBlog = ({ blog, query }) => {
     const showBlogTags = blog =>
         blog.tags.map((t, i) => (
             <Link key={i} href={`/tags/${t.slug}`}>
-                <a className="mr-1 ml-1 mt-3"><Button className='show-blogs-tags'>{t.name}</Button>
+                <a className=""><Button className='show-blogs-tags'>{t.name}</Button>
                 <style global jsx>{`
                  .show-blogs-tags{
-
+                   margin:5px!important;
                  }
                   `}</style>
                 </a>
@@ -165,10 +165,10 @@ const SingleBlog = ({ blog, query }) => {
                                                       </div>
                                                  </div>
                                                  <div className='col-md-4 row justify-content-center social-sharing'>
-                                                   {/*<Facebook className='social-btn' url={`${DOMAIN}/blogs/${blog.slug}`}/>
+                                                   <Facebook className='social-btn' url={`${DOMAIN}/blogs/${blog.slug}`}/>
                                                    <Twitter className='social-btn' />
                                                    <Pinterest className='social-btn' />
-                                                   <Linkedin className='social-btn' />*/}
+                                                   <Linkedin className='social-btn' />
                                                  </div>
 
                                             </div>
@@ -224,6 +224,7 @@ const SingleBlog = ({ blog, query }) => {
                   }
                 .social-likes__widget{
                   margin: 7px!important;
+                  border-radius: 17.1875em;
                 }
                   .blog-comment{
                     padding-top:40px;
