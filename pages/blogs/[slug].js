@@ -166,9 +166,9 @@ const SingleBlog = ({ blog, query }) => {
                                                  </div>
                                                  <div className='col-md-4 row justify-content-center social-sharing'>
                                                    <Facebook   url={`${DOMAIN}/blogs/${blog.slug}`}/>
-                                                   <Twitter   />
-                                                   <Pinterest   />
-                                                   <Linkedin   />
+                                                   <Twitter  url={`${DOMAIN}/blogs/${blog.slug}`} />
+                                                   <Pinterest  url={`${DOMAIN}/blogs/${blog.slug}`} />
+                                                   <Linkedin  url={`${DOMAIN}/blogs/${blog.slug}`} />
                                                  </div>
 
                                             </div>
