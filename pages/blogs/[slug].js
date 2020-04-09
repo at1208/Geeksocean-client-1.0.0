@@ -165,10 +165,10 @@ const SingleBlog = ({ blog, query }) => {
                                                       </div>
                                                  </div>
                                                  <div className='col-md-4 row justify-content-center social-sharing'>
-                                                   <Facebook className='social-btn' url={`${DOMAIN}/blogs/${blog.slug}`}/>
-                                                   <Twitter className='social-btn' />
-                                                   <Pinterest className='social-btn' />
-                                                   <Linkedin className='social-btn' />
+                                                   <Facebook   url={`${DOMAIN}/blogs/${blog.slug}`}/>
+                                                   <Twitter   />
+                                                   <Pinterest   />
+                                                   <Linkedin   />
                                                  </div>
 
                                             </div>
@@ -222,10 +222,8 @@ const SingleBlog = ({ blog, query }) => {
                   .social-sharing{
                     padding-top:16px;
                   }
-                .social-likes__widget{
-                  margin: 7px!important;
-                  border-radius: 17.1875em;
-                }
+
+
                   .blog-comment{
                     padding-top:40px;
                   }

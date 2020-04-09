@@ -1,12 +1,21 @@
-import { FaPinterest } from "react-icons/fa";
+import {
+  PinterestShareButton,
+} from 'react-share';
+
+import {
+  PinterestIcon,
+} from 'react-share';
 
 const pinterest = (props) => {
-  return   <div className='skin skin_birman'>
-            <div className="social-likes social-likes_visible">
-              <div data-service="pinterest" data-url={props.url} title="Share link on pinterest" className="social-likes__widget social-likes__widget_pinterest social-likes__widget_notext" role='button' tabindex="0">
-              <FaPinterest />
-              </div>
-            </div>
+  return    <div className='social-btn'>
+         <PinterestShareButton url={props.url}>
+         <PinterestIcon size={30} round={true} />
+         </PinterestShareButton>
+         <style jsx>{`
+           .social-btn{
+             margin:3px;
+           }
+           `}</style>
           </div>
 
 }

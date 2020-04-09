@@ -1,12 +1,21 @@
-import { FaTwitter } from "react-icons/fa";
+import {
+  TwitterShareButton,
+} from 'react-share';
+
+import {
+  TwitterIcon,
+} from 'react-share';
 
 const twitter = (props) => {
-  return   <div className='skin skin_birman'>
-            <div className="social-likes social-likes_visible">
-              <div data-service="twitter" data-url={props.url} title="Share link on twitter" className="social-likes__widget social-likes__widget_twitter social-likes__widget_notext" role='button' tabindex="0">
-               <FaTwitter />
-              </div>
-            </div>
+  return     <div className='social-btn'>
+         <TwitterShareButton url={props.url}>
+         <TwitterIcon  size={30} round={true} />
+         </TwitterShareButton>
+         <style jsx>{`
+           .social-btn{
+             margin:3px;
+           }
+           `}</style>
           </div>
 
 }
