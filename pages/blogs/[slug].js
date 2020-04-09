@@ -297,7 +297,7 @@ const SingleBlog = ({ blog, query }) => {
                  .mark{
                    padding:1.2em!important;
                     background-color:white!important;
-                   margin-bottom:30px!important;
+                   margin-bottom:20px!important;
                  }
                  .user-container{
 
