@@ -12,7 +12,6 @@ import { Comment, Avatar, Form, Button, List, Input } from 'antd';
 import { userById } from '../../actions/user'
 import Facebook from '../../components/social/facebook'
 import Twitter from '../../components/social/twitter'
-import Pinterest from '../../components/social/pinterest'
 import Linkedin from '../../components/social/linkedin'
 
 const CommentList = ({ comments }) => {
@@ -174,7 +173,7 @@ const SingleBlog = ({ blog, query }) => {
                                                  <div className='col-md-4 row justify-content-center social-sharing'>
                                                    <Facebook   url={`${DOMAIN}/blogs/${blog.slug}`}/>
                                                    <Twitter  url={`${DOMAIN}/blogs/${blog.slug}`} />
-                                                   <Pinterest  url={`${DOMAIN}/blogs/${blog.slug}`} />
+
                                                    <Linkedin  url={`${DOMAIN}/blogs/${blog.slug}`} />
                                                  </div>
 

@@ -21,7 +21,7 @@ const Footer = () => {
 
           <div className='row justify-content-center'>
             <div className='col-md-4 ft-block-3'>
-              <a href='https://geeksocean.com' className='domain-name'>{DOMAIN}</a>
+              <a href='https://geeksocean.com' className='domain-name'>Geeks Ocean</a>
             </div>
             <div className='col-md-4 ft-block-4'>
             <a style={{ marginLeft:"10px", marginRight:"10px", color:"rgba(255, 255, 255, 0.7)!important"}}>About</a>
