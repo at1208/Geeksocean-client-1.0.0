@@ -51,6 +51,7 @@
     "react-toastify": "^5.5.0",
     "reactstrap": "^8.0.1",
     "sitemap": "^6.1.0",
+    "social-likes-next": "^1.1.0",
     "strip-ansi": "^6.0.0",
     "styled-components": "^5.0.1",
     "use-dark-mode": "^2.3.1",

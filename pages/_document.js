@@ -28,6 +28,8 @@ render() {
           <meta name="apple-mobile-web-app-title" content="Geeks Ocean"/>
           <meta name="p:domain_verify" content="b2666a47ce2019ef96afa5b4b91da6a2"/>
           <link rel="alternate" href="https://geeksocean.com" hrefLang="en-us" />
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-likes-next/dist/social-likes_birman.css"/>
+
           <link
             rel="stylesheet"
             defer
@@ -45,6 +47,7 @@ render() {
         <body>
           <Main />
           <NextScript />
+          <script src="https://unpkg.com/social-likes-next/dist/social-likes.min.js"></script>
         </body>
       </Html>
     );

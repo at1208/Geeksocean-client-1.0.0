@@ -10,6 +10,10 @@ import SmallCard from '../../components/blog/SmallCard';
 import BlogComment from '../../components/blog/BlogComment';
 import { Comment, Avatar, Form, Button, List, Input } from 'antd';
 import { userById } from '../../actions/user'
+import Facebook from '../../components/social/facebook'
+import Twitter from '../../components/social/twitter'
+import Pinterest from '../../components/social/pinterest'
+import Linkedin from '../../components/social/linkedin'
 
 const CommentList = ({ comments }) => {
   return <div className='container'>
@@ -113,7 +117,7 @@ const SingleBlog = ({ blog, query }) => {
                 </a>
             </Link>
         ));
- 
+
 
     const showRelatedBlog = () => {
         return related.map((blog, i) => (
@@ -134,34 +138,42 @@ const SingleBlog = ({ blog, query }) => {
                     <article>
                         <div className="container">
                             <section>
-                                <div className="container">
+                                <div className="container col-md-10">
                                     <h1 className="blog-title text-center  ">{blog.title}</h1>
                                     <section>
-                                        <p className="mark">
+                                        <div className="mark">
                                         <div className='row col container'>
-                                           <div className='img-container'>
-                                           <img
-                                               className=""
-                                               height={60}
-                                               width={60}
-                                               style={{ borderRadius: "60px" }}
-                                               src={pic}
-                                               alt='author'
+                                           <div className='col-md-8 row'>
+                                                <div className='img-container'>
+                                                   <img
+                                                       className=""
+                                                       height={60}
+                                                       width={60}
+                                                       style={{ borderRadius: "60px" }}
+                                                       src={pic}
+                                                       alt='author' />
+                                                </div>
+                                                 <div className='user-container'>
+                                                       <div className=''>
+                                                          <Link href={`/profile/${blog.postedBy.username}`}>
+                                                            <a>{blog.postedBy.name}</a>
+                                                           </Link>
+                                                       </div>
+                                                       <div className=''>
+                                                          {moment(blog.createdAt).fromNow()}
+                                                       </div>
+                                                      </div>
+                                                 </div>
+                                                 <div className='col-md-4 row justify-content-center social-sharing'>
+                                                   <Facebook className='social-btn' url={`${DOMAIN}/blogs/${blog.slug}`}/>
+                                                   <Twitter className='social-btn' />
+                                                   <Pinterest className='social-btn' />
+                                                   <Linkedin className='social-btn' />
+                                                 </div>
 
-                                           />
-                                           </div>
-                                           <div className='user-container'>
-                                             <div className=''>
-                                          <Link href={`/profile/${blog.postedBy.username}`}>
-                                               <a>{blog.postedBy.name}</a>
-                                           </Link>
-                                             </div>
-                                              <div className=''>
-                                                {moment(blog.createdAt).fromNow()}
-                                              </div>
-                                           </div>
+                                            </div>
                                         </div>
-                                        </p>
+                   
                                     </section>
                                     <section>
                                         <div className="row justify-content-center" style={{ marginTop: '20px!important' }}>
@@ -191,11 +203,11 @@ const SingleBlog = ({ blog, query }) => {
 
                     </div>
                 </main>
-                <hr />
 
                 <div className='blog-comment '>
                 <BlogComment id={blog} />
                 <CommentList comments={comments} />
+
                 </div>
 
                  <div className="container">
@@ -206,9 +218,15 @@ const SingleBlog = ({ blog, query }) => {
                  </div>
 
 
-                <style jsx>{`
+                <style global jsx>{`
+                  .social-sharing{
+                    padding-top:16px;
+                  }
+                .social-likes__widget{
+                  margin: 7px!important;
+                }
                   .blog-comment{
-             padding-top:40px;
+                    padding-top:40px;
                   }
                   .more-from-geeksocean{
                     font-family: 'Marmelad', sans-serif;
@@ -225,7 +243,7 @@ const SingleBlog = ({ blog, query }) => {
                  }
 
                  .blog-title{
-                   margin-bottom: 20px!important;
+                   margin-bottom: 30px!important;
                    font-size: 40px!important;
                    padding-top:10px;
                    letter-spacing: 1px;
@@ -278,7 +296,7 @@ const SingleBlog = ({ blog, query }) => {
                  .mark{
                    padding:1.2em!important;
                     background-color:white!important;
-                   margin-bottom:20px!important;
+                   margin-bottom:30px!important;
                  }
                  .user-container{
 
