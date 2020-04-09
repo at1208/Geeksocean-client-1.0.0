@@ -86,9 +86,15 @@ const SingleBlog = ({ blog, query }) => {
             <meta property="og:url" content={`${DOMAIN}/blogs/${query.slug}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
             <meta property="og:image" content={`${API}/blog/photo/${blog.slug}`} />
-            <meta property="og:image:secure_url" ccontent={`${API}/blog/photo/${blog.slug}`} />
+            <meta property="og:image:secure_url" content={`${API}/blog/photo/${blog.slug}`} />
             <meta property="og:image:type" content="image/jpg"  alt='author'/>
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
+
+            <meta name="twitter:card" content={`${API}/blog/photo/${blog.slug}`}/>
+            <meta name="twitter:title" content={`${blog.title}| ${APP_NAME}`} />
+            <meta name="twitter:url"  content={`${DOMAIN}/blogs/${query.slug}`}/>
+            <meta name="twitter:description" content={blog.mdesc}/>
+            <meta name="twitter:image" content={`${API}/blog/photo/${blog.slug}`} />
         </Head>
     );
 
