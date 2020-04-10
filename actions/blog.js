@@ -85,11 +85,7 @@ export const listRelated = blog => {
 export const list = username => {
     let listBlogsEndpoint;
 
-    if (username) {
-        listBlogsEndpoint = `${API}/${username}/blogs`;
-    } else {
-        listBlogsEndpoint = `${API}/blogs`;
-    }
+    listBlogsEndpoint = `${API}/${username}/blogs`;
 
     return fetch(`${listBlogsEndpoint}`, {
         method: 'GET'

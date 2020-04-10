@@ -26,6 +26,7 @@ const BlogRead = () => {
     }
 
     const loadBlogs = (username) => {
+      if(username){
         list(username).then(data => {
             if (data.error) {
                 console.log(data.error);
@@ -33,6 +34,8 @@ const BlogRead = () => {
                 setBlogs(data);
             }
         });
+      }
+
     };
 
     const deleteBlog = slug => {
@@ -106,7 +109,7 @@ const BlogRead = () => {
             );
         });
     };
-
+ 
     return (
         <>
             <div className="row blog-read-container">
