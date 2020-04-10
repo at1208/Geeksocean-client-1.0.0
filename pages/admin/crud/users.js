@@ -27,8 +27,7 @@ const getAllUsers = () => {
   })
 }
 
-    return <>
-    <Layout>
+    return <Layout>
         <Admin>
           <div className='container table-container'>
           <Table>
@@ -74,8 +73,6 @@ const getAllUsers = () => {
            `}</style>
                </Admin>
              </Layout>
-           </>
-
 }
 
 Users.getInitialProps = () => {

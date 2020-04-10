@@ -16,11 +16,30 @@ const Layout = ({ children }) => {
           <div className='content'>
             {children}
           </div>
-            <Footer />
+
+              <Footer />
+
           <style global jsx>{`
            .page-container{
-
+             display: flex;
+               flex-direction: column;
+               min-height: 100vh;
            }
+
+
+footer {
+  height:100px!important;
+  background-color:#f5f5f5;
+  flex:1;
+  grid-row: 2 / 3;
+
+}
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
 
             `}</style>
 

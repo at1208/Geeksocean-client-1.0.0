@@ -3,8 +3,7 @@ import Layout from '../../../components/Layout';
 import {Button} from 'antd';
 
 const Marketing = () => {
-  return <>
-       <Layout>
+  return <Layout>
           <div className='container text-center'>
              <div className='col row justify-content-center'>
                  <div className='col-md-6'>
@@ -20,6 +19,5 @@ const Marketing = () => {
 }
             `}</style>
        </Layout>
-         </>
 }
 export default Marketing;
