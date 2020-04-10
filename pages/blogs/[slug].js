@@ -250,7 +250,7 @@ const SingleBlog = ({ blog, query }) => {
                  .blog-title{
                    margin-bottom: 30px!important;
                    font-size: 40px!important;
-                   padding-top:10px;
+                   padding-top:65px;
                    letter-spacing: 1px;
                    word-spacing: 2px;
                    font-family: 'EB Garamond', serif!important;
