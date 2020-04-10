@@ -5,7 +5,7 @@ import { listSearch } from '../../actions/blog';
 import Router, { withRouter } from 'next/router';
 import { Input, Button } from 'antd';
 import { IoMdSearch } from "react-icons/io";
-
+import { useMediaQuery } from 'react-responsive'
 
 
 const Search = ({ router }) => {
@@ -63,9 +63,18 @@ const Search = ({ router }) => {
         );
     };
 
-    const searchForm = () => (
-        <form onSubmit={searchSubmit}>
-            <div className="row col justify-content-center">
+    const searchForm = () => {
+      const isMobileOrTablet = useMediaQuery({  query: '(max-device-width: 766px)' })
+
+      const searchMobileCss = () => {
+        if(isMobileOrTablet){
+          return "margin-top: 70px;"
+        }
+        return;
+      }
+
+      return <form onSubmit={searchSubmit}>
+            <div className="row col justify-content-center searchBox">
 
                     <Input type="search"  placeholder="Search geek article" onChange={handleChange} className='search-input col-9' />
                     <IoMdSearch  className='search-icon col-2' type="submit" onClick={searchSubmit} />
@@ -75,8 +84,11 @@ const Search = ({ router }) => {
               .search-icon{
                 font-size: 43px!important;
                 margin-top:10px;
-                margin-bottom:40px;
+                margin-bottom:20px;
 
+              }
+              .searchBox{
+                ${searchMobileCss()}
               }
               .search-input{
                 height: 50px!important;
@@ -91,7 +103,7 @@ const Search = ({ router }) => {
 
               `}</style>
         </form>
-    );
+    };
 
     return (
         <div className="container">

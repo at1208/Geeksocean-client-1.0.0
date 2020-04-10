@@ -2,6 +2,7 @@ import {useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
+
 import {ListItemIcon,
         ListItemText,
         ListItem,List,
@@ -103,6 +104,7 @@ const useStyles = makeStyles(theme => ({
 const MiniDrawer = () => {
 
   const isDesktopOrLaptop = useMediaQuery({  query: '(min-device-width: 767px)' })
+  const isMobileOrTablet = useMediaQuery({  query: '(max-device-width: 766px)' })
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -113,6 +115,22 @@ const MiniDrawer = () => {
     setOpen(false);
   };
 
+const mobileCss = () =>{
+  if(isMobileOrTablet){
+    return { bg: "background-color:#0c1858;",
+             zIndex:  "z-index: 100;",
+             paddTop: "padding-top: 0px;",
+             pos: "position: fixed!important;",
+             top: "top: 0;",
+             wid: "width: 100%;",
+             logoColor:"color: white;",
+             drawerColor: "color: white;"
+             }
+  }
+  return;
+}
+const mStyle = mobileCss()
+
   return (
      <>
     <div>
@@ -120,6 +138,7 @@ const MiniDrawer = () => {
    <Toolbar className='container heading-container'>
 
 {!isDesktopOrLaptop &&  <>
+
    <IconButton
        color="inherit"
        aria-label="open drawer"
@@ -133,6 +152,7 @@ const MiniDrawer = () => {
        <a className='logo-style'>Geeks Ocean</a>
     </Link>
 </Typography>
+
 </>}
 
    <div className='row col '>
@@ -199,6 +219,7 @@ const MiniDrawer = () => {
     </div>
     <style global jsx>{`
 
+
 .drawer-icons{
  font-size: 23px;
 }
@@ -217,15 +238,19 @@ a{
 
 }
 .heading-container{
-      padding-top: 20px;
+  padding-top: 10px;
+  ${mStyle && mStyle.bg}
+  ${mStyle && mStyle.zIndex}
+  ${mStyle && mStyle.paddTop}
 }
 .MuiTypography-noWrap{
   padding-left:5px;
-  padding-top:10px;
+  padding-top:0px;
 }
 .logo-style{
 font-family: 'Philosopher', sans-serif;
 font-size:30px;
+${mStyle && mStyle.logoColor}
 
 }
 .get-started{
@@ -238,8 +263,12 @@ font-size:30px;
   height:35px!important;
 }
 .MuiToolbar-root{
+  ${mStyle && mStyle.pos}
+  ${mStyle && mStyle.top}
+  ${mStyle && mStyle.wid}
 }
 .MuiSvgIcon-root {
+  color: white;
   font-size: 2.2rem!important;
 }
 .MuiTypography-h6{
