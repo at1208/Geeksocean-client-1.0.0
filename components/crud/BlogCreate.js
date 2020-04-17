@@ -309,11 +309,11 @@ console.log(disable())
           </div>
           <div>
           <div>
-            <h5>Keywords</h5>
-           <small>Note: genrate keywords just before publish</small>
-          {<Button onClick={generateKeywords} block disabled={disable()} className="generate">Generate keywords</Button>}
+          {/*  <h5>Keywords</h5>
+           <small>Note: genrate keywords just before publish</small>*/}
+          {/*<Button onClick={generateKeywords} block disabled={disable()} className="generate">Generate keywords</Button>*/}
 
-            <Select
+          {/*  <Select
             mode="tags"
             placeholder="Select Keywords"
             defaultValue={[]}
@@ -323,7 +323,7 @@ console.log(disable())
             style={{ width: '100%' }}
             >
             {keywordChildren}
-            </Select>
+            </Select>*/}
             </div>
             <br />
             <h5>Categories</h5>
