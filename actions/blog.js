@@ -137,7 +137,7 @@ export const removeBlog = (slug, token) => {
 };
 
 
-//UPLOAD BLOG
+//UPDATE BLOG
 export const updateBlog = (blog, token, slug) => {
     let updateBlogEndpoint;
 

@@ -26,7 +26,6 @@ const BlogUpdate = ({ router }) => {
         error: '',
         success: '',
         formData: '',
-        title: '',
         body: '',
         loading: false
     });
@@ -44,6 +43,7 @@ const BlogUpdate = ({ router }) => {
     const initBlog = () => {
         if (router.query.slug) {
             singleBlog(router.query.slug).then(data => {
+              console.log(data)
                 if (data.error) {
                     console.log(data.error);
                 } else {
@@ -55,6 +55,9 @@ const BlogUpdate = ({ router }) => {
             });
         }
     };
+
+
+
 
     const setCategoriesArray = blogCategories => {
         let ca = [];
@@ -176,6 +179,9 @@ const BlogUpdate = ({ router }) => {
         );
     };
 
+
+
+
     const handleChange = name => e => {
         // console.log(e.target.value);
         const value = name === 'photo' ? e.target.files[0] : e.target.value;
@@ -194,15 +200,15 @@ const BlogUpdate = ({ router }) => {
             if (data.error) {
                 setValues({ ...values, error: data.error, loading: false });
             } else {
+
                 setValues({
                     ...values,
                     loading: false,
-                    title: '',
                     success: `Blog titled "${data.title}" is successfully updated`
                 });
                 if (isAuth() && isAuth().role === 1) {
-                    // Router.replace(`/admin/crud/${router.query.slug}`);
-                    Router.replace(`/admin`);
+                    Router.replace(`/admin/crud/${router.query.slug}`);
+                    // Router.replace(`/admin`);
                 } else if (isAuth() && isAuth().role === 0) {
                     // Router.replace(`/user/crud/${router.query.slug}`);
                     Router.replace(`/user`);
