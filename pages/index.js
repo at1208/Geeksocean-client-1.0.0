@@ -7,9 +7,13 @@ import { useState } from 'react';
 import { listBlogsWithCategoriesAndTags } from '../actions/blog';
 import { getKeywords } from '../actions/keyword';
 import Card from '../components/blog/Card';
+import LazyLoad from 'react-lazyload';
+// import { Skeleton } from 'antd';
+
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 import Search from '../components/blog/Search'
 import { Button } from 'antd'
+
 
 
 
@@ -41,6 +45,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
     const [skip, setSkip] = useState(0);
     const [size, setSize] = useState(totalBlogs);
     const [loadedBlogs, setLoadedBlogs] = useState([]);
+    // const [load, setLoad] = useState([]);
 
     const loadMore = () => {
         let toSkip = skip + limit;
@@ -68,9 +73,12 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
     const showAllBlogs = () => {
         return blogs.map((blog, i) => {
+
             return (
                 <article key={i}>
+                <LazyLoad height={400} throttle={400}>
                     <Card blog={blog} />
+                 </LazyLoad>
                 </article>
             );
         });
@@ -93,12 +101,12 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
     };
 
 
-
     const showLoadedBlogs = () => {
-        return loadedBlogs.map((blog, i) => (
+        return loadedBlogs.map((blog, i) => {
                 <Card blog={blog} key={i}/>
-        ));
+        });
     };
+
 
     return (
         <>
@@ -111,7 +119,9 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
                             <Search />
                     </div>
 
-                    <div className="showall container">{showAllBlogs()}</div>
+                    <div className="showall container">
+                       {showAllBlogs()}
+                    </div>
                     <div className="container">{showLoadedBlogs()}</div>
                     <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
                     <section>
@@ -152,7 +162,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
 Blogs.getInitialProps = () => {
     let skip = 0;
-    let limit = 10;
+    let limit = 100;
     return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
         if (data.error) {
             console.log(data.error);

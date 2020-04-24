@@ -14,6 +14,8 @@ import Facebook from '../../components/social/facebook'
 import Twitter from '../../components/social/twitter'
 import Linkedin from '../../components/social/linkedin'
 
+
+
 const CommentList = ({ comments }) => {
   return <div className='container'>
   <List
@@ -172,7 +174,6 @@ const SingleBlog = ({ blog, query }) => {
                                                  <div className='col-md-4 row justify-content-center social-sharing'>
                                                    <Facebook   url={`${DOMAIN}/blogs/${blog.slug}`}/>
                                                    <Twitter  url={`${DOMAIN}/blogs/${blog.slug}`} />
-
                                                    <Linkedin  url={`${DOMAIN}/blogs/${blog.slug}`} />
                                                  </div>
 
@@ -181,6 +182,7 @@ const SingleBlog = ({ blog, query }) => {
 
                                     </section>
                                     <section>
+
                                         <div className="row justify-content-center" style={{ marginTop: '20px!important' }}>
                                             <img
                                                 src={`${API}/blog/photo/${blog.slug}`}
@@ -188,6 +190,7 @@ const SingleBlog = ({ blog, query }) => {
                                                 className="img img-fluid "
                                             />
                                         </div>
+
                                     </section>
 
 

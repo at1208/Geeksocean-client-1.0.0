@@ -6,6 +6,7 @@ import { API } from '../../config';
 import { Button } from 'antd';
 import { userById } from '../../actions/user'
 
+
 const Card = ({ blog }) => {
 
   const [pic, setPic] =useState('');
@@ -35,9 +36,10 @@ const Card = ({ blog }) => {
        init(blog);
      }, [])
 
-    return (
+   return (
 
         <div className="blog-container card shadow ">
+
             <header>
                 <a href={`/blogs/${blog.slug}`}>
                     <h1 className="blog-title text-center">
