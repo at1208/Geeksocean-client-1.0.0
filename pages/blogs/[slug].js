@@ -88,7 +88,6 @@ const SingleBlog = ({ blog, query }) => {
             <meta property="og:image:secure_url" content={`${API}/blog/photo/${blog.slug}`} />
             <meta property="og:image:type" content="image/jpg"  alt='author'/>
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
-
             <meta name="twitter:card" content={`${API}/blog/photo/${blog.slug}`} />
             <meta name="twitter:site" content={`${APP_NAME}`} />
             <meta name="twitter:title" content={`${blog.title}| ${APP_NAME}`} />
@@ -151,13 +150,13 @@ const SingleBlog = ({ blog, query }) => {
                                         <div className='row col container'>
                                            <div className='col-md-8 row'>
                                                 <div className='img-container'>
-                                                   <img
+                                                  {/*<img
                                                        className=""
                                                        height={60}
                                                        width={60}
                                                        style={{ borderRadius: "60px" }}
                                                        src={pic}
-                                                       alt='author' />
+                                                       alt='author' />*/}
                                                 </div>
                                                  <div className='user-container'>
                                                        <div className=''>

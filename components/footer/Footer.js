@@ -28,7 +28,6 @@ const Footer = () => {
             <a style={{ marginLeft:"10px", marginRight:"10px"}}>Help</a>
             <a href="/contact" style={{ marginLeft:"10px", marginRight:"10px"}}>Contact us</a>
             <a href="/privacy-policy" style={{ marginLeft:"10px", marginRight:"10px"}}>Privacy policy</a>
-            <a href="/keydetail/all" style={{ marginLeft:"10px", marginRight:"10px"}}>keywords</a>
             </div>
           </div>
 

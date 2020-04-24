@@ -12,13 +12,14 @@ import {ListItemIcon,
         CssBaseline,
         Typography } from '@material-ui/core';
 
-
 import { AiFillRead, AiFillGift } from "react-icons/ai";
 import { TiContacts } from "react-icons/ti";
 import { GoSignIn, GoSignOut } from "react-icons/go";
 import { IoIosCreate,IoMdSettings } from "react-icons/io";
 import { FaUserCircle,FaUserCheck,FaUsers,FaUser,FaTags,FaThLarge  } from "react-icons/fa";
 import { MdDeleteSweep,MdHelp,MdPublic } from "react-icons/md";
+import { DiGoogleAnalytics} from "react-icons/di";
+
 import {Button} from 'antd'
 import { useMediaQuery } from 'react-responsive'
 
@@ -134,7 +135,6 @@ const MiniDrawer = () => {
   return (
      <>
     <div>
-
    <Toolbar className='container heading-container'>
 
 {!isDesktopOrLaptop &&  <>
@@ -202,15 +202,19 @@ const MiniDrawer = () => {
       <Link  href="/admin/crud/offerletter">
       <a><Button className='heading-button'><AiFillGift className='heading-icons' style={{ color: "#cf1322"}}/>Offer letter</Button></a>
      </Link>
-     <Link  href="/admin/crud/marketing">
+    {/*<Link  href="/admin/crud/marketing">
      <a><Button className='heading-button'><MdPublic className='heading-icons' style={{ color: "#40a9ff"}}/>Marketing</Button></a>
-    </Link>
+    </Link>*/}
       <Link  href="/admin/crud/users">
       <a><Button className='heading-button'><FaUsers className='heading-icons' style={{ color: "#13c2c2"}}/>Users</Button></a>
       </Link>
+      <Link  href="/admin/analytics">
+     <a><Button className='heading-button'><DiGoogleAnalytics className='heading-icons' style={{ color: "#f4511e"}}/>Analytics</Button></a>
+     </Link>
        <Link  href="/user/setting">
       <a><Button className='heading-button'><IoMdSettings className='heading-icons' style={{ color: "#434343"}}/>Setting</Button></a>
       </Link>
+
   </div>}
   {isDesktopOrLaptop && <div className='container'>
     <hr />
@@ -242,9 +246,6 @@ a{
   ${mStyle && mStyle.bg}
   ${mStyle && mStyle.zIndex}
   ${mStyle && mStyle.paddTop}
-
-
-
 }
 .MuiTypography-noWrap{
   padding-left:5px;
@@ -265,7 +266,7 @@ font-size:30px;
   height:35px!important;
 }
 .MuiToolbar-root{
- 
+
   width: 100%
 }
 .MuiSvgIcon-root {
