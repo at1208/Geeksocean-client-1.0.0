@@ -18,6 +18,7 @@ import keyword_extractor from "keyword-extractor";
 import { Select, Radio } from 'antd';
 const { Option } = Select;
 const token = getCookie('token');
+import Preview from './preview'
 
 
 
@@ -40,14 +41,10 @@ const CreateBlog = ({ router }) => {
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
   const [keywords, setKeywords] = useState([]);
-
-
-
   const [checked, setChecked] = useState([]); // categories
   const [checkedTag, setCheckedTag] = useState([]); // tags
   const [checkedKeywords, setCheckedKeywords] = useState([]); //keywords
-
-
+  const [featuredImage, setFeatureImage] = useState();
   const [body, setBody] = useState(blogFromLS());
   const [values, setValues] = useState({
     error: "",
@@ -130,6 +127,7 @@ const CreateBlog = ({ router }) => {
 
   const handleChange = name => e => {
     const value = name === "photo" ? e.target.files[0] : e.target.value;
+    setFeatureImage(value);
     formData.set(name, value);
     setValues({ ...values, [name]: value, formData, error: "" });
   };
@@ -192,7 +190,7 @@ const keywordArray = [];
 
 }
 
-console.log(checkedKeywords)
+
 
 
 
@@ -238,7 +236,7 @@ const disable = () => {
   }
   return false;
 }
-console.log(disable())
+
 
   const createBlogForm = () => {
     return (
@@ -275,6 +273,7 @@ console.log(disable())
       </form>
     );
   };
+
 
   return (
     <div className="container-fluid pb-5">
@@ -353,8 +352,9 @@ console.log(disable())
             >
             {tagsChildren}
             </Select>
+            <hr />
           </div>
-
+        <Preview body={body} photo={featuredImage} title={title}/>
         </div>
       </div>
       <style global jsx>{`

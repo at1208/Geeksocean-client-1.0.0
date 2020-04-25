@@ -23,13 +23,6 @@ const Search = ({ router }) => {
         listSearch({ search }).then(data => {
             setValues({ ...values, results: data, searched: true, message: `${data.length} blogs found` });
         });
-        // show search result on different page
-        // https://www.udemy.com/instructor/communication/qa/8593208/detail/
-
-        // Router.push({
-        //     pathname: '/search',
-        //     query: { searchQuery: search }
-        // });
     };
 
     const handleChange = e => {
@@ -68,15 +61,14 @@ const Search = ({ router }) => {
 
       const searchMobileCss = () => {
         if(isMobileOrTablet){
-          return "margin-top: 70px;"
+          return "margin-top: 30px;"
         }
         return;
       }
 
       return <form onSubmit={searchSubmit}>
             <div className="row col justify-content-center searchBox">
-
-                    <Input type="search"  placeholder="Search geek article" onChange={handleChange} className='search-input col-9' />
+                    <Input type="search"  placeholder="Search Geek Articles" onChange={handleChange} className='search-input col-9' />
                     <IoMdSearch  className='search-icon col-2' type="submit" onClick={searchSubmit} />
 
             </div>
