@@ -33,7 +33,7 @@ const CommentList = ({ comments }) => {
 const SingleBlog = ({ blog, query }) => {
     const [related, setRelated] = useState([]);
     const [comments, setComments] = useState([])
-    const [pic, setPic] =useState('');
+    const [userName, setUserName] = useState('');
 
 
     const loadRelated = () => {
@@ -64,7 +64,9 @@ const SingleBlog = ({ blog, query }) => {
 
     const init = (blog) => {
           userById(blog.postedBy._id)
-          .then((res) => setPic(res.user.picture))
+          .then((res) => {
+            setUserName(res.user.username)
+          })
           .catch(err => console.log(err))
     }
 
@@ -73,6 +75,10 @@ const SingleBlog = ({ blog, query }) => {
         loadRelated();
         getComments()
     }, []);
+
+
+
+
 
     const head = () => (
         <Head>
@@ -152,13 +158,13 @@ const SingleBlog = ({ blog, query }) => {
                                         <div className='row col container'>
                                            <div className='col-md-8 row'>
                                                 <div className='img-container'>
-                                                  {/*<img
+                                                  {<img
                                                        className=""
-                                                       height={60}
-                                                       width={60}
+                                                       height={80}
+                                                       width={80}
                                                        style={{ borderRadius: "60px" }}
-                                                       src={pic}
-                                                       alt='author' />*/}
+                                                       src={`${API}/user/photo/${userName}`}
+                                                       alt='' />}
                                                 </div>
                                                  <div className='user-container'>
                                                        <div className=''>

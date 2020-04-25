@@ -4,6 +4,9 @@ import Router from 'next/router';
 import { getCookie, isAuth, updateUser } from '../../actions/auth';
 import { getProfile, update } from '../../actions/user';
 import { API } from '../../config';
+import { Input } from 'antd'
+
+const { TextArea } = Input;
 
 const ProfileUpdate = () => {
     const [values, setValues] = useState({
@@ -29,6 +32,7 @@ const ProfileUpdate = () => {
             if (data.error) {
                 setValues({ ...values, error: data.error });
             } else {
+              console.log(data)
                 setValues({
                     ...values,
                     username: data.username,
@@ -81,30 +85,26 @@ const ProfileUpdate = () => {
     const profileUpdateForm = () => (
         <form onSubmit={handleSubmit}>
             <div className="form-group">
-                <label className="btn btn-outline-info">
-                    Profile photo
+                <label className="btn btn-outline-info btn-sm">
+                    Change profile picture
                     <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
                 </label>
             </div>
             <div className="form-group">
-                <label className="text-muted">Username</label>
-                <input onChange={handleChange('username')} type="text" value={username} className="form-control" />
+                <Input addonBefore="Username"  onChange={handleChange('username')} type="text" value={username}   />
             </div>
             <div className="form-group">
-                <label className="text-muted">Name</label>
-                <input onChange={handleChange('name')} type="text" value={name} className="form-control" />
-            </div>
-            {/*<div className="form-group">
-                <label className="text-muted">Email</label>
-                <input onChange={handleChange('email')} type="text" value={email} className="form-control" />
-            </div>*/}
-            <div className="form-group">
-                <label className="text-muted">About</label>
-                <textarea onChange={handleChange('about')} type="text" value={about} className="form-control" />
+                <Input addonBefore="Name" onChange={handleChange('name')} type="text" value={name} className="" />
             </div>
             <div className="form-group">
-                <label className="text-muted">Password</label>
-                <input onChange={handleChange('password')} type="password" value={password} className="form-control" />
+
+                <Input addonBefore="Email" onChange={handleChange('email')} type="text" value={email} className="" disabled/>
+            </div>
+            <div className="form-group">
+                <TextArea  placeholder="Bio" onChange={handleChange('about')} type="text" value={about} className="" />
+            </div>
+            <div className="form-group">
+                <Input addonBefore="Change password" onChange={handleChange('password')} type="password" value={password} className="" />
             </div>
             <div>
                 {showSuccess()}
@@ -112,7 +112,7 @@ const ProfileUpdate = () => {
                 {showLoading()}
             </div>
             <div>
-                <button type="submit" className="btn btn-primary" disabled={!username || !name || !email}>
+                <button type="submit" className="btn btn-info btn-sm" disabled={!username || !name || !email}>
                     Update
                 </button>
             </div>
@@ -143,7 +143,7 @@ const ProfileUpdate = () => {
                 <div className="row">
                     <div className="col-md-4">
                         <img
-                            src={picture}
+                            src={`${API}/user/photo/am`}
                             className="img img-fluid img-thumbnail mb-3"
                             style={{ maxHeight: 'auto', maxWidth: '100%' }}
                             alt="user profile"

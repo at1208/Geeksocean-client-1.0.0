@@ -34,7 +34,7 @@ export const getProfile = token => {
 // UPDATE PROFILE
 export const update = (token, user) => {
     return fetch(`${API}/user/update`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
