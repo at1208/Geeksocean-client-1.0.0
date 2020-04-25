@@ -60,7 +60,7 @@ const UserProfile = ({ user, blogs, query }) => {
                                         </div>
                                         <div className="col-md-4">
                                             <img
-                                                src={user.picture}
+                                                src={`${API}/user/photo/${user.username}`}
                                                 className="img img-fluid img-thumbnail mb-3"
                                                 style={{ maxHeight: '100px', maxWidth: '100%' }}
                                                 alt=" "
