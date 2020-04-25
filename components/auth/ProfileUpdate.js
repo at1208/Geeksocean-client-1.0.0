@@ -78,6 +78,9 @@ const ProfileUpdate = () => {
                         loading: false
                     });
                 });
+                if(process.browser){
+                  location.reload();
+                }
             }
         });
     };
