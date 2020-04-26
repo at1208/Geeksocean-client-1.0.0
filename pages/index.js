@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { listBlogsWithCategoriesAndTags } from '../actions/blog';
 import { getKeywords } from '../actions/keyword';
 import Card from '../components/blog/Card';
-import LazyLoad from 'react-lazyload';
+ 
 // import { Skeleton } from 'antd';
 
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
@@ -76,9 +76,9 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
             return (
                 <article key={i}>
-                <LazyLoad height={400} throttle={400}>
+
                     <Card blog={blog} />
-                 </LazyLoad>
+
                 </article>
             );
         });
