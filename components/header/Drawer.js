@@ -16,7 +16,7 @@ import { AiFillRead, AiFillGift } from "react-icons/ai";
 import { TiContacts } from "react-icons/ti";
 import { GoSignIn, GoSignOut } from "react-icons/go";
 import { IoIosCreate,IoMdSettings } from "react-icons/io";
-import { FaUserCircle,FaUserCheck,FaUsers,FaUser,FaTags,FaFirstdraft } from "react-icons/fa"; 
+import { FaUserCircle,FaUserCheck,FaUsers,FaUser,FaTags,FaFirstdraft } from "react-icons/fa";
 import { MdDeleteSweep,MdHelp,MdPublic } from "react-icons/md";
 import GoogleLogin from './../auth/LoginGoogle';
 import FacebookLogin from './../auth/LoginFacebook';
@@ -107,7 +107,10 @@ class Sidebar extends React.Component {
 
 
         {isAuth() && isAuth().role===1 && <Link  href="/admin/draft">
-          <a><Button className='heading-button'><FaFirstdraft className='heading-icons' style={{ color: "#00e5ff"}}/>Draft</Button></a>
+        <ListItem button>
+                <ListItemIcon><FaFirstdraft className='drawer-icons' style={{ color: "#00e5ff"}}/></ListItemIcon>
+                <ListItemText >Draft</ListItemText>
+              </ListItem>
         </Link>}
 
           { isAuth() && isAuth().role===1 &&
@@ -118,13 +121,13 @@ class Sidebar extends React.Component {
                   </ListItem>
             </Link>}
 
-            { isAuth() && isAuth().role===1 &&
+            {/* isAuth() && isAuth().role===1 &&
               <Link  href="/admin/crud/offerletter">
               <ListItem button>
                       <ListItemIcon><MdPublic className='drawer-icons' style={{ color: "#40a9ff"}}/></ListItemIcon>
                       <ListItemText >Marketing</ListItemText>
                     </ListItem>
-              </Link>}
+              </Link>*/}
 
 
 

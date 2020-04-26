@@ -114,7 +114,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
             <Layout>
 
-
+            <div className='container-fluid'>
                     <div className="show-blogs">
                             <Search />
                     </div>
@@ -131,7 +131,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
                         </div>
                     </section>
-
+          </div>
             </Layout>
 
             <style global jsx>{`
