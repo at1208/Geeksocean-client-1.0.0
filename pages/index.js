@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { listBlogsWithCategoriesAndTags } from '../actions/blog';
 import { getKeywords } from '../actions/keyword';
 import Card from '../components/blog/Card';
- 
+
 // import { Skeleton } from 'antd';
 
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
@@ -162,7 +162,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
 Blogs.getInitialProps = () => {
     let skip = 0;
-    let limit = 100;
+    let limit = 10;
     return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
         if (data.error) {
             console.log(data.error);
