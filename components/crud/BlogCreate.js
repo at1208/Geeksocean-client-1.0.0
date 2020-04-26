@@ -290,7 +290,7 @@ categories.map(item => {
 
         <div className="form-group mb-5">
         <button  onClick={savedDraftBlog} className="btn btn-outline-info btn-block btn-sm">
-          Save a draft
+          Save as a draft
         </button>
         </div>
 
