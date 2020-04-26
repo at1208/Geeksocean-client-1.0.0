@@ -7,13 +7,14 @@ import { getCookie, isAuth } from "../../actions/auth";
 import { getCategories } from "../../actions/category";
 import { getTags } from "../../actions/tag";
 import { createBlog } from "../../actions/blog";
-import { createKeyword, getKeywords } from '../../actions/keyword';
+import { createDraft } from "../../actions/draft";
+// import { createKeyword, getKeywords } from '../../actions/keyword';
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "../../node_modules/react-quill/dist/quill.snow.css";
 import { QuillModules, QuillFormats } from "../../helpers/quill";
 import {Button, Input,Checkbox} from 'antd';
 import htmlToText from 'html-to-text';
-import keyword_extractor from "keyword-extractor";
+// import keyword_extractor from "keyword-extractor";
 // import { create } from '../../actions/tag';
 import { Select, Radio } from 'antd';
 const { Option } = Select;
@@ -40,10 +41,10 @@ const CreateBlog = ({ router }) => {
 
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
-  const [keywords, setKeywords] = useState([]);
+  // const [keywords, setKeywords] = useState([]);
   const [checked, setChecked] = useState([]); // categories
   const [checkedTag, setCheckedTag] = useState([]); // tags
-  const [checkedKeywords, setCheckedKeywords] = useState([]); //keywords
+  // const [checkedKeywords, setCheckedKeywords] = useState([]); //keywords
   const [featuredImage, setFeatureImage] = useState();
   const [body, setBody] = useState(blogFromLS());
   const [values, setValues] = useState({
@@ -119,11 +120,37 @@ const CreateBlog = ({ router }) => {
         setBody("");
         setCategories([]);
         setTags([]);
-        setKeywords([]);
+        // setKeywords([]);
 
       }
     });
   };
+
+
+  const savedDraftBlog = e => {
+        setValues({ ...values, loading: true });
+        e.preventDefault();
+
+        createDraft(formData, token).then(data => {
+          if (data.error) {
+            setValues({ ...values, error: data.error, loading: false });
+          } else {
+            console.log(data)
+            setValues({
+              ...values,
+              loading: false,
+              title: "",
+              error: "",
+              success: `"${data.title}" is saved a draft`
+            });
+            setBody("");
+            setCategories([]);
+            setTags([]);
+            // setKeywords([]);
+
+          }
+        });
+  }
 
   const handleChange = name => e => {
     const value = name === "photo" ? e.target.files[0] : e.target.value;
@@ -169,26 +196,26 @@ const CreateBlog = ({ router }) => {
     </div>
   );
 
-const generateKeywords = () => {
- const sentence = htmlToText.fromString(body)
- const key_word = keyword_extractor.extract(sentence,{
-  language:"english",
-  remove_digits: true,
-  return_changed_case:true,
-  return_chained_words:true,
-  remove_duplicates: true
-});
+// const generateKeywords = () => {
+//  const sentence = htmlToText.fromString(body)
+//  const key_word = keyword_extractor.extract(sentence,{
+//   language:"english",
+//   remove_digits: true,
+//   return_changed_case:true,
+//   return_chained_words:true,
+//   remove_duplicates: true
+// });
 
-const keywordArray = [];
- key_word.map(item => {
-   return createKeyword({ name: item }, token).then(key => {
-     keywordArray.push(key)
-       setKeywords(keywordArray)
-   })
-
- })
-
-}
+// const keywordArray = [];
+//  key_word.map(item => {
+//    return createKeyword({ name: item }, token).then(key => {
+//      keywordArray.push(key)
+//        setKeywords(keywordArray)
+//    })
+//
+//  })
+//
+// }
 
 
 
@@ -208,12 +235,12 @@ function SelectedCategory(value) {
 
 }
 
-function SelectedKeyword(value) {
-  setValues({ ...values, error: "" });
-   setCheckedKeywords(value)
-   formData.set("keywords", value);
-
-}
+// function SelectedKeyword(value) {
+//   setValues({ ...values, error: "" });
+//    setCheckedKeywords(value)
+//    formData.set("keywords", value);
+//
+// }
 
 const tagsChildren = [];
 tags.map(item => {
@@ -225,17 +252,17 @@ categories.map(item => {
   return categoryChildren.push(<Option  key={item._id}>{item.name}</Option>)
 })
 
-const keywordChildren = [];
-keywords && keywords.map(item => {
-  return keywordChildren.push(<Option  key={item._id}>{item.name}</Option>)
-})
+// const keywordChildren = [];
+// keywords && keywords.map(item => {
+//   return keywordChildren.push(<Option  key={item._id}>{item.name}</Option>)
+// })
 
-const disable = () => {
-  if(keywords.length > 0){
-    return true
-  }
-  return false;
-}
+// const disable = () => {
+//   if(keywords.length > 0){
+//     return true
+//   }
+//   return false;
+// }
 
 
   const createBlogForm = () => {
@@ -256,14 +283,17 @@ const disable = () => {
             modules={QuillModules}
             formats={QuillFormats}
             value={body}
-            placeholder="Write something amazing..."
+            placeholder="Write here ..."
             onChange={handleBody}
           />
         </div>
 
-        <div className="form-group">
-
+        <div className="form-group mb-5">
+        <button  onClick={savedDraftBlog} className="btn btn-outline-info btn-block btn-sm">
+          Save a draft
+        </button>
         </div>
+
 
         <div>
           <button type="submit" className="btn btn-primary btn-block">
@@ -278,7 +308,7 @@ const disable = () => {
   return (
     <div className="container-fluid pb-5">
       <div className="row">
-        <div className="col-md-8">
+        <div className="col-md-10">
           {createBlogForm()}
           <div className="pt-3">
             {showError()}
@@ -287,7 +317,7 @@ const disable = () => {
           </div>
         </div>
 
-        <div className="col-md-4">
+        <div className="col-md-2">
           <div>
             <div className="form-group pb-2">
               <h5>Featured image</h5>

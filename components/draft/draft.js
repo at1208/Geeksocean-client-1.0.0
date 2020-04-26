@@ -2,14 +2,14 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Router from 'next/router';
 import { getCookie, isAuth } from '../../actions/auth';
-import { list, removeBlog } from '../../actions/blog';
+import { listOfDraftByUser,removeDraft } from '../../actions/draft';
 import { getProfile } from '../../actions/user';
 import moment from 'moment';
 import { Button } from 'antd';
 
-const BlogRead = () => {
-    const [blogs, setBlogs] = useState([]);
+const DraftRead = () => {
     const [message, setMessage] = useState('');
+    const [blogs, setBlogs] = useState([]);
     const token = getCookie('token');
 
     useEffect(() => {
@@ -20,41 +20,44 @@ const BlogRead = () => {
 
 
     const getUsername = (token) => {
-        return  getProfile(token).then(data => {
-          loadBlogs(data.username);
-         }).catch(err => console.log(err))
+        return  getProfile(token)
+        .then(data => {
+           loadDrafts(data.username)})
+        .catch(err => console.log(err))
     }
 
-    const loadBlogs = (username) => {
+
+    const loadDrafts = (username,token) => {
       if(username){
-        list(username).then(data => {
+        listOfDraftByUser(username,token).then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
+              console.log(data)
                 setBlogs(data);
             }
         });
       }
-
     };
 
-    const deleteBlog = slug => {
-        removeBlog(slug, token).then(data => {
+    const deleteDraft = slug => {
+        removeDraft(slug, token).then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
                 setMessage(data.message);
-                loadBlogs();
             }
         });
     };
 
     const deleteConfirm = slug => {
-        let answer = window.confirm('Are you sure you want to delete your blog?');
+        let answer = window.confirm('Are you sure you want to delete your draft?');
         if (answer) {
-            deleteBlog(slug);
+            deleteDraft(slug);
         }
     };
+
+
 
     const showUpdateButton = blog => {
         if (isAuth() && isAuth().role === 0) {
@@ -65,13 +68,13 @@ const BlogRead = () => {
             );
         } else if (isAuth() && isAuth().role === 1) {
             return (
-
-                <Link href={`/admin/crud/${blog.slug}`}>
+                <Link href={`/admin/draft/${blog.slug}`}>
                     <a className="ml-2" ><Button className='update-btn'>Update</Button>
                     <style global jsx>{`
                      .update-btn{
                        color:white!important;
-                       background-color:#5cdbd3!important;
+                       border: 0px solid white!important;
+                       background-color:#00e5ff!important;
                      }
                       `}</style>
                     </a>
@@ -88,18 +91,19 @@ const BlogRead = () => {
                 <div key={i} className="shadow article-container">
                     <h4  className='text-center'>{blog.title}</h4>
                     <p className='manage-by'>
-                    <b>{blog.postedBy.name}</b> | Updated on {moment(blog.updatedAt).fromNow()}
+                      <b>{blog.postedBy.name}</b> | Updated on {moment(blog.updatedAt).fromNow()}
                     </p>
                     <Button className="ml-2" onClick={() => deleteConfirm(blog.slug)} type="primary" danger>
-                        Delete
+                        Delete Draft
                     </Button>
                     {showUpdateButton(blog)}
                     <style jsx>{`
                       .manage-by{
-                        background-color:#efdbff;
+
                         padding-left:4px;
                       }
                      .article-container{
+
                        margin-bottom:30px;
                        padding: 10px;
 
@@ -110,11 +114,12 @@ const BlogRead = () => {
         });
     };
 
+
     return (
-        <>
+        <div className='container'>
             <div className="row blog-read-container">
                 <div className="col-md-12">
-                    {message && <div className="alert alert-warning">{message}</div>}
+  {message && <div className="alert alert-warning">{message}</div>}
                     {showAllBlogs()}
                 </div>
             </div>
@@ -131,8 +136,8 @@ const BlogRead = () => {
                  }
                }
               `}</style>
-        </>
+        </div>
     );
 };
 
-export default BlogRead;
+export default DraftRead;

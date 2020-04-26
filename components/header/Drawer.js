@@ -106,6 +106,9 @@ class Sidebar extends React.Component {
         </Link>}
 
 
+        {isAuth() && isAuth().role===1 && <Link  href="/admin/draft">
+          <a><Button className='heading-button'><FaFirstdraft className='heading-icons' style={{ color: "#00e5ff"}}/>Draft</Button></a>
+        </Link>}
 
           { isAuth() && isAuth().role===1 &&
             <Link  href="/admin/crud/offerletter">

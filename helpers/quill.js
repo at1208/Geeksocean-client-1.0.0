@@ -7,7 +7,6 @@ export const QuillModules = {
         // ['link', 'image', 'video'],
         ['link','video'],
         ['clean'],
-        [{ 'color': [] }, { 'background': [] }],
         ['code-block']
     ]
 };

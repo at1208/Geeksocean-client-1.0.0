@@ -16,7 +16,7 @@ import { AiFillRead, AiFillGift } from "react-icons/ai";
 import { TiContacts } from "react-icons/ti";
 import { GoSignIn, GoSignOut } from "react-icons/go";
 import { IoIosCreate,IoMdSettings } from "react-icons/io";
-import { FaUserCircle,FaUserCheck,FaUsers,FaUser,FaTags,FaThLarge  } from "react-icons/fa";
+import { FaUserCircle,FaUserCheck,FaUsers,FaUser,FaTags,FaThLarge,FaFirstdraft  } from "react-icons/fa";
 import { MdDeleteSweep,MdHelp,MdPublic } from "react-icons/md";
 import { DiGoogleAnalytics} from "react-icons/di";
 
@@ -193,9 +193,16 @@ const MiniDrawer = () => {
     <Link  href="/admin/crud/blog">
       <a><Button className='heading-button'><IoIosCreate className='heading-icons' style={{ color: "#9254de"}}/>Write</Button></a>
     </Link>
+
+
+    <Link  href="/admin/draft">
+      <a><Button className='heading-button'><FaFirstdraft className='heading-icons' style={{ color: "#00e5ff"}}/>Draft</Button></a>
+    </Link>
+
     <Link  href="/admin/crud/blogs">
       <a><Button className='heading-button'><MdDeleteSweep className='heading-icons' style={{ color: "#faad14"}}/>Edit</Button></a>
     </Link>
+
     <Link  href="/admin/crud/category-tag">
       <a><Button className='heading-button'><FaTags  className='heading-icons' style={{ color: "#a0d911"}}/>Tags/Category</Button></a>
     </Link>

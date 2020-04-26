@@ -6,13 +6,16 @@ import { withRouter } from 'next/router';
 import { getCookie, isAuth } from '../../actions/auth';
 import { getCategories } from '../../actions/category';
 import { getTags } from '../../actions/tag';
-import { singleBlog, updateBlog } from '../../actions/blog';
+import { singleDraft, updateDraft,removeDraft } from '../../actions/draft';
+import { createBlog } from "../../actions/blog";
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import '../../node_modules/react-quill/dist/quill.snow.css';
 import { QuillModules, QuillFormats } from '../../helpers/quill';
 import { API } from '../../config';
+import Preview from './preview'
 
-const BlogUpdate = ({ router }) => {
+
+const DraftUpdate = ({ router }) => {
     const [body, setBody] = useState('');
 
     const [categories, setCategories] = useState([]);
@@ -20,6 +23,7 @@ const BlogUpdate = ({ router }) => {
 
     const [checked, setChecked] = useState([]); // categories
     const [checkedTag, setCheckedTag] = useState([]); // tags
+    const [featuredImage, setFeatureImage] = useState();
 
     const [values, setValues] = useState({
         title: '',
@@ -35,14 +39,14 @@ const BlogUpdate = ({ router }) => {
 
     useEffect(() => {
         setValues({ ...values, formData: new FormData() });
-        initBlog();
+        initDraft();
         initCategories();
         initTags();
     }, [router]);
 
-    const initBlog = () => {
+    const initDraft = () => {
         if (router.query.slug) {
-            singleBlog(router.query.slug).then(data => {
+            singleDraft(router.query.slug).then(data => {
               console.log(data)
                 if (data.error) {
                     console.log(data.error);
@@ -51,6 +55,7 @@ const BlogUpdate = ({ router }) => {
                     setBody(data.body);
                     setCategoriesArray(data.categories);
                     setTagsArray(data.tags);
+
                 }
             });
         }
@@ -61,18 +66,18 @@ const BlogUpdate = ({ router }) => {
 
     const setCategoriesArray = blogCategories => {
         let ca = [];
-        blogCategories.map((c, i) => {
-            ca.push(c._id);
-        });
-        setChecked(ca);
+        // blogCategories.map((c, i) => {
+        //     ca.push(c._id);
+        // });
+        // setChecked(ca);
     };
 
     const setTagsArray = blogTags => {
         let ta = [];
-        blogTags.map((t, i) => {
-            ta.push(t._id);
-        });
-        setCheckedTag(ta);
+        // blogTags.map((t, i) => {
+        //     ta.push(t._id);
+        // });
+        // setCheckedTag(ta);
     };
 
     const initCategories = () => {
@@ -185,6 +190,7 @@ const BlogUpdate = ({ router }) => {
     const handleChange = name => e => {
         // console.log(e.target.value);
         const value = name === 'photo' ? e.target.files[0] : e.target.value;
+        setFeatureImage(value);
         formData.set(name, value);
         setValues({ ...values, [name]: value, formData, error: '' });
     };
@@ -194,9 +200,9 @@ const BlogUpdate = ({ router }) => {
         formData.set('body', e);
     };
 
-    const editBlog = e => {
+    const editDraft = e => {
         e.preventDefault();
-        updateBlog(formData, token, router.query.slug).then(data => {
+        updateDraft(formData, token, router.query.slug).then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error, loading: false });
             } else {
@@ -204,10 +210,10 @@ const BlogUpdate = ({ router }) => {
                 setValues({
                     ...values,
                     loading: false,
-                    success: `Blog titled "${data.title}" is successfully updated`
+                    success: `Draft "${data.title}" is successfully updated`
                 });
                 if (isAuth() && isAuth().role === 1) {
-                    Router.replace(`/admin/crud/${router.query.slug}`);
+                    Router.replace(`/admin/draft/${router.query.slug}`);
                     // Router.replace(`/admin`);
                 } else if (isAuth() && isAuth().role === 0) {
                     // Router.replace(`/user/crud/${router.query.slug}`);
@@ -216,6 +222,44 @@ const BlogUpdate = ({ router }) => {
             }
         });
     };
+
+
+
+    const publishBlog = e => {
+      setValues({ ...values, loading: true });
+      e.preventDefault();
+      // console.log('ready to publishBlog');
+      createBlog(formData, token).then(data => {
+        if (data.error) {
+          setValues({ ...values, error: data.error, loading: false });
+        } else {
+          console.log(data)
+          setValues({
+            ...values,
+            loading: false,
+            title: "",
+            error: "",
+            success: `A new article titled "${data.title}" is created`
+          });
+          setBody("");
+          setCategories([]);
+          setTags([]);
+          deleteDraft(router.query.slug)
+         Router.replace('/')
+        }
+      });
+    };
+
+    const deleteDraft = slug => {
+        removeDraft(slug, token).then(data => {
+            if (data.error) {
+                console.log(data.error);
+            } else {
+
+            }
+        });
+    };
+
 
     const showError = () => (
         <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
@@ -237,7 +281,7 @@ const BlogUpdate = ({ router }) => {
 
     const updateBlogForm = () => {
         return (
-            <form onSubmit={editBlog}>
+            <form onSubmit={editDraft}>
                 <div className="form-group">
                     <label className="text-muted">Title</label>
                     <input type="text" className="form-control" value={title} onChange={handleChange('title')} />
@@ -254,16 +298,20 @@ const BlogUpdate = ({ router }) => {
                 </div>
 
                 <div>
-                    <button type="submit" className="btn btn-primary">
-                        Update
+                    <button type="submit" className="btn btn-outline-info btn-sm mb-3 btn-block">
+                        Update Draft
                     </button>
+
                 </div>
+                <button onClick={publishBlog} className="btn btn-primary btn-block">
+                    Publish
+                </button>
             </form>
         );
     };
 
     return (
-        <div className="container-fluid pb-5">
+        <div className="container fluid pb-5">
             <div className="row">
                 <div className="col-md-10">
                     {updateBlogForm()}
@@ -273,10 +321,6 @@ const BlogUpdate = ({ router }) => {
                         {showError()}
                         {showLoading()}
                     </div>
-
-                    {body && (
-                        <img src={`${API}/blog/photo/${router.query.slug}`} alt={title} style={{ width: '100%' }} />
-                    )}
                 </div>
 
                 <div className="col-md-2">
@@ -287,7 +331,7 @@ const BlogUpdate = ({ router }) => {
 
                             <small className="text-muted">Max size: 1mb</small>
                             <br />
-                            <label className="btn btn-outline-info">
+                            <label className="btn btn-outline-success">
                                 Upload featured image
                                 <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
                             </label>
@@ -303,6 +347,7 @@ const BlogUpdate = ({ router }) => {
                         <h5>Tags</h5>
                         <hr />
                         <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showTags()}</ul>
+                          <Preview body={body} photo={featuredImage} title={title}/>
                     </div>
                 </div>
             </div>
@@ -310,4 +355,4 @@ const BlogUpdate = ({ router }) => {
     );
 };
 
-export default withRouter(BlogUpdate);
+export default withRouter(DraftUpdate);
