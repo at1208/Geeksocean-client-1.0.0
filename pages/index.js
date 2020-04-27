@@ -142,8 +142,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             }
 
             .showall{
-              padding-left: 30px;
-              padding-right: 30px;
+               
               margin-bottom:20px;
             }
             @media(max-width: 767px){
