@@ -76,7 +76,7 @@ const Card = ({ blog }) => {
 
 
             <div className="row ">
-                <div className="col-md-2">
+                <div className="col-md-3">
                     <section>
                         <img
                             className=""
@@ -86,7 +86,7 @@ const Card = ({ blog }) => {
                         />
                     </section>
                 </div>
-                <div className="col-md-10 excerpt">
+                <div className="col-md-9 excerpt">
                     <section>
                         <div className='excerpt-content'>{renderHTML(blog.excerpt)}</div>
                         <div className='readbtn'>

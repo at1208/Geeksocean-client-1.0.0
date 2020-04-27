@@ -76,9 +76,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
             return (
                 <article key={i}>
-
                     <Card blog={blog} />
-
                 </article>
             );
         });
@@ -118,10 +116,12 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
                     <div className="show-blogs">
                             <Search />
                     </div>
+                  <div className='container'>
+                      <div className="showall ">
+                          {showAllBlogs()}
+                      </div>
+                  </div>
 
-                    <div className="showall container">
-                       {showAllBlogs()}
-                    </div>
                     <div className="container">{showLoadedBlogs()}</div>
                     <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
                     <section>
