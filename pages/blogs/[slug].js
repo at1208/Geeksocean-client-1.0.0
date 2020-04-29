@@ -14,6 +14,7 @@ import Facebook from '../../components/social/facebook'
 import Twitter from '../../components/social/twitter'
 import Linkedin from '../../components/social/linkedin'
 import LazyLoad from 'react-lazy-load';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 const CommentList = ({ comments }) => {
@@ -159,7 +160,7 @@ const SingleBlog = ({ blog, query }) => {
                                            <div className='col-md-8 row'>
                                                 <div className='img-container'>
                                                 <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
-                                                  <img
+                                                  <LazyLoadImage
                                                        className=""
                                                        height={80}
                                                        width={80}
@@ -193,7 +194,7 @@ const SingleBlog = ({ blog, query }) => {
 
                                         <div className="row justify-content-center" style={{ marginTop: '20px!important' }}>
                                         <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
-                                            <img
+                                            <LazyLoadImage
                                                 src={`${API}/blog/photo/${blog.slug}`}
                                                 alt={blog.title}
                                                 className="img img-fluid "

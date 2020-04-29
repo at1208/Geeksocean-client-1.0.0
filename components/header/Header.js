@@ -20,6 +20,7 @@ import { FaUserCircle,FaUserCheck,FaUsers,FaUser,FaTags,FaThLarge,FaFirstdraft,F
 import { MdDeleteSweep,MdHelp,MdPublic } from "react-icons/md";
 import { DiGoogleAnalytics} from "react-icons/di";
 import LazyLoad from 'react-lazy-load';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import {Button} from 'antd'
 import { useMediaQuery } from 'react-responsive'
@@ -162,7 +163,7 @@ const MiniDrawer = () => {
 
           <div className='stage'>
           <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
-            <img src='/static/images/Logo.svg' alt='' height={70} className='box bounce-2'/>
+            <LazyLoadImage src='/static/images/Logo.svg' alt='' height={70} className='box bounce-2'/>
           </LazyLoad>
           </div>
         <Typography variant="h6" noWrap>

@@ -6,6 +6,9 @@ import { API } from '../../config';
 import { Button } from 'antd';
 import { userById } from '../../actions/user'
 import LazyLoad from 'react-lazy-load';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 
 const Card = ({ blog }) => {
 
@@ -79,7 +82,8 @@ const Card = ({ blog }) => {
                 <div className="col-md-3">
                     <section>
                      <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
-                        <img
+                        <LazyLoadImage
+                            effect="blur"
                             className=""
                             style={{ maxHeight: 'auto', width: '100%' }}
                             src={`${API}/blog/photo/${blog.slug}`}
