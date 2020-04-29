@@ -33,13 +33,13 @@ render() {
             defer
             href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
           />
-          <link rel="dns-prefetch" href="https://geeksocean.com" />
-          <link rel="preconnect" href="https://geeksocean.com" crossorigin />
-          <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-          <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+          <link defer rel="dns-prefetch" href="https://geeksocean.com" />
+          <link defer rel="preconnect" href="https://geeksocean.com" crossorigin />
+          <link defer rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+          <link defer rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
 
-          <link defer href="https://fonts.googleapis.com/css?family=Gruppo|Philosopher|Playfair+Display+SC|Spectral+SC|Trirong&display=swap" rel="stylesheet" />
-          <link defer href="https://fonts.googleapis.com/css?family=Halant:700|Lateef|Lato|Philosopher|Prata|Source+Sans+ProGotu|Marmelad|EB+Garamond&display=swap" rel="stylesheet" />
+          <link defer href="https://fonts.googleapis.com/css?family=Gruppo|Philosopher|Playfair+Display+SC|Spectral+SC|Trirong|Halant:700|Lateef|Lato|Philosopher|Prata|Source+Sans+ProGotu|Marmelad|EB+Garamond&display=swap" rel="stylesheet" />
+ 
           <link rel="icon" href="/static/images/Logo.svg" />
           <script defer async src="https://www.googletagmanager.com/gtag/js?id=UA-161776444-1"></script>
           <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>

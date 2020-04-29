@@ -4,6 +4,7 @@ import moment from 'moment';
 import { commentBlog } from '../../actions/blog';
 const { TextArea } = Input;
 import { LoadingOutlined } from '@ant-design/icons';
+import LazyLoad from 'react-lazy-load';
 
 // import axios from 'axios';
 // import { API } from '../../config';
@@ -95,7 +96,9 @@ console.log(comments)
     return (
       <div className='container'>
          <div className='row justify-content-center'>
-           <img src='https://img.icons8.com/officel/40/000000/user.png' width={40} height={40} style={{ borderRadius: "30px", margin: "5px"}} alt="user"/>
+           <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
+             <img src='https://img.icons8.com/officel/40/000000/user.png' width={40} height={40} style={{ borderRadius: "30px", margin: "5px"}} alt="user"/>
+           </LazyLoad>
            <TextArea rows={4} onChange={onChangeComment} style={{ width: "90%"}} className='col'/>
          </div>
          <div className='text-center' style={{ marginTop: "10px"}}>

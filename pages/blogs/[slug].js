@@ -13,7 +13,7 @@ import { userById } from '../../actions/user'
 import Facebook from '../../components/social/facebook'
 import Twitter from '../../components/social/twitter'
 import Linkedin from '../../components/social/linkedin'
-
+import LazyLoad from 'react-lazy-load';
 
 
 const CommentList = ({ comments }) => {
@@ -158,13 +158,15 @@ const SingleBlog = ({ blog, query }) => {
                                         <div className='row col container'>
                                            <div className='col-md-8 row'>
                                                 <div className='img-container'>
-                                                  {<img
+                                                <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
+                                                  <img
                                                        className=""
                                                        height={80}
                                                        width={80}
                                                        style={{ borderRadius: "60px" }}
                                                        src={`${API}/user/photo/${userName}`}
-                                                       alt='' />}
+                                                       alt='' />
+                                                       </LazyLoad>
                                                 </div>
                                                  <div className='user-container'>
                                                        <div className=''>
@@ -190,11 +192,13 @@ const SingleBlog = ({ blog, query }) => {
                                     <section>
 
                                         <div className="row justify-content-center" style={{ marginTop: '20px!important' }}>
+                                        <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
                                             <img
                                                 src={`${API}/blog/photo/${blog.slug}`}
                                                 alt={blog.title}
                                                 className="img img-fluid "
                                             />
+                                        </LazyLoad>
                                         </div>
 
                                     </section>

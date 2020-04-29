@@ -19,6 +19,7 @@ import { IoIosCreate,IoMdSettings } from "react-icons/io";
 import { FaUserCircle,FaUserCheck,FaUsers,FaUser,FaTags,FaThLarge,FaFirstdraft,FaLightbulb  } from "react-icons/fa";
 import { MdDeleteSweep,MdHelp,MdPublic } from "react-icons/md";
 import { DiGoogleAnalytics} from "react-icons/di";
+import LazyLoad from 'react-lazy-load';
 
 import {Button} from 'antd'
 import { useMediaQuery } from 'react-responsive'
@@ -159,7 +160,11 @@ const MiniDrawer = () => {
      <div className='col-6 row'>
          {isDesktopOrLaptop && <div className='container row'>
 
-          <div className='stage'><img src='/static/images/Logo.svg' alt='' height={70} className='box bounce-2'/></div>
+          <div className='stage'>
+          <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
+            <img src='/static/images/Logo.svg' alt='' height={70} className='box bounce-2'/>
+          </LazyLoad>
+          </div>
         <Typography variant="h6" noWrap>
           <Link href='/'>
              <a className='logo-style'>Geeks Ocean</a>

@@ -5,7 +5,7 @@ import moment from 'moment';
 import { API } from '../../config';
 import { Button } from 'antd';
 import { userById } from '../../actions/user'
-
+import LazyLoad from 'react-lazy-load';
 
 const Card = ({ blog }) => {
 
@@ -78,12 +78,14 @@ const Card = ({ blog }) => {
             <div className="row ">
                 <div className="col-md-3">
                     <section>
+                     <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
                         <img
                             className=""
                             style={{ maxHeight: 'auto', width: '100%' }}
                             src={`${API}/blog/photo/${blog.slug}`}
                             alt={blog.title}
                         />
+                      </LazyLoad>
                     </section>
                 </div>
                 <div className="col-md-9 excerpt">

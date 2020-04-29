@@ -8,6 +8,7 @@ import { listBlogsWithCategoriesAndTags } from '../actions/blog';
 import { getKeywords } from '../actions/keyword';
 import Card from '../components/blog/Card';
 
+
 // import { Skeleton } from 'antd';
 
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
@@ -76,7 +77,9 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
             return (
                 <article key={i}>
+
                     <Card blog={blog} />
+
                 </article>
             );
         });
@@ -118,7 +121,9 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
                     </div>
                   <div className='container'>
                       <div className="showall ">
+
                           {showAllBlogs()}
+
                       </div>
                   </div>
 
@@ -142,7 +147,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             }
 
             .showall{
-               
+
               margin-bottom:20px;
             }
             @media(max-width: 767px){

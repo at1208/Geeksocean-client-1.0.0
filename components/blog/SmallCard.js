@@ -2,12 +2,14 @@ import Link from 'next/link';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
 import { API } from '../../config';
+import LazyLoad from 'react-lazy-load';
 
 const SmallCard = ({ blog }) => {
     return (
         <div className="card shadow">
             <section>
                 <Link href={`/blogs/${blog.slug}`}>
+                  <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
                     <a>
                         <img
                             className="img img-fluid"
@@ -16,6 +18,7 @@ const SmallCard = ({ blog }) => {
                             alt={blog.title}
                         />
                     </a>
+                </LazyLoad>
                 </Link>
             </section>
 
