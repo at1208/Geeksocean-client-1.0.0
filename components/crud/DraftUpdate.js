@@ -13,6 +13,10 @@ import '../../node_modules/react-quill/dist/quill.snow.css';
 import { QuillModules, QuillFormats } from '../../helpers/quill';
 import { API } from '../../config';
 import Preview from './preview'
+import FAQ from './Faq'
+import { ToastContainer, toast } from 'react-toastify';
+import {createFAQ} from '../../actions/faq'
+
 
 
 const DraftUpdate = ({ router }) => {
@@ -20,7 +24,7 @@ const DraftUpdate = ({ router }) => {
 
     const [categories, setCategories] = useState([]);
     const [tags, setTags] = useState([]);
-
+    const [faqS, setFaqS] = useState(false);
     const [checked, setChecked] = useState([]); // categories
     const [checkedTag, setCheckedTag] = useState([]); // tags
     const [featuredImage, setFeatureImage] = useState();
@@ -61,6 +65,13 @@ const DraftUpdate = ({ router }) => {
         }
     };
 
+    const faqStatus = () => {
+     if(faqS){
+       return "FAQs Added ✅"
+     }else{
+       return "Add FAQs"
+     }
+    }
 
 
 
@@ -223,6 +234,18 @@ const DraftUpdate = ({ router }) => {
         });
     };
 
+    const CreateFaq = (faq, token) => {
+      createFAQ({name: faq}, token).then(data => {
+        if(data.error){
+          toast.error(data.error)
+          console.log(data.error)
+        }
+        toast.success('FAQ is created successfully')
+        formData.set("faqs", data._id);
+            setFaqS(true)
+          }
+      );
+    }
 
 
     const publishBlog = e => {
@@ -312,6 +335,7 @@ const DraftUpdate = ({ router }) => {
 
     return (
         <div className="container fluid pb-5">
+        <ToastContainer/>
             <div className="row">
                 <div className="col-md-10">
                     {updateBlogForm()}
@@ -347,6 +371,8 @@ const DraftUpdate = ({ router }) => {
                         <h5>Tags</h5>
                         <hr />
                         <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showTags()}</ul>
+
+                           <FAQ  create={CreateFaq} operation="Create FAQ" faqOps={faqStatus()}/>
                           <Preview body={body} photo={featuredImage} title={title}/>
                     </div>
                 </div>

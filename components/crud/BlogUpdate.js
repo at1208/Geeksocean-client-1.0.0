@@ -11,13 +11,21 @@ const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 import '../../node_modules/react-quill/dist/quill.snow.css';
 import { QuillModules, QuillFormats } from '../../helpers/quill';
 import { API } from '../../config';
+import FAQ from './Faq';
+import { singleFAQ,updateFAQ } from '../../actions/faq';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+
+
+
 
 const BlogUpdate = ({ router }) => {
     const [body, setBody] = useState('');
 
     const [categories, setCategories] = useState([]);
     const [tags, setTags] = useState([]);
-
+    const [faq,setFaq] = useState([]);
+    // const [faqId,setFaqId] = useState([]);
     const [checked, setChecked] = useState([]); // categories
     const [checkedTag, setCheckedTag] = useState([]); // tags
 
@@ -43,7 +51,6 @@ const BlogUpdate = ({ router }) => {
     const initBlog = () => {
         if (router.query.slug) {
             singleBlog(router.query.slug).then(data => {
-              console.log(data)
                 if (data.error) {
                     console.log(data.error);
                 } else {
@@ -51,10 +58,20 @@ const BlogUpdate = ({ router }) => {
                     setBody(data.body);
                     setCategoriesArray(data.categories);
                     setTagsArray(data.tags);
+
+                if(data.faqs && data.faqs[0]){
+                  singleFAQ(data.faqs[0]._id)
+                  .then((res) => {
+                  setFaq(res.result)
+                  })
+                  .catch(err => console.log(err))
+                }
+
                 }
             });
         }
     };
+
 
 
 
@@ -179,6 +196,19 @@ const BlogUpdate = ({ router }) => {
         );
     };
 
+    const faqId = faq._id
+    const updateFaq = (FAQ) => {
+      updateFAQ({name:FAQ},faqId)
+      .then(res => {
+        console.log(res)
+        toast.success(res.msg)
+        Router.replace(`/admin/crud/${router.query.slug}`);
+      })
+      .catch(err => {
+        toast.error(data.error)
+      })
+    }
+
 
 
 
@@ -216,6 +246,19 @@ const BlogUpdate = ({ router }) => {
             }
         });
     };
+
+
+    const showFaq = () => {
+      if(faq && faq.body){
+      return faq.body.map(Faq => {
+          return <div className='container'>
+                <h2 className='text-center'>Frequently Asked Questions</h2>
+                  <div className='text-center'><b>{Faq.question}</b></div>
+                  <div className='text-center'>{Faq.answer}</div>
+                 </div>
+        })
+      }
+    }
 
     const showError = () => (
         <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
@@ -264,10 +307,11 @@ const BlogUpdate = ({ router }) => {
 
     return (
         <div className="container-fluid pb-5">
+                 <ToastContainer />
             <div className="row">
                 <div className="col-md-10">
                     {updateBlogForm()}
-
+                   
                     <div className="pt-3">
                         {showSuccess()}
                         {showError()}
@@ -299,10 +343,14 @@ const BlogUpdate = ({ router }) => {
 
                         <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showCategories()}</ul>
                     </div>
+
                     <div>
                         <h5>Tags</h5>
                         <hr />
                         <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showTags()}</ul>
+                    </div>
+                    <div>
+                    {faq && <FAQ  create={updateFaq} faq={faq.body} operation="Update FAQ" faqOps="Update FAQ"/>}
                     </div>
                 </div>
             </div>

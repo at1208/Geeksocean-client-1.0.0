@@ -119,6 +119,7 @@ const Card = ({ blog }) => {
             .blog-container{
               padding: 10px;
               margin:10px;
+
             }
             .excerpt{
             }

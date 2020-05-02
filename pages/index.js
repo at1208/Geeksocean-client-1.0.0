@@ -9,6 +9,8 @@ import { getKeywords } from '../actions/keyword';
 import Card from '../components/blog/Card';
 
 
+
+
 // import { Skeleton } from 'antd';
 
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
@@ -19,6 +21,7 @@ import { Button } from 'antd'
 
 
 const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router }) => {
+
     const head = () => (
         <Head>
             <title>{APP_NAME}</title>
@@ -77,9 +80,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
             return (
                 <article key={i}>
-
                     <Card blog={blog} />
-
                 </article>
             );
         });
@@ -110,8 +111,8 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
 
     return (
-        <>
-            {head()}
+ <>
+
 
             <Layout>
 
@@ -160,7 +161,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             }
               `}
             </style>
-        </>
+ </>
     );
 };
 

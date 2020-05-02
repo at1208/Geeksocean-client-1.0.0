@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import { useState, useEffect } from 'react';
 import { singleBlog, listRelated, allcommentBlog } from '../../actions/blog';
+import { singleFAQ } from '../../actions/faq';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
@@ -34,8 +35,8 @@ const CommentList = ({ comments }) => {
 const SingleBlog = ({ blog, query }) => {
     const [related, setRelated] = useState([]);
     const [comments, setComments] = useState([])
-    const [userName, setUserName] = useState('');
-
+    const [userName, setUserName] = useState([]);
+    const [faq, setFaq] = useState([]);
 
     const loadRelated = () => {
         listRelated({ blog }).then(data => {
@@ -69,7 +70,18 @@ const SingleBlog = ({ blog, query }) => {
             setUserName(res.user.username)
           })
           .catch(err => console.log(err))
+
+        if(blog.faqs && blog.faqs[0]){
+          singleFAQ(blog.faqs[0]._id)
+           .then((res) => {
+
+             setFaq(res.result.body)
+
+           })
+           .catch(err => console.log(err))
+        }
     }
+
 
     useEffect(() => {
          init(blog);
@@ -79,7 +91,7 @@ const SingleBlog = ({ blog, query }) => {
 
 
 
-
+ console.log(faq)
 
     const head = () => (
         <Head>
@@ -131,6 +143,43 @@ const SingleBlog = ({ blog, query }) => {
                 </a>
             </Link>
         ));
+
+
+
+    const showFAQs = () =>
+        faq.map((t, i) => (
+               <div className='container m-2'>
+                  <div className='ques'>{t.question}</div>
+                  <div className='ans'>{t.answer}</div>
+                <style global jsx>{`
+                .ques{
+                  font-size: 20px;
+                  font-weight:bold;
+                  font-style: italic;
+                }
+                .ans{
+                  font-size:18px;
+                  font-weight:lighter;
+                  font-style: italic;
+                }
+                .faqsContainer{
+                  padding-top:5px;
+                  background-color: #f5f5f5!important;
+                }
+                .faqsAns{
+                 text-align:left!important;
+                }
+
+                @media(max-width: 490px){
+                  .faqsAns{
+                   padding-left:40px!important;
+                   padding-right:40px!important;
+                  }
+                  `}</style>
+               </div>
+
+        ));
+
 
 
     const showRelatedBlog = () => {
@@ -195,6 +244,7 @@ const SingleBlog = ({ blog, query }) => {
                                         <div className="row justify-content-center" style={{ marginTop: '20px!important' }}>
                                         <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
                                             <LazyLoadImage
+                                                effect="blur"
                                                 src={`${API}/blog/photo/${blog.slug}`}
                                                 alt={blog.title}
                                                 className="img img-fluid "
@@ -213,6 +263,12 @@ const SingleBlog = ({ blog, query }) => {
                         <div className="row col justify-content-center">
                                <div className='col-md-10'>
                                 <div className="lead" style={{ color: "black"}}>{renderHTML(blog.body)}</div>
+                                <div className='text-center faqsContainer'>
+                              {faq && <h2 className='faq-title'>Frequently Asked Questions</h2>}
+                                {faq && <div className='faqsAns row col justify-content-center'>
+                                <div className='col-md-5'>{showFAQs()}</div></div>}
+                                 <hr />
+                                </div>
                                </div>
                         </div>
                     </article>
@@ -241,7 +297,9 @@ const SingleBlog = ({ blog, query }) => {
                   .social-sharing{
                     padding-top:16px;
                   }
-
+                 .faq-title{
+                   font-weight:bold;
+                 }
 
                   .blog-comment{
                     padding-top:40px;

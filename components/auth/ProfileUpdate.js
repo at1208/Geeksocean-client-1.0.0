@@ -5,6 +5,7 @@ import { getCookie, isAuth, updateUser } from '../../actions/auth';
 import { getProfile, update } from '../../actions/user';
 import { API } from '../../config';
 import { Input } from 'antd'
+import { ToastContainer, toast } from 'react-toastify';
 
 const { TextArea } = Input;
 
@@ -63,10 +64,12 @@ const ProfileUpdate = () => {
         setValues({ ...values, loading: true });
         update(token, userData).then(data => {
             if (data.error) {
+                toast.error(data.error)
                 console.log('data.error', data.error);
                 setValues({ ...values, error: data.error, loading: false });
             } else {
                 updateUser(data, () => {
+                  toast.success('Profile Updated')
                     setValues({
                         ...values,
                         username: data.username,
@@ -143,6 +146,7 @@ const ProfileUpdate = () => {
     return (
         <React.Fragment>
             <div className="container">
+            <ToastContainer />
                 <div className="row">
                     <div className="col-md-4">
                         <img

@@ -212,18 +212,18 @@ const MiniDrawer = () => {
     <Link  href="/admin/crud/category-tag">
       <a><Button className='heading-button'><FaTags  className='heading-icons' style={{ color: "#a0d911"}}/>Tags/Category</Button></a>
     </Link>
-      <Link  href="/admin/crud/offerletter">
+      {/*<Link  href="/admin/crud/offerletter">
       <a><Button className='heading-button'><AiFillGift className='heading-icons' style={{ color: "#cf1322"}}/>Offer letter</Button></a>
-     </Link>
-    {<Link  href="/admin/popularBlog">
+     </Link>*/}
+    {/*<Link  href="/admin/popularBlog">
      <a><Button className='heading-button'><FaLightbulb  className='heading-icons' style={{ color: "#40a9ff"}}/>Popular articles</Button></a>
-    </Link>}
+    </Link>*/}
       <Link  href="/admin/crud/users">
       <a><Button className='heading-button'><FaUsers className='heading-icons' style={{ color: "#13c2c2"}}/>Users</Button></a>
       </Link>
-      <Link  href="/admin/analytics">
+  {/*    <Link  href="/admin/analytics">
      <a><Button className='heading-button'><DiGoogleAnalytics className='heading-icons' style={{ color: "#f4511e"}}/>Analytics</Button></a>
-     </Link>
+     </Link>*/}
        <Link  href="/user/setting">
       <a><Button className='heading-button'><IoMdSettings className='heading-icons' style={{ color: "#434343"}}/>Setting</Button></a>
       </Link>

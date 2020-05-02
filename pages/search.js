@@ -35,7 +35,7 @@ const Search = ({ router }) => {
                     </div>
                 </main>
             </Layout>
- 
+
     );
 };
 

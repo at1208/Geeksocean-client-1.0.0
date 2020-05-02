@@ -113,20 +113,20 @@ class Sidebar extends React.Component {
               </ListItem>
         </Link>}
 
-        {isAuth() && isAuth().role===1 && <Link  href="/admin/popularBlog">
+        {/*isAuth() && isAuth().role===1 && <Link  href="/admin/popularBlog">
         <ListItem button>
                 <ListItemIcon><FaLightbulb className='drawer-icons' style={{ color: "#40a9ff"}}/></ListItemIcon>
                 <ListItemText >Popular articles</ListItemText>
               </ListItem>
-        </Link>}
+        </Link>*/}
 
-          { isAuth() && isAuth().role===1 &&
+          {/* isAuth() && isAuth().role===1 &&
             <Link  href="/admin/crud/offerletter">
             <ListItem button>
                     <ListItemIcon><AiFillGift className='drawer-icons' style={{ color: "#cf1322"}}/></ListItemIcon>
                     <ListItemText >Offer Letter</ListItemText>
                   </ListItem>
-            </Link>}
+            </Link>*/}
 
             {/* isAuth() && isAuth().role===1 &&
               <Link  href="/admin/crud/offerletter">

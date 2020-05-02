@@ -91,8 +91,7 @@ setSubmitting(false)
 
 };
 
-console.log()
-console.log(comments)
+ 
     return (
       <div className='container'>
          <div className='row justify-content-center'>

@@ -20,7 +20,10 @@ import { Select, Radio } from 'antd';
 const { Option } = Select;
 const token = getCookie('token');
 import Preview from './preview'
-
+import FAQ from './Faq'
+import {createFAQ} from '../../actions/faq'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 
 
@@ -41,6 +44,7 @@ const CreateBlog = ({ router }) => {
 
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
+  const [faqS, setFaqS] = useState(false);
   // const [keywords, setKeywords] = useState([]);
   const [checked, setChecked] = useState([]); // categories
   const [checkedTag, setCheckedTag] = useState([]); // tags
@@ -101,13 +105,13 @@ const CreateBlog = ({ router }) => {
 
 
   const publishBlog = e => {
-
     setValues({ ...values, loading: true });
     e.preventDefault();
     // console.log('ready to publishBlog');
     createBlog(formData, token).then(data => {
       if (data.error) {
         setValues({ ...values, error: data.error, loading: false });
+        toast.error(data.error)
       } else {
         console.log(data)
         setValues({
@@ -117,6 +121,7 @@ const CreateBlog = ({ router }) => {
           error: "",
           success: `A new article titled "${data.title}" is created`
         });
+        toast.success(`A new article titled "${data.title}" is created`)
         setBody("");
         setCategories([]);
         setTags([]);
@@ -130,9 +135,9 @@ const CreateBlog = ({ router }) => {
   const savedDraftBlog = e => {
         setValues({ ...values, loading: true });
         e.preventDefault();
-
         createDraft(formData, token).then(data => {
           if (data.error) {
+            toast.error(data.error)
             setValues({ ...values, error: data.error, loading: false });
           } else {
             console.log(data)
@@ -143,14 +148,29 @@ const CreateBlog = ({ router }) => {
               error: "",
               success: `"${data.title}" is saved a draft`
             });
+              toast.success(`"${data.title}" is saved as a draft`)
             setBody("");
             setCategories([]);
             setTags([]);
             // setKeywords([]);
-
           }
         });
   }
+
+const CreateFaq = (faq, token) => {
+  createFAQ({name: faq}, token).then(data => {
+    if(data.error){
+      toast.error(data.error)
+      console.log(data.error)
+    }
+    toast.success('FAQ is created successfully')
+    formData.set("faqs", data._id);
+    setFaqS(true)
+      }
+  );
+}
+
+
 
   const handleChange = name => e => {
     const value = name === "photo" ? e.target.files[0] : e.target.value;
@@ -171,8 +191,7 @@ const CreateBlog = ({ router }) => {
 
   const showError = () => (
     <div
-      className="alert alert-danger"
-      style={{ display: error ? "" : "none" }}
+
     >
       {error}
     </div>
@@ -265,6 +284,25 @@ categories.map(item => {
 // }
 
 
+// const showFaq = () => {
+//   return faq.body.map(Faq => {
+//       return <div className='container'>
+//             <h2 className='text-center'>Frequently Asked Questions</h2>
+//               <div className='text-center'><b>{Faq.question}</b></div>
+//               <div className='text-center'>{Faq.answer}</div>
+//              </div>
+//     })
+//   }
+// }
+
+const faqStatus = () => {
+ if(faqS){
+   return "FAQs Added ✅"
+ }else{
+   return "Add FAQs"
+ }
+}
+
   const createBlogForm = () => {
     return (
       <form onSubmit={publishBlog}>
@@ -307,6 +345,7 @@ categories.map(item => {
 
   return (
     <div className="container-fluid pb-5">
+    <ToastContainer />
       <div className="row">
         <div className="col-md-10">
           {createBlogForm()}
@@ -354,6 +393,9 @@ categories.map(item => {
             {keywordChildren}
             </Select>*/}
             </div>
+            <div className='mt-3 mb-3 pt'>
+              <FAQ  create={CreateFaq} operation="Create FAQ" faqOps={faqStatus()}/>
+             </div>
             <br />
             <h5>Categories</h5>
             <Select
@@ -384,7 +426,9 @@ categories.map(item => {
             </Select>
             <hr />
           </div>
-        <Preview body={body} photo={featuredImage} title={title}/>
+          <div className='mt-5'>
+            <Preview body={body} photo={featuredImage} title={title}/>
+          </div>
         </div>
       </div>
       <style global jsx>{`

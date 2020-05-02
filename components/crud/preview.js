@@ -37,7 +37,7 @@ const customStyles = {
   function closeModal(){
     setIsOpen(false);
   }
-console.log(props.photo)
+
 
 const renderArticle = (props) => {
   if(props.body){
