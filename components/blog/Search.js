@@ -83,6 +83,7 @@ const Search = ({ router }) => {
                 ${searchMobileCss()}
               }
               .search-input{
+                border:1px solid black;
                 height: 50px!important;
                 margin-top:10px;
                 font-size:20px!important;

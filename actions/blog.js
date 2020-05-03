@@ -216,3 +216,28 @@ return  fetch(`${API}/blog/all-blog-comment/${id}`, {
   })
   .catch(err => console.log(err));
 };
+
+
+//LIST OF RANDOM BLOGS
+export const randomBlog = () => {
+return  fetch(`${API}/blogs/randomBlog`, {
+  method: 'GET'
+})
+  .then(response => {
+        handleResponse(response);
+      return response.json();
+  })
+  .catch(err => console.log(err));
+};
+
+
+export const singleRandomBlog = () => {
+return  fetch(`${API}/blogs/singleRandomBlogs`, {
+  method: 'GET'
+})
+  .then(response => {
+        handleResponse(response);
+      return response.json();
+  })
+  .catch(err => console.log(err));
+};

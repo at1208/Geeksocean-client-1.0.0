@@ -119,7 +119,8 @@ const MiniDrawer = () => {
 
   const mobileCss = () =>{
     if(isMobileOrTablet){
-      return { bg: "background-color:#0c1858;",
+      return { bg: "background-color:#f5f5f5;",
+
                zIndex:  "z-index: 100;",
                paddTop: "padding-top: 0px;",
                pos: "position: fixed!important;",
@@ -267,6 +268,7 @@ a{
 .logo-style{
 font-family: 'Philosopher', sans-serif;
 font-size:30px;
+color:black!important;
 
 }
 .get-started{

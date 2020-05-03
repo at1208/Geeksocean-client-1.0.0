@@ -3,24 +3,20 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
 import Layout from '../components/Layout';
-import { useState } from 'react';
-import { listBlogsWithCategoriesAndTags } from '../actions/blog';
-import { getKeywords } from '../actions/keyword';
+import { useState, useEffect } from 'react';
+import { listBlogsWithCategoriesAndTags, randomBlog,singleRandomBlog } from '../actions/blog';
+// import { getKeywords } from '../actions/keyword';
 import Card from '../components/blog/Card';
-
-
-
-
-// import { Skeleton } from 'antd';
-
+import FlashCard from '../components/blog/FlashCard';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 import Search from '../components/blog/Search'
 import { Button } from 'antd'
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 
-const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router }) => {
+const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router, randomblog }) => {
 
     const head = () => (
         <Head>
@@ -49,7 +45,24 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
     const [skip, setSkip] = useState(0);
     const [size, setSize] = useState(totalBlogs);
     const [loadedBlogs, setLoadedBlogs] = useState([]);
+    const [randomblogs, setRandomBlogs] = useState([]);
+    const [singleBlog, setSingleBlog] = useState();
     // const [load, setLoad] = useState([]);
+
+    useEffect(() => {
+      loadRandomBlogs()
+      loadSingleRandomBlog()
+    }, []);
+
+    const loadRandomBlogs = () => {
+      return   randomBlog().then(data => {
+              if (data.error) {
+                  console.log(data.error);
+              } else {
+                   setRandomBlogs(data.result)
+              }
+          });
+    }
 
     const loadMore = () => {
         let toSkip = skip + limit;
@@ -110,21 +123,74 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
     };
 
 
+
+   const showRandomBlogs = () => {
+     return randomblogs.map((blog, i) => {
+             return <FlashCard blog={blog} key={i}/>
+     });
+   }
+
+
+ const showHottestArticle = () => {
+   return <div className='container mb-5 mt-4'>
+           <div className='col row justify-content-center'>
+              <div className='col-md-6'>
+              {showSingleBlog()}
+              </div>
+              <div className='col-md-5'>
+              {showRandomBlogs()}
+              </div>
+           </div>
+          </div>
+ }
+
+ const loadSingleRandomBlog = () => {
+   singleRandomBlog()
+   .then((data) => {
+     if(data.error){
+       console.log(data.error)
+     }
+     setSingleBlog(data.result)
+   })
+ }
+
+
+
+ const showSingleBlog = () => {
+   if(singleBlog){
+     return singleBlog.map((blog) => {
+        return <Link href={`/blogs/${blog.slug}`}>
+        <a>
+            <div className='singleBlog'>
+              <LazyLoadImage
+               effect="blur"
+               alt={blog.title}
+               className="img img-fluid "
+               src={`${API}/blog/photo/${blog.slug}`}
+              />
+              <h2 className='text-center p-2 singleBlogTitle'>{blog.title}</h2>
+
+              </div>
+          </a>
+               </Link>
+     })
+   }
+ }
+
+
+
     return (
- <>
-
-
+    <React.Fragment>
             <Layout>
 
             <div className='container-fluid'>
-                    <div className="show-blogs">
+                    {<div className="show-blogs">
                             <Search />
-                    </div>
-                  <div className='container'>
-                      <div className="showall ">
-
+                    </div>}
+                  <div className='container-fluid'>
+                          {showHottestArticle()}
+                      <div className="showall container">
                           {showAllBlogs()}
-
                       </div>
                   </div>
 
@@ -145,6 +211,18 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
               margin-top: 15px;
               margin-bottom:20px;
 
+
+            }
+            .singleBlogTitle{
+              font-weight: bold;
+              font-family: 'Nunito Sans', sans-serif;
+            }
+
+            @media(min-width: 767px){
+              .singleBlog{
+                margin-right: 20px;
+
+              }
             }
 
             .showall{
@@ -158,16 +236,23 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
               .search-field{
                 margin:2px!important;
               }
+              .singleBlogTitle{
+                font-size: 22px!important;
+
+              }
+              .singleBlog{
+                margin-bottom: 30px;
+              }
             }
               `}
             </style>
- </>
+    </React.Fragment>
     );
 };
 
 Blogs.getInitialProps = () => {
     let skip = 0;
-    let limit = 1000;
+    let limit = 10;
     return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
         if (data.error) {
             console.log(data.error);
@@ -183,5 +268,11 @@ Blogs.getInitialProps = () => {
         }
     });
 };
+
+//
+// Blogs.getInitialProps = () => {
+//     return
+// };
+
 
 export default withRouter(Blogs);

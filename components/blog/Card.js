@@ -139,6 +139,10 @@ const Card = ({ blog }) => {
                 padding-left: 5px!important;
                 padding-right: 5px!important;
               }
+              .col-md-3{
+                padding-left:0px!important;
+                padding-right:0px!important;
+              }
               .col-md-10{
                 padding-left: 5px!important;
                 padding-right: 5px!important;
@@ -147,6 +151,7 @@ const Card = ({ blog }) => {
                 background-color: #fff;
                 width: 100px;
                 height: 10px;
+                margin-bottom:5px;
                 color: #4b49ff;
                 border-radius: 100px;
                 border: thin solid #00f;
@@ -172,12 +177,23 @@ const Card = ({ blog }) => {
 
             .card{
               border: 0px solid white;
-
-              padding: 5px!important;
+              padding: 0px!important;
+            }
+            .col-4{
+              padding-right: 0px;
+              padding-left: 0px!important;
+            }
+            .col-8{
+              padding-right: 0px;
+              padding-left: 0px!important;
             }
             .col-md-8{
               padding-left:0px!important;
               padding-right:0px!important;
+            }
+            .col-md-5{
+              padding-right: 0px;
+              padding-left: 0px!important;
             }
             .col-md-4{
               padding-left:0px!important;
@@ -197,8 +213,11 @@ const Card = ({ blog }) => {
               padding:1.2em!important;
               background-color: white!important;
             }
+            .container{
+             padding-right: 0px!important;
+             padding-left: 0px!important;
+            }
             .user-container{
-
               padding:5px;
               padding-left: 13px;
             }
