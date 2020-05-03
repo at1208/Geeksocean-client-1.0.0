@@ -182,7 +182,7 @@ console.log(loadedBlogs)
     return (
     <React.Fragment>
             <Layout>
-
+            {head()}
             <div className='container-fluid'>
                     {<div className="show-blogs">
                             <Search />
