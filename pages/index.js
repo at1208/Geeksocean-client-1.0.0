@@ -16,7 +16,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 
-const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router, randomblog }) => {
+const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router, randomBlog,singleBlog }) => {
 
     const head = () => (
         <Head>
@@ -46,23 +46,23 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
     const [size, setSize] = useState(totalBlogs);
     const [loadedBlogs, setLoadedBlogs] = useState([]);
     const [randomblogs, setRandomBlogs] = useState([]);
-    const [singleBlog, setSingleBlog] = useState();
+    // const [singleBlog, setSingleBlog] = useState();
     // const [load, setLoad] = useState([]);
 
-    useEffect(() => {
-      loadRandomBlogs()
-      loadSingleRandomBlog()
-    }, []);
+    // useEffect(() => {
+    //   // loadRandomBlogs()
+    //   // loadSingleRandomBlog()
+    // }, []);
 
-    const loadRandomBlogs = () => {
-      return   randomBlog().then(data => {
-              if (data.error) {
-                  console.log(data.error);
-              } else {
-                   setRandomBlogs(data.result)
-              }
-          });
-    }
+    // const loadRandomBlogs = () => {
+    //   return   randomBlog().then(data => {
+    //           if (data.error) {
+    //               console.log(data.error);
+    //           } else {
+    //                setRandomBlogs(data.result)
+    //           }
+    //       });
+    // }
 
     const loadMore = () => {
         let toSkip = skip + limit;
@@ -125,7 +125,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
 
    const showRandomBlogs = () => {
-     return randomblogs.map((blog, i) => {
+     return randomBlog.map((blog, i) => {
              return <FlashCard blog={blog} key={i}/>
      });
    }
@@ -144,15 +144,15 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
           </div>
  }
 
- const loadSingleRandomBlog = () => {
-   singleRandomBlog()
-   .then((data) => {
-     if(data.error){
-       console.log(data.error)
-     }
-     setSingleBlog(data.result)
-   })
- }
+ // const loadSingleRandomBlog = () => {
+ //   singleRandomBlog()
+ //   .then((data) => {
+ //     if(data.error){
+ //       console.log(data.error)
+ //     }
+ //     setSingleBlog(data.result)
+ //   })
+ // }
 
 
 
@@ -253,23 +253,38 @@ console.log(loadedBlogs)
 Blogs.getInitialProps = () => {
     let skip = 0;
     let limit = 1000;
-    return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
-        if (data.error) {
-            console.log(data.error);
+    return listBlogsWithCategoriesAndTags(skip, limit).then(data1 => {
+        if (data1.error) {
+            console.log(data1.error);
         } else {
-            return {
-                blogs: data.blogs,
-                categories: data.categories,
-                tags: data.tags,
-                totalBlogs: data.size,
-                blogsLimit: limit,
-                blogSkip: skip
-            };
+          return singleRandomBlog().then((data2) => {
+            if(data2.error){
+              console.log(data2.error)
+            }
+            return randomBlog().then(data3 => {
+                    if (data3.error) {
+                        console.log(data3.error);
+                    } else {
+                      return {
+                          singleBlog: data2.result,
+                          randomBlog:data3.result,
+                          blogs: data1.blogs,
+                          categories: data1.categories,
+                          tags: data1.tags,
+                          totalBlogs: data1.size,
+                          blogsLimit: limit,
+                          blogSkip: skip
+                      };
+                    }
+                });
+          })
+
+
         }
     });
 };
 
- 
+
 
 
 export default withRouter(Blogs);

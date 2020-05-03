@@ -163,6 +163,13 @@ const Card = ({ blog }) => {
                 text-align: center;
                 justify-content: center;
               }
+              .blog-title{
+                font-size: 23px;
+                padding-top:10px;
+                letter-spacing: 1px;
+                word-spacing: 2px;
+                font-family: 'Nunito Sans', sans-serif;
+              }
             }
             .readmore{
               background-color: #fff;
@@ -200,11 +207,11 @@ const Card = ({ blog }) => {
               padding-right:0px!important;
             }
             .blog-title{
-              font-size: 30px!important;
+              font-size:28px;
               padding-top:10px;
-              letter-spacing: 1px;
-              word-spacing: 2px;
-              font-family: 'EB Garamond', serif!important;
+
+
+              font-family: 'Nunito Sans', sans-serif;
             }
             .img-container{
              padding-left:30px;
