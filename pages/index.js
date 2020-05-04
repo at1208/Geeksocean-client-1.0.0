@@ -49,23 +49,13 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
     // const [singleBlog, setSingleBlog] = useState();
     // const [load, setLoad] = useState([]);
 
-    // useEffect(() => {
-    //   // loadRandomBlogs()
-    //   // loadSingleRandomBlog()
-    // }, []);
 
-    // const loadRandomBlogs = () => {
-    //   return   randomBlog().then(data => {
-    //           if (data.error) {
-    //               console.log(data.error);
-    //           } else {
-    //                setRandomBlogs(data.result)
-    //           }
-    //       });
-    // }
+
+
 
     const loadMore = () => {
         let toSkip = skip + limit;
+        console.log(toSkip)
         listBlogsWithCategoriesAndTags(toSkip, limit).then(data => {
             if (data.error) {
                 console.log(data.error);
@@ -81,16 +71,15 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
         return (
             size > 0 &&
             size >= limit && (
-                <button onClick={loadMore} className="btn btn-outline-primary btn-lg">
+                <Button onClick={loadMore} style={{ backgroundColor: "#512da8", border:"1px solid #512da8!important", color:"white", fontWeight:"bold"}} size="large">
                     Load more
-                </button>
+                </Button>
             )
         );
     };
 
     const showAllBlogs = () => {
         return blogs.map((blog, i) => {
-
             return (
                 <article key={i}>
                     <Card blog={blog} />
@@ -118,7 +107,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
     const showLoadedBlogs = () => {
         return loadedBlogs.map((blog, i) => {
-                <Card blog={blog} key={i}/>
+              return  <Card blog={blog} key={i}/>
         });
     };
 
@@ -144,15 +133,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
           </div>
  }
 
- // const loadSingleRandomBlog = () => {
- //   singleRandomBlog()
- //   .then((data) => {
- //     if(data.error){
- //       console.log(data.error)
- //     }
- //     setSingleBlog(data.result)
- //   })
- // }
+
 
 
 
@@ -195,12 +176,11 @@ console.log(loadedBlogs)
                   </div>
 
                     <div className="container">{showLoadedBlogs()}</div>
-                    <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
+                    <div className="text-center   pb-5">{loadMoreButton()}</div>
                     <section>
                         <div className="pb-5 text-center">
                             {showAllCategories()}
                             {showAllTags()}
-
                         </div>
                     </section>
           </div>
@@ -252,7 +232,7 @@ console.log(loadedBlogs)
 
 Blogs.getInitialProps = () => {
     let skip = 0;
-    let limit = 1000;
+    let limit = 3;
     return listBlogsWithCategoriesAndTags(skip, limit).then(data1 => {
         if (data1.error) {
             console.log(data1.error);

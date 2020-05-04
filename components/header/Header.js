@@ -11,7 +11,6 @@ import {ListItemIcon,
         IconButton,
         CssBaseline,
         Typography } from '@material-ui/core';
-
 import { AiFillRead, AiFillGift } from "react-icons/ai";
 import { TiContacts } from "react-icons/ti";
 import { GoSignIn, GoSignOut } from "react-icons/go";
@@ -21,85 +20,15 @@ import { MdDeleteSweep,MdHelp,MdPublic } from "react-icons/md";
 import { DiGoogleAnalytics} from "react-icons/di";
 import LazyLoad from 'react-lazy-load';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-
 import {Button} from 'antd'
 import { useMediaQuery } from 'react-responsive'
-
 import Router from "next/router";
-
-
 import Link from "next/link";
-
 import { APP_NAME, DOMAIN } from "../../config";
 import { signout, isAuth } from "../../actions/auth";
 import Drawer from './Drawer'
 import './Header.css'
 
-
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-  },
-  drawerOpen: {
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerClose: {
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9) + 1,
-    },
-  },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-}));
 
 
 
@@ -120,7 +49,6 @@ const MiniDrawer = () => {
   const mobileCss = () =>{
     if(isMobileOrTablet){
       return { bg: "background-color:#f5f5f5;",
-
                zIndex:  "z-index: 100;",
                paddTop: "padding-top: 0px;",
                pos: "position: fixed!important;",
