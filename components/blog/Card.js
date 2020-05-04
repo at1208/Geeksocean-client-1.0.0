@@ -154,7 +154,7 @@ const Card = ({ blog }) => {
                 margin-bottom:5px;
                 color: #4b49ff;
                 border-radius: 100px;
-                border: thin solid #00f;
+                border: 0px solid #00f;
                 font-family: Nunito Sans,sans-serif;
                 font-weight: 800;
               }
@@ -177,7 +177,7 @@ const Card = ({ blog }) => {
               height: 30px;
               color: #4b49ff;
               border-radius: 100px;
-              border: thin solid #00f;
+              border: 0px solid #00f;
               font-family: Nunito Sans,sans-serif;
               font-weight: 800;
             }
