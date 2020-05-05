@@ -11,8 +11,8 @@ import FlashCard from '../components/blog/FlashCard';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 import Search from '../components/blog/Search'
 import { Button } from 'antd'
-
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 
 
 
@@ -48,10 +48,6 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
     const [randomblogs, setRandomBlogs] = useState([]);
     // const [singleBlog, setSingleBlog] = useState();
     // const [load, setLoad] = useState([]);
-
-
-
-
 
     const loadMore = () => {
         let toSkip = skip + limit;
@@ -162,6 +158,7 @@ console.log(loadedBlogs)
 
     return (
     <React.Fragment>
+
             <Layout>
             {head()}
             <div className='container-fluid'>
@@ -226,6 +223,7 @@ console.log(loadedBlogs)
             }
               `}
             </style>
+
     </React.Fragment>
     );
 };

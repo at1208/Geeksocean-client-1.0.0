@@ -6,85 +6,69 @@ import { AiOutlineCopyright} from "react-icons/ai";
 const Footer = () => {
   const date = new Date()
   return <footer>
-          <div className='row justify-content-center'>
-            <div className='col-md-4 ft-block-1'>
-               <div className='ft-title'>Explore Geeksocean</div>
-               <div className='ft-tagline'>
-               Welcome to a place where the weather is always awesome.
-               </div>
+        <div className='row justify-content-center'>
+            <div className='col-md-3 ft-block-1 text-center'>
+                <h1 className='domain'>Geeks Ocean</h1>
             </div>
-            <div className='col-md-4 text-center ft-block-2'>
-
+            <div className='col-md-3 text-center ft-block-2'>
+                <p className='tagline'>Individually, we are one geek. Together, we are an ocean of geeks.</p>
             </div>
-          </div>
+       </div>
 
 
-          <div className='row justify-content-center'>
-            <div className='col-md-4 ft-block-3'>
-              <a href='https://geeksocean.com' className='domain-name'>Geeks Ocean</a>
+      <div className='row justify-content-center'>
+            <div className='col-md-8 ft-block-3 text-center'>
+                <a><button className='btn'>About</button></a>
+                <a href="/contact"><button className='btn'>Contact us</button></a>
+                <a><button className='btn'>Help</button></a>
+                <a href="/privacy-policy"><button className='btn'>Legal</button></a>
             </div>
-            <div className='col-md-4 ft-block-4'>
-            <a style={{ marginLeft:"10px", marginRight:"10px"}}>About</a>
-            <a style={{ marginLeft:"10px", marginRight:"10px"}}>Help</a>
-            <a href="/contact" style={{ marginLeft:"10px", marginRight:"10px"}}>Contact us</a>
-            <a href="/privacy-policy" style={{ marginLeft:"10px", marginRight:"10px"}}>Privacy policy</a>
-            </div>
-          </div>
 
-          <div className='text-center all-rights'>
-          <AiOutlineCopyright/>{date.getFullYear()}
-          </div>
+      </div>
+
 
 
         <style  global jsx>
         {`
-         .ft-title{
-               font-size:22px;
-
-               font-family: 'Source Sans Pro', sans-serif;
-               margin-bottom: 5px;
-         }
-         .ft-tagline{
-           text-align: left!important;
-           font-size:14px;
-
-         }
-         .domain-name{
-
-            font-family: 'Source Sans Pro', sans-serif;
-           font-size: 30px;
-           letter-spacing: 1px;
-         }
+            .domain{
+              font-size: 35px;
+              color: black!important;
+            }
 
           .ft-block-1{
-             padding:5px!important;
-
-             margin:5px;
-             font-weight:lighter;
+               padding-top:15px!important;
+               font-family: 'Poppins', sans-serif;
           }
           .ft-block-2{
-            padding:5px!important;
-            margin:5px;
-
+            padding-left: 10px;
+            padding-top:10px!important;
+            padding-right: 10px;
+            color: black;
+            font-family: 'Poppins', sans-serif;
 
           }
           .ft-block-3{
             padding:5px!important;
-
-            margin:5px;
+            color: black;
           }
-          .ft-block-4{
-            padding:5px!important;
-            margin:5px;
 
-            font-weight:lighter;
-            text-align: end;
+          @media(max-width: 767px){
+            .domain{
+              font-family: 'Poppins', sans-serif;
+              padding-top: 15px;
+              font-size: 35px;
+              line-height:0px;
+            }
+            .tagline{
+              margin-top:0px!important;
+              padding-left: 10px!important;
+              padding-right: 10px!important;
 
-          }
-          .all-rights{
-
-            font-size:15px;
-            padding:10px;
+            }
+            .ft-block-2{
+              color: black;
+              font-family: 'Poppins', sans-serif;
+            }
           }
 
           `}

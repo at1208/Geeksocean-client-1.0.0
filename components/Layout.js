@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
 
 
 footer {
-  height:100px!important;
+ 
   background-color:#f5f5f5;
   flex:1;
   grid-row: 2 / 3;
