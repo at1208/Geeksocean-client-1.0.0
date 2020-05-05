@@ -164,7 +164,7 @@ const MiniDrawer = () => {
 
     </div>
     <style global jsx>{`
-
+   
 
 .drawer-icons{
  font-size: 23px;

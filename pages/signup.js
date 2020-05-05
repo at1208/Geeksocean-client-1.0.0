@@ -5,14 +5,17 @@ import Link from 'next/link';
 const Signup = () => {
     return (
         <Layout>
-            <div className="container-fluid">
-                <h2 className="text-center pt-4 pb-4">SIGNUP</h2>
-                <div className="row">
-                    <div className="col-md-6 offset-md-3">
+        <div className='row col justify-content-center'>
+           <div className='col-md-6 shadow mt-5   sign'>
+             <h1 className='text-center'>Create account</h1>
                         <SignupComponent />
+                        </div>
+                        <style jsx>{`
+                          .sign{
+                            margin-bottom:200px;
+                          }
+                          `}</style>
                     </div>
-                </div>
-            </div>
         </Layout>
     );
 };

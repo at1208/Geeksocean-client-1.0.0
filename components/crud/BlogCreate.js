@@ -347,7 +347,7 @@ const faqStatus = () => {
     <div className="container-fluid pb-5">
     <ToastContainer />
       <div className="row">
-        <div className="col-md-10">
+        <div className="col-md-9">
           {createBlogForm()}
           <div className="pt-3">
             {showError()}
@@ -356,7 +356,7 @@ const faqStatus = () => {
           </div>
         </div>
 
-        <div className="col-md-2">
+        <div className="col-md-3">
           <div>
             <div className="form-group pb-2">
               <h5>Featured image</h5>

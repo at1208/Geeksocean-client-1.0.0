@@ -5,6 +5,8 @@ import Link from 'next/link';
 import LoginGoogle from './LoginGoogle';
 import LoginFacebook from './LoginFacebook';
 import { Button, Input } from 'antd'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 const SignupComponent = () => {
     const [values, setValues] = useState({
@@ -31,6 +33,7 @@ const SignupComponent = () => {
 
         preSignup(user).then(data => {
             if (data.error) {
+              toast.error(data.error)
                 setValues({ ...values, error: data.error, loading: false });
             } else {
                 setValues({
@@ -48,65 +51,50 @@ const SignupComponent = () => {
     };
 
     const handleChange = name => e => {
+        e.preventDefault()
         setValues({ ...values, error: false, [name]: e.target.value });
     };
 
     const showLoading = () => (loading ? <div className="alert alert-info">Loading...</div> : '');
-    const showError = () => (error ? <div className="alert alert-danger">{error}</div> : '');
     const showMessage = () => (message ? <div className="alert alert-info">{message}</div> : '');
 
     const signupForm = () => {
         return (
-            <form onSubmit={handleSubmit}>
-              <h4>Create Account</h4>
-                <div className="form-group">
+            <form onSubmit={handleSubmit} className='text-center'>
                     <Input
                         value={name}
                         onChange={handleChange('name')}
                         type="text"
-
+                        size="large"
                         addonBefore='Name'
+                        className='m-1 pl-4 pr-4'
                     />
-                </div>
-
-                <div className="form-group">
                     <Input
                         value={email}
                         onChange={handleChange('email')}
                         type="email"
-
+                        size="large"
                         addonBefore='Email'
+                        className='m-1 pl-4 pr-4'
                     />
-                </div>
-
-                <div className="form-group">
                     <Input
                         value={password}
                         onChange={handleChange('password')}
                         type="password"
-
+                        size="large"
                         addonBefore='Password'
+                        className='m-1 pl-4 pr-4'
                     />
-                </div>
-
-                <div className='text-center'>
-                    <button className="btn" style={{ width:"100px", backgroundColor: "#6442E0", color:"white"}}>Signup</button>
-                </div>
-                <Link href="/auth/password/forgot">
-                    <a className=" "><Button danger type="link">Forgot password</Button></a>
-                </Link>
+                    <button className='btn btn-md btn-outline-info mt-2 mb-2'>Signup</button>
               <style global jsx>{`
-                .ant-input-group-addon{
-                  background-color: #6442E0!important;
-                  color:white!important;
-                }`}</style>
+               `}</style>
             </form>
         );
     };
 
     return (
         <>
-            {showError()}
+             <ToastContainer />
             {showLoading()}
             {showMessage()}
             {/*<div className='row col justify-content-center'>
@@ -119,19 +107,9 @@ const SignupComponent = () => {
             </div>*/}
               <br />
 
-            <div className='showform'>
 
               {showForm && signupForm()}
-            </div>
 
-            <br />
-
-            <style jsx>{`
-           .showform{
-
-             padding:20px;
-           }
-              `}</style>
         </>
     );
 };
