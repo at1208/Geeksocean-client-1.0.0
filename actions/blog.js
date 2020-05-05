@@ -241,3 +241,16 @@ return  fetch(`${API}/blogs/singleRandomBlogs`, {
   })
   .catch(err => console.log(err));
 };
+
+
+export const topLatestBlogs = (category) => {
+
+return  fetch(`${API}/blogs/latest-Blogs/${category}`, {
+  method: 'GET'
+})
+  .then(response => {
+        handleResponse(response);
+      return response.json();
+  })
+  .catch(err => console.log(err));
+};

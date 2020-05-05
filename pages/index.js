@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { withRouter } from 'next/router';
 import Layout from '../components/Layout';
 import { useState, useEffect } from 'react';
-import { listBlogsWithCategoriesAndTags, randomBlog,singleRandomBlog } from '../actions/blog';
+import { listBlogsWithCategoriesAndTags, randomBlog,singleRandomBlog,topLatestBlogs } from '../actions/blog';
 // import { getKeywords } from '../actions/keyword';
 import Card from '../components/blog/Card';
 import FlashCard from '../components/blog/FlashCard';
@@ -12,11 +12,12 @@ import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 import Search from '../components/blog/Search'
 import { Button } from 'antd'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import BlogsByCategory from '../components/blog/BlogsByCategory';
 
 
 
 
-const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router, randomBlog,singleBlog }) => {
+const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router, randomBlog, singleBlog }) => {
 
     const head = () => (
         <Head>
@@ -62,6 +63,9 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             }
         });
     };
+
+
+
 
     const loadMoreButton = () => {
         return (
@@ -116,14 +120,17 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
    }
 
 
+
+
+
  const showHottestArticle = () => {
    return <div className='container mb-5 mt-4'>
            <div className='col row justify-content-center'>
-              <div className='col-md-6'>
-              {showSingleBlog()}
-              </div>
               <div className='col-md-5'>
-              {showRandomBlogs()}
+                {showRandomBlogs()}
+              </div>
+              <div className='col-md-6'>
+                {showSingleBlog()}
               </div>
            </div>
           </div>
@@ -164,9 +171,11 @@ console.log(loadedBlogs)
             <div className='container-fluid'>
                     {<div className="show-blogs">
                             <Search />
+
                     </div>}
                   <div className='container-fluid'>
                           {showHottestArticle()}
+                          <BlogsByCategory />
                       <div className="showall container">
                           {showAllBlogs()}
                       </div>
@@ -230,7 +239,7 @@ console.log(loadedBlogs)
 
 Blogs.getInitialProps = () => {
     let skip = 0;
-    let limit = 10;
+    let limit = 5;
     return listBlogsWithCategoriesAndTags(skip, limit).then(data1 => {
         if (data1.error) {
             console.log(data1.error);
@@ -238,7 +247,7 @@ Blogs.getInitialProps = () => {
           return singleRandomBlog().then((data2) => {
             if(data2.error){
               console.log(data2.error)
-            }
+            }  else {
             return randomBlog().then(data3 => {
                     if (data3.error) {
                         console.log(data3.error);
@@ -255,6 +264,7 @@ Blogs.getInitialProps = () => {
                       };
                     }
                 });
+              }
           })
 
 

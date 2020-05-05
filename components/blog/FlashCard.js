@@ -7,7 +7,6 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 const FlashCard = ({ blog }) => {
-  console.log(blog)
   return <>
    <Link href={`/blogs/${blog.slug}`}>
      <a>
@@ -22,7 +21,7 @@ const FlashCard = ({ blog }) => {
              />
             </div>
             <div className='col-8'>
-               <div className='p-2 pl-4'>
+               <div className=' pl-4'>
                 <h6 className='flash-title'>{blog.title}</h6>
                 <b>{moment(blog.createdAt).fromNow()}</b>
                </div>
