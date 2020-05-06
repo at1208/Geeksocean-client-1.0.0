@@ -1,6 +1,7 @@
 import Layout from '../components/Layout';
 import SignupComponent from '../components/auth/SignupComponent';
 import Link from 'next/link';
+import Head from 'next/head';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 
 const Signup = () => {

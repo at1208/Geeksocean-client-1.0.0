@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import { withRouter } from 'next/router';
+import Head from 'next/head';
 import SigninComponent from '../components/auth/SigninComponent';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 
