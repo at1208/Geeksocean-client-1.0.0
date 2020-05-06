@@ -15,9 +15,9 @@ const Signin = ({ router }) => {
     return (
       <>
         <Layout>
-           <div>
+           <div className='container'>
              <div className='row col justify-content-center'>
-                <div className='col-md-6 shadow mt-5   sign'>
+                <div className='col-md-6 shadow mt-5  sign'>
                   <h1 className='text-center'>Sign In</h1>
                   {showRedirectMessage()}
                   <SigninComponent />
@@ -26,10 +26,7 @@ const Signin = ({ router }) => {
         </div>
         </Layout>
     <style global jsx>{`
-    .col-md-6{
-      padding-left:0px!important;
-      padding-right:0px!important;
-    }
+
     .sign{
       margin-bottom:200px;
     }

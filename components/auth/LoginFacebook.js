@@ -3,17 +3,15 @@ import Router from 'next/router';
 import FacebookLogin from 'react-facebook-login';
 import { loginWithFacebook, authenticate, isAuth } from '../../actions/auth';
 import { FB_APP_ID } from '../../config';
-import { FaFacebookSquare } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 
 
 const LoginFacebook = () => {
     const responseFacebook = response => {
-        // console.log(response); // {access_token, email, id, userID, name, signed_request}
         loginWithFacebook(response).then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                // console.log('repsonse on fb login', data);
                 authenticate(data, () => {
                     if (isAuth() && isAuth().role === 1) {
                         Router.push(`/`);
@@ -32,17 +30,17 @@ const LoginFacebook = () => {
                 appId={`${FB_APP_ID}`}
                 fields="name,email,picture"
                 callback={responseFacebook}
-                icon=<FaFacebookSquare style={{ fontSize: "25px!important", color:"#3b5998", width: "50px", textAlign:"left!important"}}/>
-                textButton="Sign in with facebook"
+                icon=<FaFacebook style={{ fontSize: "24px", marginRight:"10px", color:"#4267B2"}}/>
+                textButton="Sign in with Facebook"
             />
             <style global jsx>{`
               .fb-btn{
-
+                 box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
               }
             .metro{
+               font-size: 12px;
                background-color: white!important;
-               margin:16px 0px 0px 0px!important;
-               padding:0px 0px 0px 0px!important;
+               padding:9px 13px 9px 13px!important
               }
               button{
                margin:"50px!important"
