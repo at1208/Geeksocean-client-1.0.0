@@ -24,7 +24,7 @@ const Blogs = () => {
 
 //Games
       const gamesLatestBlogs = () => {
-          topLatestBlogs(testId).then(data => { //game category id
+          topLatestBlogs(gameID).then(data => { //game category id
               if (data.error) {
                   console.log(data.error);
               } else {
@@ -46,7 +46,7 @@ const Blogs = () => {
 
 //Mobiles
      const mobilesLatestBlogs = () => {
-         topLatestBlogs(testId).then(data => { //mobile category id
+         topLatestBlogs(mobileID).then(data => { //mobile category id
              if (data.error) {
                  console.log(data.error);
              } else {
@@ -66,7 +66,7 @@ const Blogs = () => {
 
 //LifeStyle
      const lifestyleLatestBlogs = () => {
-         topLatestBlogs(testId).then(data => { //lifestyle category id
+         topLatestBlogs(lifestyleID).then(data => { //lifestyle category id
              if (data.error) {
                  console.log(data.error);
              } else {
