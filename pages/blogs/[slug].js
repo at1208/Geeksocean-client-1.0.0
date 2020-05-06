@@ -110,7 +110,8 @@ const SingleBlog = ({ blog, query }) => {
             <meta property="og:image:type" content="image/jpg"  alt='author'/>
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
             <meta name="twitter:card" content={`${API}/blog/photo/${blog.slug}`} />
-            <meta name="twitter:site" content={`${APP_NAME}`} />
+            <meta name="twitter:site" content="@geeks_ocean" />
+            <meta name="twitter:account_id" content="1244566301244190720" />
             <meta name="twitter:title" content={`${blog.title}| ${APP_NAME}`} />
             <meta name="twitter:description" content={blog.mdesc} />
             <meta name="twitter:creator" content={blog.postedBy.name} />
