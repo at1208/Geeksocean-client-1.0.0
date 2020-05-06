@@ -89,11 +89,13 @@ const SigninComponent = () => {
                     {showLoading()}
                     {showMessage()}
                     <div className='row col justify-content-center mt-3 mb-3'>
-                     <div className='col-md-6 text-center pt-2 pb-2'>
+                    {/* <div className='col-md-6 text-center pt-2 pb-2'>
                         <LoginGoogle />
-                      </div>
-                      <div className='col-md-6 text-center pt-2 pb-2'>
+                      </div>*/}
+                      <div className='col-md-6 text-center pt-2 pb-1'>
                         <LoginFacebook/>
+                        <br />
+                          <i><b>Or</b></i>
                       </div>
                     </div>
 
