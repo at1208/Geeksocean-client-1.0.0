@@ -2,9 +2,10 @@ import Layout from '../components/Layout';
 import SignupComponent from '../components/auth/SignupComponent';
 import Link from 'next/link';
 import Head from 'next/head';
+import { withRouter } from 'next/router';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 
-const Signup = () => {
+const Signup = ({ router }) => {
 
     const head = () => (
         <Head>
@@ -49,4 +50,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default withRouter(Signup);
