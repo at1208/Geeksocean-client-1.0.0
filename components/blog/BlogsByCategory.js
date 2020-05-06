@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
 import { topLatestBlogs } from '../../actions/blog';
 import FlashCard from './FlashCard'
+import { Skeleton } from 'antd';
+
 
 const Blogs = () => {
 
   const [gamesBlog, setgamesBlog] = useState([]);
   const [mobileBlog, setmobileBlog] = useState([]);
   const [lifeStyleBlog, setlifeStyleBlog] = useState([]);
+
+  const testId = "5e8d946b9a1d0ebda679f9ac"
+  const gameID = "5e7a364b8aebfe29a4acb579"
+  const mobileID = "5e7aefe5bb39a641e3c9dd3f"
+  const lifestyleID = "5e7bb32dbb39a641e3c9dd50"
 
       useEffect(() => {
           gamesLatestBlogs();
@@ -17,7 +24,7 @@ const Blogs = () => {
 
 //Games
       const gamesLatestBlogs = () => {
-          topLatestBlogs("5e7a364b8aebfe29a4acb579").then(data => { //game category id
+          topLatestBlogs(testId).then(data => { //game category id
               if (data.error) {
                   console.log(data.error);
               } else {
@@ -27,7 +34,10 @@ const Blogs = () => {
       };
 
    const showGamesBlogs = () => {
-       return gamesBlog.map((blog, i) => {
+     if(gamesBlog.length ==0){
+       return  <div className='m-2'> <Skeleton active /></div>
+     }
+     return gamesBlog.map((blog, i) => {
                return <FlashCard blog={blog} key={i}/>
        });
      }
@@ -36,7 +46,7 @@ const Blogs = () => {
 
 //Mobiles
      const mobilesLatestBlogs = () => {
-         topLatestBlogs("5e7aefe5bb39a641e3c9dd3f").then(data => { //mobile category id
+         topLatestBlogs(testId).then(data => { //mobile category id
              if (data.error) {
                  console.log(data.error);
              } else {
@@ -46,6 +56,9 @@ const Blogs = () => {
      };
 
   const showMobilesBlogs = () => {
+    if(gamesBlog.length ==0){
+      return  <div className='p-2'><Skeleton active /></div>
+    }
       return mobileBlog.map((blog, i) => {
               return <FlashCard blog={blog} key={i}/>
       });
@@ -53,7 +66,7 @@ const Blogs = () => {
 
 //LifeStyle
      const lifestyleLatestBlogs = () => {
-         topLatestBlogs("5e7bb32dbb39a641e3c9dd50").then(data => { //lifestyle category id
+         topLatestBlogs(testId).then(data => { //lifestyle category id
              if (data.error) {
                  console.log(data.error);
              } else {
@@ -63,6 +76,9 @@ const Blogs = () => {
      };
 
   const showlifestyleBlogs = () => {
+    if(gamesBlog.length ==0){
+      return   <div className='p-2'><Skeleton active /></div>
+    }
       return lifeStyleBlog.map((blog, i) => {
               return <FlashCard blog={blog} key={i}/>
       });
