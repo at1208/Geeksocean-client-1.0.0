@@ -3,4 +3,7 @@ Sitemap: https://geeksocean.com/api/sitemap.xml
 User-agent: *
 Allow: /*
 
+User-agent: Twitterbot
+Disallow:
+
 Disallow: /api/*
