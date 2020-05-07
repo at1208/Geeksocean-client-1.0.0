@@ -92,8 +92,6 @@ const SingleBlog = ({ blog, query }) => {
 
 
 
- console.log(faq)
-
     const head = () => (
         <Head>
             <title>
@@ -181,13 +179,11 @@ const SingleBlog = ({ blog, query }) => {
 
     const showRelatedBlog = () => {
         return related.map((blog, i) => (
-        <div className='row col justify-content-center'>
-              <div key={i} style={{ margin:"2px"}}>
+              <div key={i} style={{ margin:"5px"}} className='col-md-3'>
                 <article>
                     <SmallCard blog={blog} />
                 </article>
-         </div>
-      </div>
+               </div>
         ));
     };
 
@@ -209,9 +205,7 @@ const SingleBlog = ({ blog, query }) => {
                                                 <div className='img-container'>
                                                 <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
                                                   <LazyLoadImage
-                                                       className=""
-                                                       height={80}
-                                                       width={80}
+                                                       className="profile-img"
                                                        style={{ borderRadius: "60px" }}
                                                        src={`${API}/user/photo/${userName}`}
                                                        alt='' />
@@ -287,8 +281,10 @@ const SingleBlog = ({ blog, query }) => {
 
                  <div className="container">
                      <h4 className="text-center pt-3 pb-3 more-from-geeksocean">More from Geeksocean.com</h4>
-                     <div className="row p-2" >
-                     {showRelatedBlog()}
+                     <div className="row p-2 col justify-content-center">
+
+                         {showRelatedBlog()}
+
                      </div>
                  </div>
 
@@ -381,6 +377,10 @@ const SingleBlog = ({ blog, query }) => {
                  }
                  textarea.ant-input {
                   margin: 10px;
+          }
+          .profile-img{
+            height:80px!important;
+            width:80px!important;
           }
                   `}</style>
               </div>

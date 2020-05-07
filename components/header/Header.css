@@ -205,7 +205,7 @@ padding: 16px 52px!important;
 .col-md-5{
     padding-left: 0px!important;
 }
- 
+
 .row{
   margin-left: 0px!important;
   margin-right:0px!important;
@@ -214,4 +214,8 @@ padding: 16px 52px!important;
   padding-right: 15px!important;
 padding-left: 15px!important;
 
+}
+
+img{
+  width: 100%;
 }

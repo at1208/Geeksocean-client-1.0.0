@@ -40,6 +40,8 @@
     "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
     "query-string": "^6.8.3",
+    "quill-image-drop-module": "^1.0.3",
+    "quill-image-resize-module": "^3.0.0",
     "react": "^16.13.1",
     "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^16.13.1",

@@ -240,7 +240,7 @@ console.log(loadedBlogs)
 
 Blogs.getInitialProps = () => {
     let skip = 0;
-    let limit = 5;
+    let limit = 8;
     return listBlogsWithCategoriesAndTags(skip, limit).then(data1 => {
         if (data1.error) {
             console.log(data1.error);

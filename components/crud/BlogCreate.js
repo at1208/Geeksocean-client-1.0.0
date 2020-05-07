@@ -10,6 +10,7 @@ import { createBlog } from "../../actions/blog";
 import { createDraft } from "../../actions/draft";
 // import { createKeyword, getKeywords } from '../../actions/keyword';
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 import "../../node_modules/react-quill/dist/quill.snow.css";
 import { QuillModules, QuillFormats } from "../../helpers/quill";
 import {Button, Input,Checkbox} from 'antd';
