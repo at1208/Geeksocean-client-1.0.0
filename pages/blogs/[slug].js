@@ -150,10 +150,6 @@ const SingleBlog = ({ blog, query }) => {
 
     const showFAQs = () => {
       return faq.map((t, i) => {
-       console.log(t.question.length)
-      if(t.question.length===0){
-        return null;
-      } else {
         return <div className='m-2'>
                   <FaqCard  question={t.question} answer={t.answer}/>
                     <style global jsx>{`
@@ -179,7 +175,7 @@ const SingleBlog = ({ blog, query }) => {
                     `}</style>
                </div>
 
-        }})};
+        })};
 
 
 
@@ -264,14 +260,14 @@ const SingleBlog = ({ blog, query }) => {
 
                         <div className="row col justify-content-center">
                                <div className='col-md-10 lead' style={{ color: "black"}}>
-                               {renderHTML(blog.body)} 
+                               {renderHTML(blog.body)}
                                </div>
                         </div>
-                    </article>
+
                     <div className='text-center'>
                       { faq && faq[0] && faq[0].question.length > 0 && <h2 className='faq-title'>Frequently Asked Questions</h2>}
                       {faq && <div className='row col justify-content-center'>
-                                  <div className='col-md-10'>{showFAQs()}</div>
+                                  <div className='col-md-10'>{faq && faq[0] && faq[0].question.length > 0 && showFAQs()}</div>
                               </div>}
                        <hr />
                     </div>
@@ -280,6 +276,7 @@ const SingleBlog = ({ blog, query }) => {
                         {showBlogTags(blog)}
 
                     </div>
+                      </article>
                 </main>
 
                 <div className='blog-comment '>
