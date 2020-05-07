@@ -8,7 +8,7 @@ const Privacy = ({ router }) => {
 
   const head = () => (
       <Head>
-          <title>{APP_NAME}</title>
+          <title>Privacy Policy |{APP_NAME}</title>
           <meta
               name="description"
               content="Tech articles on mobiles, laptops, cybersecurity, games and much more."
@@ -32,6 +32,7 @@ const Privacy = ({ router }) => {
 
 
   return <>
+  {head()}
     <Layout>
     <div className='container'>
     <h2>Privacy Policy</h2>
