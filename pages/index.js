@@ -17,6 +17,7 @@ import BlogsByCategory from '../components/blog/BlogsByCategory';
 
 
 
+
 const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router, randomBlog, singleBlog }) => {
 
     const head = () => (

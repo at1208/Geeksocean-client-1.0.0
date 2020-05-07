@@ -7,7 +7,6 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 const SmallCard = ({ blog }) => {
-  console.log(blog)
     return (
         <div className="card shadow">
             <section>

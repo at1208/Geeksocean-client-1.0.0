@@ -16,6 +16,7 @@ import Twitter from '../../components/social/twitter'
 import Linkedin from '../../components/social/linkedin'
 import LazyLoad from 'react-lazy-load';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import FaqCard from '../../components/blog/FaqCard';
 
 
 const CommentList = ({ comments }) => {
@@ -147,39 +148,38 @@ const SingleBlog = ({ blog, query }) => {
 
 
 
-    const showFAQs = () =>
-        faq.map((t, i) => (
-               <div className='container m-2'>
-                  <div className='ques'>{t.question}</div>
-                  <div className='ans'>{t.answer}</div>
-                <style global jsx>{`
-                .ques{
-                  font-size: 20px;
-                  font-weight:bold;
-                  font-style: italic;
-                }
-                .ans{
-                  font-size:18px;
-                  font-weight:lighter;
-                  font-style: italic;
-                }
-                .faqsContainer{
-                  padding-top:5px;
-                  background-color: #f5f5f5!important;
-                }
-                .faqsAns{
-                 text-align:left!important;
-                }
-
-                @media(max-width: 490px){
-                  .faqsAns{
-                   padding-left:40px!important;
-                   padding-right:40px!important;
-                  }
-                  `}</style>
+    const showFAQs = () => {
+      return faq.map((t, i) => {
+       console.log(t.question.length)
+      if(t.question.length===0){
+        return null;
+      } else {
+        return <div className='m-2'>
+                  <FaqCard  question={t.question} answer={t.answer}/>
+                    <style global jsx>{`
+                    .MuiExpansionPanelDetails-root {
+                    display: flex;
+                    padding: 8px 24px 24px;
+                    }
+                    .MuiExpansionPanelSummary-root {
+                    background-color: lavender;
+                    display: flex;
+                    padding: 0 24px 0 24px;
+                    min-height: 48px;
+                    }
+                    .makeStyles-heading-67 {
+                      font-size:20px;
+                      font-family: sans-serif;
+                    }
+                    .makeStyles-heading-36 {
+                    font-size: 16px;
+                    font-weight: 400;
+                    font-family: sans-serif;
+                    }
+                    `}</style>
                </div>
 
-        ));
+        }})};
 
 
 
@@ -266,15 +266,17 @@ const SingleBlog = ({ blog, query }) => {
                         <div className="row col justify-content-center">
                                <div className='col-md-10'>
                                 <div className="lead" style={{ color: "black"}}>{renderHTML(blog.body)}</div>
-                                <div className='text-center faqsContainer'>
-                              {faq && <h2 className='faq-title'>Frequently Asked Questions</h2>}
-                                {faq && <div className='faqsAns row col justify-content-center'>
-                                <div className='col-md-5'>{showFAQs()}</div></div>}
-                                 <hr />
-                                </div>
                                </div>
                         </div>
+
                     </article>
+                    <div className='text-center'>
+                      { faq && faq[0] && faq[0].question.length > 0 && <h2 className='faq-title'>Frequently Asked Questions</h2>}
+                      {faq && <div className='row col justify-content-center'>
+                                  <div className='col-md-10'>{showFAQs()}</div>
+                              </div>}
+                       <hr />
+                    </div>
                     <div className="p-1 mt-1 text-center">
                         {showBlogCategories(blog)}
                         {showBlogTags(blog)}
@@ -382,6 +384,9 @@ const SingleBlog = ({ blog, query }) => {
                    padding:5px;
                    padding-left: 13px;
                  }
+                 textarea.ant-input {
+                  margin: 10px;
+          }
                   `}</style>
               </div>
           </Layout>
@@ -390,7 +395,6 @@ const SingleBlog = ({ blog, query }) => {
 };
 
 SingleBlog.getInitialProps = ({ query}) => {
-
   return  singleBlog(query.slug).then(data => {
         if (data.error) {
             console.log(data.error);
