@@ -254,7 +254,6 @@ const SingleBlog = ({ blog, query }) => {
                                             />
                                         </LazyLoad>
                                         </div>
-
                                     </section>
 
 
@@ -264,11 +263,10 @@ const SingleBlog = ({ blog, query }) => {
                         </div>
 
                         <div className="row col justify-content-center">
-                               <div className='col-md-10'>
-                                <div className="lead" style={{ color: "black"}}>{renderHTML(blog.body)}</div>
+                               <div className='col-md-10 lead' style={{ color: "black"}}>
+                               {renderHTML(blog.body)} 
                                </div>
                         </div>
-
                     </article>
                     <div className='text-center'>
                       { faq && faq[0] && faq[0].question.length > 0 && <h2 className='faq-title'>Frequently Asked Questions</h2>}
