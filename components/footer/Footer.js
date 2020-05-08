@@ -6,22 +6,26 @@ import { AiOutlineCopyright} from "react-icons/ai";
 const Footer = () => {
   const date = new Date()
   return <footer>
+ 
         <div className='row justify-content-center'>
             <div className='col-md-3 ft-block-1 text-center'>
-                <h1 className='domain'>Geeks Ocean</h1>
+                <h1 className='domain'> Geeks Ocean </h1>
             </div>
             <div className='col-md-3 text-center ft-block-2'>
-                <p className='tagline'>Individually, we are one geek. Together, we are an ocean of geeks.</p>
+                <p className='tagline'> Individually, we are one geek. Together, we are an ocean of geeks. </p>
             </div>
        </div>
 
 
       <div className='row justify-content-center'>
+
             <div className='col-md-8 ft-block-3 text-center'>
-                <a><button className='btn'>About</button></a>
-                <a href="/contact"><button className='btn'>Contact us</button></a>
-                <a><button className='btn'>Help</button></a>
-                <a href="/privacy-policy"><button className='btn'>Legal</button></a>
+
+                <a><button className='btn'> About </button></a>
+                <a href="/contact"><button className='btn'> Contact us </button></a>
+                <a><button className='btn'> Help </button></a>
+                <a href="/privacy-policy"><button className='btn'> Legal </button></a>
+
             </div>
 
       </div>
@@ -73,7 +77,9 @@ const Footer = () => {
 
           `}
         </style>
+ 
        </footer>
+
 }
 
 export default Footer;

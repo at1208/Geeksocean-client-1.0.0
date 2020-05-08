@@ -4,7 +4,7 @@ import moment from 'moment';
 import { API } from '../../config';
 import LazyLoad from 'react-lazy-load';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-
+ 
 
 const FlashCard = ({ blog }) => {
   return <>
@@ -22,8 +22,8 @@ const FlashCard = ({ blog }) => {
             </div>
             <div className='col-8'>
                <div className=' pl-4'>
-                <h6 className='flash-title'>{blog.title}</h6>
-                <b>{moment(blog.createdAt).fromNow()}</b>
+                <h6 className='flash-title'> {blog.title} </h6>
+                <b> {moment(blog.createdAt).fromNow()} </b>
                </div>
             </div>
          </div>

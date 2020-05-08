@@ -6,6 +6,7 @@ import { userPublicProfile } from '../../actions/user';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import moment from 'moment';
 import ContactForm from '../../components/form/ContactForm';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const UserProfile = ({ user, blogs, query }) => {
 
@@ -59,10 +60,10 @@ const UserProfile = ({ user, blogs, query }) => {
                                             <p className="text-muted">Joined {moment(user.createdAt).fromNow()}</p>
                                         </div>
                                         <div className="col-md-4">
-                                            <img
+                                            <LazyLoadImage
                                                 src={`${API}/user/photo/${user.username}`}
                                                 className="img img-fluid img-thumbnail mb-3"
-                                                style={{ maxHeight: '100px', maxWidth: '100%' }}
+                                                style={{ maxHeight: '100%', maxWidth: '100%' }}
                                                 alt=" "
                                             />
                                         </div>

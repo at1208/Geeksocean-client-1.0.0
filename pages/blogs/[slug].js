@@ -190,14 +190,16 @@ const SingleBlog = ({ blog, query }) => {
     return (
         <>
             {head()}
+
             <Layout>
+
             <div className='blog-detail container'>
                 <main>
                     <article>
                         <div className="container">
                             <section>
                                 <div className="container col-md-10">
-                                    <h1 className="blog-title text-center  ">{blog.title}</h1>
+                                    <h1 className="blog-title text-center"> {blog.title} </h1>
                                     <section>
                                         <div className="mark">
                                         <div className='row col container'>
@@ -254,7 +256,7 @@ const SingleBlog = ({ blog, query }) => {
 
                         <div className="row col justify-content-center">
                                <div className='col-md-10 lead' style={{ color: "black"}}>
-                               {renderHTML(blog.body)}
+                           {renderHTML(blog.body)}
                                </div>
                         </div>
 
@@ -390,7 +392,9 @@ const SingleBlog = ({ blog, query }) => {
           }
                   `}</style>
               </div>
+
           </Layout>
+
         </>
     );
 };

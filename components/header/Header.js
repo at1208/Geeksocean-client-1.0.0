@@ -164,7 +164,7 @@ const MiniDrawer = () => {
 
     </div>
     <style global jsx>{`
-   
+
 
 .drawer-icons{
  font-size: 23px;
@@ -196,7 +196,7 @@ a{
 .logo-style{
 font-family: 'Philosopher', sans-serif;
 font-size:30px;
-color:black!important;
+ 
 
 }
 .get-started{

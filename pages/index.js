@@ -18,6 +18,7 @@ import BlogsByCategory from '../components/blog/BlogsByCategory';
 
 
 
+
 const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router, randomBlog, singleBlog }) => {
 
     const head = () => (
@@ -153,7 +154,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
                className="img img-fluid "
                src={`${API}/blog/photo/${blog.slug}`}
               />
-              <h2 className='text-center p-2 singleBlogTitle'>{blog.title}</h2>
+              <h2 className='text-center p-2 singleBlogTitle'> {blog.title} </h2>
 
               </div>
           </a>
@@ -162,7 +163,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
    }
  }
 
-console.log(loadedBlogs)
+
 
     return (
     <React.Fragment>
@@ -170,8 +171,10 @@ console.log(loadedBlogs)
             <Layout>
             {head()}
             <div className='container-fluid'>
+
                     {<div className="show-blogs">
                             <Search />
+
 
                     </div>}
                   <div className='container-fluid'>

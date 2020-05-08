@@ -11,7 +11,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 const Card = ({ blog }) => {
-console.log(blog)
+
   const [pic, setPic] =useState('');
     const showBlogCategories = blog =>
         blog.categories.map((c, i) => (
@@ -44,9 +44,11 @@ console.log(blog)
 
             <header>
                 <a href={`/blogs/${blog.slug}`}>
+
                     <h1 className="blog-title text-center">
-                       {blog.title}
+                   {blog.title}
                     </h1>
+
                 </a>
             </header>
 {/*          <section>
@@ -95,7 +97,7 @@ console.log(blog)
                     <section>
                         <div className='excerpt-content'>{renderHTML(blog.excerpt)}</div>
                          <div className='row'>
-                            <div className='views'>{blog.views.length} views</div>
+                            <div className='views'>{ blog && blog.views && blog.views.length} views</div>
                             <div className='readbtn'>
                              <a href={`/blogs/${blog.slug}`}><button className='readmore'>Read more</button></a>
                             </div>
@@ -111,8 +113,6 @@ console.log(blog)
               .excerpt-content{
                 font-family: 'Source Sans Pro', sans-serif;
                 font-size:17px;
-                color:black!important
-
               }
               .views{
                 padding-top: 4px;
@@ -127,16 +127,10 @@ console.log(blog)
               margin:10px;
 
             }
-            .excerpt{
-            }
-            .container{
-
-            }
             @media(max-width: 767px){
               .blog-container{
                 padding: 1px;
                 margin:0px;
-
                 margin-bottom: 20px;
                 margin-top: 20px;
               }
@@ -217,8 +211,6 @@ console.log(blog)
             .blog-title{
               font-size:28px;
               padding-top:10px;
-
-
               font-family: 'Nunito Sans', sans-serif;
             }
             .img-container{
@@ -237,6 +229,7 @@ console.log(blog)
               padding-left: 13px;
             }
               `}</style>
+
         </div>
 
     );
