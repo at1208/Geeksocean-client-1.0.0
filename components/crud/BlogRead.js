@@ -6,7 +6,7 @@ import { list, removeBlog } from '../../actions/blog';
 import { getProfile } from '../../actions/user';
 import moment from 'moment';
 import { Button } from 'antd';
-import { Container } from '../Design'
+
 
 const BlogRead = () => {
     const [blogs, setBlogs] = useState([]);
@@ -87,7 +87,7 @@ const BlogRead = () => {
         return blogs.map((blog, i) => {
             return (
                 <div key={i} className="shadow article-container">
-                    <h4  className='text-center'>  <Container>{blog.title}  </Container></h4>
+                    <h4  className='text-center'>  {blog.title}  </h4>
                     <p className='manage-by'>
                     <b>{blog.postedBy.name}</b> | Updated on {moment(blog.updatedAt).fromNow()}
                     </p>
@@ -97,7 +97,7 @@ const BlogRead = () => {
                     {showUpdateButton(blog)}
                     <style jsx>{`
                       .manage-by{
-                       
+
                         padding-left:4px;
                       }
                      .article-container{
@@ -113,7 +113,7 @@ const BlogRead = () => {
 
     return (
         <>
-          <Container>
+
             <div className="row blog-read-container">
                 <div className="col-md-12">
                     {message && <div className="alert alert-warning">{message}</div>}
@@ -133,7 +133,7 @@ const BlogRead = () => {
                  }
                }
               `}</style>
-          </Container>
+
         </>
     );
 };

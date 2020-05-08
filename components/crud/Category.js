@@ -4,7 +4,7 @@ import Router from 'next/router';
 import { getCookie } from '../../actions/auth';
 import { create, getCategories, removeCategory } from '../../actions/category';
 import { Input, Button } from 'antd'
-import { Container } from '../Design'
+
 
 const Category = () => {
     const [values, setValues] = useState({
@@ -121,7 +121,7 @@ const Category = () => {
 
     return (
         <React.Fragment>
-          <Container>
+         
             {showSuccess()}
             {showError()}
             {showRemoved()}
@@ -133,7 +133,7 @@ const Category = () => {
               {showCategories()}
               </div>
             </div>
-           </Container>
+         
         </React.Fragment>
     );
 };
