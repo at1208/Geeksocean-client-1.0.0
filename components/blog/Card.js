@@ -95,10 +95,10 @@ console.log(blog)
                     <section>
                         <div className='excerpt-content'>{renderHTML(blog.excerpt)}</div>
                          <div className='row'>
+                            <div className='views'>{blog.views.length} views</div>
                             <div className='readbtn'>
                              <a href={`/blogs/${blog.slug}`}><button className='readmore'>Read more</button></a>
                             </div>
-                            <div className='views'>{blog.views.length} views</div>
                          </div>
                     </section>
                     <section>
@@ -115,8 +115,6 @@ console.log(blog)
 
               }
               .views{
-
-                margin-left: 22px;
                 padding-top: 4px;
                 font-family: monospace;
               }
@@ -156,6 +154,7 @@ console.log(blog)
                 padding-right: 5px!important;
               }
               .readmore{
+                margin-left: 22px;
                 background-color: #fff;
                 width: 100px;
                 height: 10px;
@@ -180,6 +179,7 @@ console.log(blog)
               }
             }
             .readmore{
+              margin-left: 22px;
               background-color: #fff;
               width: 100px;
               height: 30px;
