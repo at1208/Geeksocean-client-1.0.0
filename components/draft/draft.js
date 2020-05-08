@@ -6,7 +6,7 @@ import { listOfDraftByUser,removeDraft } from '../../actions/draft';
 import { getProfile } from '../../actions/user';
 import moment from 'moment';
 import { Button } from 'antd';
-import { Container } from '../Design'
+
 
 const DraftRead = () => {
     const [message, setMessage] = useState('');
@@ -90,7 +90,7 @@ const DraftRead = () => {
         return blogs.map((blog, i) => {
             return (
                 <div key={i} className="shadow article-container">
-                    <h4  className='text-center'> <Container>{blog.title} </Container></h4>
+                    <h4  className='text-center'>  {blog.title}  </h4>
                     <p className='manage-by'>
                       <b>{blog.postedBy.name}</b> | Updated on {moment(blog.updatedAt).fromNow()}
                     </p>
