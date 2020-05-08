@@ -11,9 +11,8 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 
 const Card = ({ blog }) => {
-
+console.log(blog)
   const [pic, setPic] =useState('');
-
     const showBlogCategories = blog =>
         blog.categories.map((c, i) => (
 
@@ -95,9 +94,12 @@ const Card = ({ blog }) => {
                 <div className="col-md-9 excerpt">
                     <section>
                         <div className='excerpt-content'>{renderHTML(blog.excerpt)}</div>
-                        <div className='readbtn'>
-                        <a href={`/blogs/${blog.slug}`}><button className='readmore'>Read more</button></a>
-                        </div>
+                         <div className='row'>
+                            <div className='readbtn'>
+                             <a href={`/blogs/${blog.slug}`}><button className='readmore'>Read more</button></a>
+                            </div>
+                            <div className='views'>{blog.views.length} views</div>
+                         </div>
                     </section>
                     <section>
                         {/*showBlogCategories(blog)*/}
@@ -111,6 +113,12 @@ const Card = ({ blog }) => {
                 font-size:17px;
                 color:black!important
 
+              }
+              .views{
+
+                margin-left: 22px;
+                padding-top: 4px;
+                font-family: monospace;
               }
               p{
                 margin-top: 20px!important;

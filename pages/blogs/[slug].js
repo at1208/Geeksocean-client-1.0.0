@@ -265,6 +265,7 @@ const SingleBlog = ({ blog, query }) => {
                               </div>}
                        <hr />
                     </div>
+                    <div className='views text-center'>{blog.views.length} views</div>
                     <div className="p-1 mt-1 text-center">
                         {showBlogCategories(blog)}
                         {showBlogTags(blog)}
@@ -309,6 +310,11 @@ const SingleBlog = ({ blog, query }) => {
                   padding-left: 20px;
                   padding-right: 20px;
 
+                 }
+                 .views{
+                   margin-left: 22px;
+                   padding-top: 4px;
+                   font-family: monospace;
                  }
                  .img-fluid{
                    margin-bottom: 20px;
