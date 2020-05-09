@@ -267,7 +267,7 @@ const SingleBlog = ({ blog, query }) => {
                               </div>}
                        <hr />
                     </div>
-                    <div className='views text-center'>{blog.views.length} views</div>
+                  {/*  <div className='views text-center'>{blog.views.length} views</div>*/}
                     <div className="p-1 mt-1 text-center">
                         {showBlogCategories(blog)}
                         {showBlogTags(blog)}

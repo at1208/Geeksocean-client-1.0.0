@@ -96,12 +96,10 @@ const Card = ({ blog }) => {
                 <div className="col-md-9 excerpt">
                     <section>
                         <div className='excerpt-content'>{renderHTML(blog.excerpt)}</div>
-                         <div className='row'>
-                            <div className='views'>{ blog && blog.views && blog.views.length} views</div>
+                            {/*<div className='views'>{ blog && blog.views blog.views.length} views</div>*/}
                             <div className='readbtn'>
                              <a href={`/blogs/${blog.slug}`}><button className='readmore'>Read more</button></a>
                             </div>
-                         </div>
                     </section>
                     <section>
                         {/*showBlogCategories(blog)*/}
@@ -148,7 +146,7 @@ const Card = ({ blog }) => {
                 padding-right: 5px!important;
               }
               .readmore{
-                margin-left: 22px;
+ 
                 background-color: #fff;
                 width: 100px;
                 height: 10px;
@@ -173,7 +171,7 @@ const Card = ({ blog }) => {
               }
             }
             .readmore{
-              margin-left: 22px;
+
               background-color: #fff;
               width: 100px;
               height: 30px;
