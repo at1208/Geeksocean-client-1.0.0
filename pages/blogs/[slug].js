@@ -255,7 +255,7 @@ const SingleBlog = ({ blog, query }) => {
                         </div>
 
                         <div className="row col justify-content-center">
-                               <div className='col-md-10 lead' style={{ color: "black"}}>
+                               <div className='col-md-8 lead' style={{ color: "black"}}>
                            {renderHTML(blog.body)}
                                </div>
                         </div>
