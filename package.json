@@ -61,6 +61,7 @@
     "react-structured-data": "0.0.14",
     "react-super-responsive-table": "^5.1.1",
     "react-toastify": "^5.5.0",
+    "react-web-notification": "^0.8.0",
     "reactstrap": "^8.0.1",
     "sitemap": "^6.1.0",
     "social-likes-next": "^1.1.0",
