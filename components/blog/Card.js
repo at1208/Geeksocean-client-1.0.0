@@ -82,7 +82,7 @@ const Card = ({ blog }) => {
             <div className="row ">
                 <div className="col-md-3">
                     <section>
-                     <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
+                     <LazyLoad height={"100%"} offsetHorizontal={50}>
                         <LazyLoadImage
                             effect="blur"
                             className=""
