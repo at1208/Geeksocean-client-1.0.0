@@ -252,7 +252,7 @@ const SingleBlog = ({ blog, query }) => {
                                                            </Link>
                                                        </div>
                                                        <div className=''>
-                                                          {moment(blog.createdAt).format('MMMM Do YYYY')}
+                                                          {moment(blog.createdAt).fromNow()}
                                                        </div>
                                                       </div>
                                                  </div>
