@@ -118,6 +118,38 @@ const SingleBlog = ({ blog, query }) => {
         </Head>
     );
 
+//     const structureData = () => {
+//       <script type="application/ld+json">
+// {
+//   "@context": "https://schema.org",
+//   "@type": "BlogPosting",
+//   "mainEntityOfPage": {
+//     "@type": "WebPage",
+//     "@id": `${DOMAIN}/blogs/${query.slug}`
+//   },
+//   "headline": `${blog.title}| ${APP_NAME}`,
+//   "description": `${blog.mdesc}`,
+//   "image": `${`https://geeksocean.com/api/blog/photo/${blog.slug}`}`,
+//   "author": {
+//     "@type": "Person",
+//     "name": `${blog.postedBy.name}`
+//   },
+//   "publisher": {
+//     "@type": "Organization",
+//     "name": "Geeksocean.com",
+//     "logo": {
+//       "@type": "ImageObject",
+//       "url": "https://geeksocean.com/static/images/Logo.svg",
+//       "width": 30,
+//       "height": 30
+//     }
+//   },
+//   "datePublished": `${blog.createdAt}`,
+//   "dateModified": `${blog.updatedAt}`
+// }
+// </script>
+//     }
+
     const showBlogCategories = blog =>
         blog.categories.map((c, i) => (
             <Link key={i} href={`/categories/${c.slug}`}>
@@ -220,7 +252,7 @@ const SingleBlog = ({ blog, query }) => {
                                                            </Link>
                                                        </div>
                                                        <div className=''>
-                                                          {moment(blog.createdAt).fromNow()}
+                                                          {moment(blog.createdAt).format('MMMM Do YYYY')}
                                                        </div>
                                                       </div>
                                                  </div>
