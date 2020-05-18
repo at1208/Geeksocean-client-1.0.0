@@ -12,7 +12,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Card = ({ blog }) => {
 
-  const [pic, setPic] =useState('');
+  // const [pic, setPic] =useState('');
     const showBlogCategories = blog =>
         blog.categories.map((c, i) => (
 
@@ -27,16 +27,16 @@ const Card = ({ blog }) => {
 
         ));
 
-    const init = (blog) => {
-          userById(blog.postedBy._id)
-          .then((res) => setPic(res.user.picture))
-          .catch(err => console.log(err))
-    }
-
-     useEffect(() => {
-
-       init(blog);
-     }, [])
+    // const init = (blog) => {
+    //       userById(blog.postedBy._id)
+    //       .then((res) => setPic(res.user.picture))
+    //       .catch(err => console.log(err))
+    // }
+    //
+    //  useEffect(() => {
+    //
+    //    init(blog);
+    //  }, [])
 
    return (
 
@@ -146,7 +146,7 @@ const Card = ({ blog }) => {
                 padding-right: 5px!important;
               }
               .readmore{
- 
+
                 background-color: #fff;
                 width: 100px;
                 height: 10px;
