@@ -91,11 +91,11 @@ setSubmitting(false)
 
 };
 
- 
+
     return (
       <div className='container'>
          <div className='row justify-content-center'>
-           <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
+           <LazyLoad height={"100%"} offsetHorizontal={50}>
              <img src='https://img.icons8.com/officel/40/000000/user.png' width={40} height={40} style={{ borderRadius: "30px", margin: "5px"}} alt="user"/>
            </LazyLoad>
            <TextArea rows={4} onChange={onChangeComment} style={{ width: "90%"}} className='col'/>

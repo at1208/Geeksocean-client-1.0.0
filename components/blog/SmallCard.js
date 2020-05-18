@@ -11,7 +11,7 @@ const SmallCard = ({ blog }) => {
         <div className="card shadow">
             <section>
                 <Link href={`/blogs/${blog.slug}`}>
-                  <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
+                  <LazyLoad height={"100%"} offsetHorizontal={50} >
                     <a>
                         <LazyLoadImage
                             className="img img-fluid"

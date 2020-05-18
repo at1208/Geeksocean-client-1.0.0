@@ -237,13 +237,11 @@ const SingleBlog = ({ blog, query }) => {
                                         <div className='row col container'>
                                            <div className='col-md-8 row'>
                                                 <div className='img-container'>
-                                                <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
-                                                  <LazyLoadImage
+                                                       <LazyLoadImage
                                                        className="profile-img"
                                                        style={{ borderRadius: "60px" }}
                                                        src={`${API}/user/photo/${userName}`}
                                                        alt='' />
-                                                       </LazyLoad>
                                                 </div>
                                                  <div className='user-container'>
                                                        <div className=''>
@@ -269,7 +267,7 @@ const SingleBlog = ({ blog, query }) => {
                                     <section>
 
                                         <div className="row justify-content-center" style={{ marginTop: '20px!important' }}>
-                                        <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
+                                        <LazyLoad height={"100%"} offsetHorizontal={50} >
                                             <LazyLoadImage
                                                 effect="blur"
                                                 src={`${API}/blog/photo/${blog.slug}`}
