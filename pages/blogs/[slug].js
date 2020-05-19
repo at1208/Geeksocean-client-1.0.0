@@ -301,7 +301,7 @@ const SingleBlog = ({ blog, query }) => {
                     <div className='text-center'>
                       { faq && faq[0] && faq[0].question.length > 0 && <h2 className='faq-title'>Frequently Asked Questions</h2>}
                       {faq && <div className='row col justify-content-center'>
-                                  <div className='col-md-10'>{faq && faq[0] && faq[0].question.length > 0 && showFAQs()}</div>
+                                  <div className='col-md-8'>{faq && faq[0] && faq[0].question.length > 0 && showFAQs()}</div>
                               </div>}
                     </div>
                   {/*  <div className='views text-center'>{blog.views.length} views</div>*/}

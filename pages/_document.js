@@ -17,6 +17,22 @@ class MyDocument extends Document {
     }
   }
 
+     OrganisationSchema(job) {
+      return {
+          '@context': 'http://schema.org',
+          '@type': 'Organization',
+           "url": "https://geeksocean.com",
+           "logo": "https://geeksocean.com/static/images/Logo.svg",
+           "sameAs": [
+                "https://www.facebook.com/Geeksocean-108336497487523/",
+                "https://twitter.com/geeks_ocean",
+                "https://www.linkedin.com/company/geeks-ocean/"
+              ]
+      }
+  }
+
+
+
 render() {
     return (
       <Html lang="en">
@@ -43,11 +59,15 @@ render() {
           <script defer async src="https://www.googletagmanager.com/gtag/js?id=UA-161776444-1"></script>
           <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
           <script  defer dangerouslySetInnerHTML={this.setGoogleTags()} />
+          <script
+            type='application/ld+json'
+            defer
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(this.OrganisationSchema()) }}
+        />
         </Head>
         <body>
           <Main />
           <NextScript />
-          <script defer type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"Geeks Ocean","url":"https://geeksocean.com/","address":"","sameAs":["https://www.facebook.com/Geeksocean-108336497487523/","https://twitter.com/geeks_ocean","https://www.linkedin.com/company/geeks-ocean/"]}</script>
         </body>
       </Html>
     );
