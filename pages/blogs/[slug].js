@@ -338,7 +338,7 @@ const BlogSchema = (blog) => {
                               </div>}
                     </div>
                   {/*  <div className='views text-center'>{blog.views.length} views</div>*/}
-                    <div className="p-1 mt-5 text-center">
+                    <div className="p-1 mt-5 text-center col-md-8">
                         {showBlogCategories(blog)}
                         {showBlogTags(blog)}
 
