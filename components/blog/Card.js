@@ -45,9 +45,9 @@ const Card = ({ blog }) => {
             <header>
                 <a href={`/blogs/${blog.slug}`}>
 
-                    <h1 className="blog-title text-center">
+                    <h2 className="blog-title text-center">
                    {blog.title}
-                    </h1>
+                    </h2>
 
                 </a>
             </header>

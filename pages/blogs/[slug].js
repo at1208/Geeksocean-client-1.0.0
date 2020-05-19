@@ -157,6 +157,10 @@ const SingleBlog = ({ blog, query }) => {
                 <style global jsx>{`
                  .show-blogs-category{
                 margin:5px!important;
+                color:black;
+                font-weight:100;
+                background:rgba(0, 0, 0, 0.05);
+                border: 0px solid rgba(0, 0, 0, 0.05);
                  }
                   `}</style>
                   </a>
@@ -170,6 +174,10 @@ const SingleBlog = ({ blog, query }) => {
                 <style global jsx>{`
                  .show-blogs-tags{
                    margin:5px!important;
+                   color:black;
+                   font-weight:100;
+                   background:rgba(0, 0, 0, 0.05);
+                   border: 0px solid rgba(0, 0, 0, 0.05);
                  }
                   `}</style>
                 </a>
@@ -230,7 +238,7 @@ const SingleBlog = ({ blog, query }) => {
                     <article>
                         <div className="container">
                             <section>
-                                <div className="container col-md-10">
+                                <div className="container col-md-8">
                                     <h1 className="blog-title text-center"> {blog.title} </h1>
                                     <section>
                                         <div className="mark">
@@ -267,6 +275,7 @@ const SingleBlog = ({ blog, query }) => {
                                     <section>
 
                                         <div className="row justify-content-center" style={{ marginTop: '20px!important' }}>
+                                        <div className='col-md-8'>
                                         <LazyLoad height={"100%"} offsetHorizontal={50} >
                                             <LazyLoadImage
                                                 effect="blur"
@@ -275,6 +284,7 @@ const SingleBlog = ({ blog, query }) => {
                                                 className="img img-fluid "
                                             />
                                         </LazyLoad>
+                                        </div>
                                         </div>
                                     </section>
 
@@ -295,10 +305,9 @@ const SingleBlog = ({ blog, query }) => {
                       {faq && <div className='row col justify-content-center'>
                                   <div className='col-md-10'>{faq && faq[0] && faq[0].question.length > 0 && showFAQs()}</div>
                               </div>}
-                       <hr />
                     </div>
                   {/*  <div className='views text-center'>{blog.views.length} views</div>*/}
-                    <div className="p-1 mt-1 text-center">
+                    <div className="p-1 mt-5 text-center">
                         {showBlogCategories(blog)}
                         {showBlogTags(blog)}
 
@@ -409,7 +418,7 @@ const SingleBlog = ({ blog, query }) => {
                    margin-bottom:20px!important;
                  }
                  .user-container{
-
+                   font-family: sans-serif;
                    padding:5px;
                    padding-left: 13px;
                  }
@@ -417,8 +426,8 @@ const SingleBlog = ({ blog, query }) => {
                   margin: 10px;
           }
           .profile-img{
-            height:80px!important;
-            width:80px!important;
+            height:70px!important;
+            width:70px!important;
           }
                   `}</style>
               </div>
