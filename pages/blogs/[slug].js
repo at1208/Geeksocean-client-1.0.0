@@ -91,6 +91,34 @@ const SingleBlog = ({ blog, query }) => {
     }, []);
 
 
+const BlogSchema = (blog) => {
+  return { "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${DOMAIN}/blogs/${query.slug}`
+  },
+  "headline": blog.title,
+  "image": `${API}/blog/photo/${blog.slug}`,
+  "author": {
+    "@type": "Person",
+    "name": blog.postedBy.name
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Geeksocean.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://geeksocean.com/static/images/Logo.svg",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "datePublished": blog.createdAt,
+  "dateModified": blog.updatedAt
+  }
+}
+
 
     const head = () => (
         <Head>
@@ -115,6 +143,11 @@ const SingleBlog = ({ blog, query }) => {
             <meta name="twitter:description" content={blog.mdesc} />
             <meta name="twitter:creator" content={blog.postedBy.name} />
             <meta name="twitter:image" content={`${API}/blog/photo/${blog.slug}`} />
+            <script
+              type='application/ld+json'
+              defer
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(BlogSchema(blog))}}
+          />
         </Head>
     );
 

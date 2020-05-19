@@ -22,6 +22,7 @@ class MyDocument extends Document {
           '@context': 'http://schema.org',
           '@type': 'Organization',
            "url": "https://geeksocean.com",
+           "name":"Geeks Ocean",
            "logo": "https://geeksocean.com/static/images/Logo.svg",
            "sameAs": [
                 "https://www.facebook.com/Geeksocean-108336497487523/",
