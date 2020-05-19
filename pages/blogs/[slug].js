@@ -191,7 +191,7 @@ const BlogSchema = (blog) => {
                  .show-blogs-category{
                 margin:5px!important;
                 color:black!important;
-                font-weight:100!important;
+                font-weight:400!important;
                 background:rgba(0, 0, 0, 0.05)!important;
                 border: 0px solid rgba(0, 0, 0, 0.05)!important;
                  }
@@ -208,7 +208,7 @@ const BlogSchema = (blog) => {
                  .show-blogs-tags{
                    margin:5px!important;
                    color:black!important;
-                   font-weight:100!important;
+                   font-weight:400!important;
                    background:rgba(0, 0, 0, 0.05)!important;
                    border: 0px solid rgba(0, 0, 0, 0.05)!important;
                  }
@@ -338,10 +338,11 @@ const BlogSchema = (blog) => {
                               </div>}
                     </div>
                   {/*  <div className='views text-center'>{blog.views.length} views</div>*/}
-                    <div className="p-1 mt-5 text-center col-md-8">
-                        {showBlogCategories(blog)}
-                        {showBlogTags(blog)}
-
+                    <div className="p-1 mt-5 container row col justify-content-center">
+                      <div className='col-md-8 text-center'>
+                          {showBlogCategories(blog)}
+                          {showBlogTags(blog)}
+                      </div>
                     </div>
                       </article>
                 </main>
