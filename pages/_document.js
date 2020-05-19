@@ -47,6 +47,7 @@ render() {
         <body>
           <Main />
           <NextScript />
+          <script defer type="application/ld+json">{"@context":"http://schema.org","@type":"Organization","name":"Geeks Ocean","url":"https://geeksocean.com/","address":"","sameAs":["https://www.facebook.com/Geeksocean-108336497487523/","https://twitter.com/geeks_ocean","https://www.linkedin.com/company/geeks-ocean/"]}</script>
         </body>
       </Html>
     );

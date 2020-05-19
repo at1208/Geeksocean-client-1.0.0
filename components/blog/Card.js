@@ -148,8 +148,7 @@ const Card = ({ blog }) => {
               .readmore{
 
                 background-color: #fff;
-                width: 100px;
-                height: 10px;
+                font-size: 17px;
                 margin-bottom:5px;
                 color: #4b49ff;
                 border-radius: 100px;
@@ -171,10 +170,9 @@ const Card = ({ blog }) => {
               }
             }
             .readmore{
-
+              font-size: 17px;
               background-color: #fff;
-              width: 100px;
-              height: 30px;
+
               color: #4b49ff;
               border-radius: 100px;
               border: 0px solid #00f;
