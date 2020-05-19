@@ -17,7 +17,7 @@ class MyDocument extends Document {
     }
   }
 
-     OrganisationSchema(job) {
+     OrganisationSchema() {
       return {
           '@context': 'http://schema.org',
           '@type': 'Organization',
