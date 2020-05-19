@@ -106,7 +106,10 @@ const BlogSchema = (blog) => {
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Geeksocean.com"
+    "name": "Geeksocean.com",
+    "logo": {
+      "url": "https://geeksocean.com/static/images/Logo.svg"
+    }
   },
   "datePublished": blog.createdAt,
   "dateModified": blog.updatedAt
