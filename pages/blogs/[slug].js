@@ -109,7 +109,7 @@ const BlogSchema = (blog) => {
     "name": "Geeksocean.com",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://geeksocean.com/static/images/Logo.svg",
+      "url": "https://geeksocean.com/static/images/Logo.jpg",
       "width": 60,
       "height": 60
     }
