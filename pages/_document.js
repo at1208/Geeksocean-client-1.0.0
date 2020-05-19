@@ -1,8 +1,10 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import getConfig from 'next/config';
 const { publicRuntimeConfig } = getConfig();
+
 import * as Sentry from '@sentry/browser';
 Sentry.init({dsn: "https://951f22f8e7e0422b8955eb3c3809ddd3@o395070.ingest.sentry.io/5246318"});
+
 
 
 class MyDocument extends Document {

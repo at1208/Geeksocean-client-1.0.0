@@ -461,9 +461,7 @@ const BlogSchema = (blog) => {
               }
                   `}</style>
               </div>
-
           </Layout>
-
         </>
     );
 };

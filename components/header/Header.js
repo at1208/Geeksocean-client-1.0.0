@@ -65,7 +65,7 @@ const MiniDrawer = () => {
 
   return (
      <>
-    <div>
+    <div className="header-style">
    <Toolbar className='container heading-container'>
 
 {!isDesktopOrLaptop &&  <>
@@ -88,7 +88,7 @@ const MiniDrawer = () => {
 
    <div className='row col '>
      <div className='col-6 row'>
-         {isDesktopOrLaptop && <div className='container row'>
+         {isDesktopOrLaptop && <div className='container row' >
 
           <div className='stage'>
           <LazyLoad height={"100%"} offsetHorizontal={50} throttle>
@@ -196,7 +196,7 @@ a{
 .logo-style{
 font-family: 'Philosopher', sans-serif;
 font-size:30px;
- 
+
 
 }
 .get-started{
@@ -236,6 +236,7 @@ font-size:30px;
       transform-origin: bottom;
   }
   .bounce-2 {
+    width:90px;
       animation-name: bounce-2;
       animation-timing-function: ease;
   }
@@ -245,6 +246,9 @@ font-size:30px;
       100% { transform: translateY(0); }
   }
 .sign-out{
+
+}
+.header-style{
 
 }
       `}</style>

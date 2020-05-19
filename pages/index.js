@@ -144,22 +144,21 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
  const showSingleBlog = () => {
    if(singleBlog){
-     return singleBlog.map((blog) => {
-        return <Link href={`/blogs/${blog.slug}`}>
+        return <Link href={`/blogs/${singleBlog.slug}`}>
         <a>
             <div className='singleBlog'>
               <LazyLoadImage
                effect="blur"
-               alt={blog.title}
+               alt={singleBlog.title}
                className="img img-fluid "
-               src={`${API}/blog/photo/${blog.slug}`}
+               src={`${API}/blog/photo/${singleBlog.slug}`}
               />
-              <h2 className='text-center p-2 singleBlogTitle'> {blog.title} </h2>
+              <h2 className='text-center p-2 singleBlogTitle'> {singleBlog.title} </h2>
 
               </div>
           </a>
                </Link>
-     })
+
    }
  }
 
