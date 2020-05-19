@@ -157,10 +157,10 @@ const SingleBlog = ({ blog, query }) => {
                 <style global jsx>{`
                  .show-blogs-category{
                 margin:5px!important;
-                color:black;
-                font-weight:100;
-                background:rgba(0, 0, 0, 0.05);
-                border: 0px solid rgba(0, 0, 0, 0.05);
+                color:black!important;
+                font-weight:100!important;
+                background:rgba(0, 0, 0, 0.05)!important;
+                border: 0px solid rgba(0, 0, 0, 0.05)!important;
                  }
                   `}</style>
                   </a>
@@ -174,10 +174,10 @@ const SingleBlog = ({ blog, query }) => {
                 <style global jsx>{`
                  .show-blogs-tags{
                    margin:5px!important;
-                   color:black;
-                   font-weight:100;
-                   background:rgba(0, 0, 0, 0.05);
-                   border: 0px solid rgba(0, 0, 0, 0.05);
+                   color:black!important;
+                   font-weight:100!important;
+                   background:rgba(0, 0, 0, 0.05)!important;
+                   border: 0px solid rgba(0, 0, 0, 0.05)!important;
                  }
                   `}</style>
                 </a>
@@ -275,7 +275,6 @@ const SingleBlog = ({ blog, query }) => {
                                     <section>
 
                                         <div className="row justify-content-center" style={{ marginTop: '20px!important' }}>
-                                        <div className='col-md-8'>
                                         <LazyLoad height={"100%"} offsetHorizontal={50} >
                                             <LazyLoadImage
                                                 effect="blur"
@@ -284,7 +283,6 @@ const SingleBlog = ({ blog, query }) => {
                                                 className="img img-fluid "
                                             />
                                         </LazyLoad>
-                                        </div>
                                         </div>
                                     </section>
 
@@ -324,9 +322,7 @@ const SingleBlog = ({ blog, query }) => {
                  <div className="container">
                      <h4 className="text-center pt-3 pb-3 more-from-geeksocean">More from Geeksocean.com</h4>
                      <div className="row p-2 col justify-content-center">
-
                          {showRelatedBlog()}
-
                      </div>
                  </div>
 
@@ -425,10 +421,10 @@ const SingleBlog = ({ blog, query }) => {
                  textarea.ant-input {
                   margin: 10px;
           }
-          .profile-img{
-            height:70px!important;
-            width:70px!important;
-          }
+              .profile-img{
+                height:70px!important;
+                width:70px!important;
+              }
                   `}</style>
               </div>
 
