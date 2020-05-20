@@ -16,11 +16,8 @@ const getAllUsers = () => {
     return <>
     <Tr>
       <Td>{item.name}</Td>
-      <Td>{item.email}</Td>
-      <Td>{item.role}</Td>
       <Td>{item.username}</Td>
-      <Td>{item.profile}</Td>
-
+      <Td>{item.role}</Td>
       <Td>{moment(date).format('LLLL')}</Td>
     </Tr>
            </>
@@ -34,10 +31,8 @@ const getAllUsers = () => {
             <Thead>
               <Tr>
                 <Th>Name</Th>
-                <Th>Email</Th>
-                <Th>Role</Th>
                 <Th>username</Th>
-                <Th>profile</Th>
+                <Th>Role</Th>
                 <Th>Created at</Th>
               </Tr>
             </Thead>
@@ -67,7 +62,6 @@ const getAllUsers = () => {
                   }
 
                   .table-container{
-                   margin-top: 90px!important;
                    min-height: 80vh;
                   }
            `}</style>
