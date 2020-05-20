@@ -62,7 +62,7 @@ render() {
           <link defer rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
           <link defer href="https://fonts.googleapis.com/css?family=Gruppo|Philosopher|Playfair+Display+SC|Spectral+SC|Trirong|Halant:700|Lateef|Lato|Philosopher|Prata|Source+Sans+ProGotu|Marmelad|EB+Garamond|Nunito+Sans:800|Poppins:500&display=swap" rel="stylesheet" />
 
-          <link rel="icon" href="/static/images/Logo.jpg" />
+          <link rel="icon" href="/static/images/Logo.svg" />
           <script defer async src="https://www.googletagmanager.com/gtag/js?id=UA-161776444-1"></script>
           <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
           <script  defer dangerouslySetInnerHTML={this.setGoogleTags()} />
