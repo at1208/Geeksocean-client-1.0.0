@@ -119,6 +119,23 @@ const BlogSchema = (blog) => {
   }
 }
 
+ 
+
+// const FAQSchema = () => {
+//   return { "@context": "https://schema.org",
+//   "@type": "FAQPage",
+//   "mainEntity": [faq.map(item => {
+//     return {
+//       "@type": "Question",
+//       "name": item.question,
+//       "acceptedAnswer": {
+//         "@type": "Answer",
+//         "text":  item.answer
+//       }
+//     }
+//   })]
+//  }
+// }
 
     const head = () => (
         <Head>
@@ -151,37 +168,6 @@ const BlogSchema = (blog) => {
         </Head>
     );
 
-//     const structureData = () => {
-//       <script type="application/ld+json">
-// {
-//   "@context": "https://schema.org",
-//   "@type": "BlogPosting",
-//   "mainEntityOfPage": {
-//     "@type": "WebPage",
-//     "@id": `${DOMAIN}/blogs/${query.slug}`
-//   },
-//   "headline": `${blog.title}| ${APP_NAME}`,
-//   "description": `${blog.mdesc}`,
-//   "image": `${`https://geeksocean.com/api/blog/photo/${blog.slug}`}`,
-//   "author": {
-//     "@type": "Person",
-//     "name": `${blog.postedBy.name}`
-//   },
-//   "publisher": {
-//     "@type": "Organization",
-//     "name": "Geeksocean.com",
-//     "logo": {
-//       "@type": "ImageObject",
-//       "url": "https://geeksocean.com/static/images/Logo.svg",
-//       "width": 30,
-//       "height": 30
-//     }
-//   },
-//   "datePublished": `${blog.createdAt}`,
-//   "dateModified": `${blog.updatedAt}`
-// }
-// </script>
-//     }
 
     const showBlogCategories = blog =>
         blog.categories.map((c, i) => (

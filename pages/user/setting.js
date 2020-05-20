@@ -16,7 +16,7 @@ const Setting = () => {
                 </div>
             </Private>
             <style jsx>{`
-               margin-top: 100px!important;
+               
               `}</style>
         </Layout>
     );
