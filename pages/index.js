@@ -23,7 +23,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
     const head = () => (
         <Head>
-            <title>{APP_NAME}</title>
+            <title>{APP_NAME} | Read your favourite tech articles</title>
             <meta
                 name="description"
                 content="Tech articles on mobiles, laptops, cybersecurity, games and much more."
@@ -37,8 +37,8 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             <meta property="og:type" content="website" />
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
-            <meta property="og:image" content={`${DOMAIN}/static/images/home-logo.svg`} />
-            <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/home-logo.svg`} />
+            <meta property="og:image" content={`${DOMAIN}/static/images/Logo.jpg`} />
+            <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/Logo.jpg`} />
             <meta property="og:image:type" content="image/jpg" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
