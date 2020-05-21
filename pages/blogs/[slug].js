@@ -37,7 +37,7 @@ const SingleBlog = ({ blog, query }) => {
     const [related, setRelated] = useState([]);
     const [comments, setComments] = useState([])
     const [userName, setUserName] = useState([]);
-    const [faq, setFaq] = useState([]);
+
 
     const loadRelated = () => {
         listRelated({ blog }).then(data => {
@@ -71,16 +71,6 @@ const SingleBlog = ({ blog, query }) => {
             setUserName(res.user.username)
           })
           .catch(err => console.log(err))
-
-        if(blog.faqs && blog.faqs[0]){
-          singleFAQ(blog.faqs[0]._id)
-           .then((res) => {
-
-             setFaq(res.result.body)
-
-           })
-           .catch(err => console.log(err))
-        }
     }
 
 
@@ -119,23 +109,21 @@ const BlogSchema = (blog) => {
   }
 }
 
- 
-
-// const FAQSchema = () => {
-//   return { "@context": "https://schema.org",
-//   "@type": "FAQPage",
-//   "mainEntity": [faq.map(item => {
-//     return {
-//       "@type": "Question",
-//       "name": item.question,
-//       "acceptedAnswer": {
-//         "@type": "Answer",
-//         "text":  item.answer
-//       }
-//     }
-//   })]
-//  }
-// }
+const FAQSchema = () => {
+  return { "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [blog.faqs[0] && blog.faqs[0].body.map(item => {
+    return {
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text":  item.answer
+      }
+    }
+  })]
+ }
+}
 
     const head = () => (
         <Head>
@@ -165,6 +153,11 @@ const BlogSchema = (blog) => {
               defer
               dangerouslySetInnerHTML={{ __html: JSON.stringify(BlogSchema(blog))}}
           />
+          <script
+            type='application/ld+json'
+            defer
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQSchema())}}
+        />
         </Head>
     );
 
@@ -206,7 +199,7 @@ const BlogSchema = (blog) => {
 
 
     const showFAQs = () => {
-      return faq.map((t, i) => {
+      return blog.faqs[0] && blog.faqs[0].body.map((t, i) => {
         return <div className='m-2'>
                   <FaqCard  question={t.question} answer={t.answer}/>
                     <style global jsx>{`
@@ -215,10 +208,14 @@ const BlogSchema = (blog) => {
                     padding: 8px 24px 24px;
                     }
                     .MuiExpansionPanelSummary-root {
-                    background-color: lavender;
+                    background: #30415f!important;
+                    color:white!important;
                     display: flex;
                     padding: 0 24px 0 24px;
                     min-height: 48px;
+                    }
+                    .MuiSvgIcon-root {
+                      color:cornsilk!important;
                     }
                     .makeStyles-heading-67 {
                       font-size:20px;
@@ -318,9 +315,10 @@ const BlogSchema = (blog) => {
                         </div>
 
                     <div className='text-center'>
-                      { faq && faq[0] && faq[0].question.length > 0 && <h2 className='faq-title'>Frequently Asked Questions</h2>}
-                      {faq && <div className='row col justify-content-center'>
-                                  <div className='col-md-8'>{faq && faq[0] && faq[0].question.length > 0 && showFAQs()}</div>
+
+                      { blog.faqs && blog.faqs[0] && blog.faqs[0].body && blog.faqs[0].body[0].question.length >0 &&<div className='row col justify-content-center'>
+                        <h2 className='faq-title'>Frequently Asked Questions</h2>
+                                  <div className='col-md-8'>{showFAQs()}</div>
                               </div>}
                     </div>
                   {/*  <div className='views text-center'>{blog.views.length} views</div>*/}
@@ -457,7 +455,6 @@ SingleBlog.getInitialProps = ({ query}) => {
         if (data.error) {
             console.log(data.error);
         } else {
-            // console.log('GET INITIAL PROPS IN SINGLE BLOG', data);
             return { blog: data, query };
         }
     });

@@ -48,7 +48,7 @@ const MiniDrawer = () => {
 
   const mobileCss = () =>{
     if(isMobileOrTablet){
-      return { bg: "background-color:#f5f5f5;",
+      return { bg: "background-color: #3a4173;",
                zIndex:  "z-index: 100;",
                paddTop: "padding-top: 0px;",
                pos: "position: fixed!important;",
@@ -198,7 +198,9 @@ font-family: 'Philosopher', sans-serif;
 font-size:30px;
 
 
+
 }
+
 .get-started{
   border: 0px solid white!important;
   background: #8E2DE2!important;
@@ -224,7 +226,9 @@ font-size:30px;
 .sign-in{
   margin:5px!important;
     height:35px!important;
-    border:0px solid white!important;
+    background: #031b4d;
+    color:white;
+    border:1px solid white!important;
 }
 .stage {
       display: flex;
