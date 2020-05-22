@@ -226,8 +226,7 @@ font-size:30px;
 .sign-in{
   margin:5px!important;
     height:35px!important;
-    background: #031b4d;
-    color:white;
+    color:black;
     border:1px solid white!important;
 }
 .stage {

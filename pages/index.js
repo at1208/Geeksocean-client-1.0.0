@@ -10,6 +10,7 @@ import Card from '../components/blog/Card';
 import FlashCard from '../components/blog/FlashCard';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 import Search from '../components/blog/Search'
+// import BlogSearch from '../components/blog/BlogSearch'
 import { Button } from 'antd'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import BlogsByCategory from '../components/blog/BlogsByCategory';
@@ -173,8 +174,6 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
                     {<div className="show-blogs">
                             <Search />
-
-
                     </div>}
                   <div className='container-fluid'>
                           {showHottestArticle()}

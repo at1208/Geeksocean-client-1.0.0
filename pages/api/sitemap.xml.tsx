@@ -20,10 +20,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		const pipeline = smStream.pipe(createGzip());
 		// Add any static entries here
 		smStream.write({ url: '/', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.WEEKLY });
-		smStream.write({ url: '/about', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
-		smStream.write({ url: '/contact', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
+		smStream.write({ url: '/about', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.WEEKLY });
+		smStream.write({ url: '/contact', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.WEEKLY });
     smStream.write({ url: '/privacy-policy', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.WEEKLY });
-    smStream.write({ url: '/help', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.MONTHLY });
+    smStream.write({ url: '/help', lastmod: process.env.siteUpdatedAt, changefreq: EnumChangefreq.WEEKLY });
 
 		// E.g. we create a sitemap.xml for articles
 		// Set articles change frequencey is weekly

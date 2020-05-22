@@ -215,7 +215,7 @@ const FAQSchema = () => {
                     min-height: 48px;
                     }
                     .MuiSvgIcon-root {
-                      color:cornsilk!important;
+                      color:white!important;
                     }
                     .makeStyles-heading-67 {
                       font-size:20px;
