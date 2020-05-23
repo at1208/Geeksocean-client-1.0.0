@@ -110,9 +110,6 @@ const BlogSchema = (blog) => {
 }
 
 const FAQSchema = () => {
-  if(blog.faqs[0].body[0].question.length<=0){
-    return;
-  }
   return { "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [blog.faqs[0] && blog.faqs[0].body.map(item => {
